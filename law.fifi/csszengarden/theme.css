@@ -15,6 +15,13 @@ body{
     background: none;
 }
 
+.page-wrapper{
+	animation-name: disappear;
+	animation-delay:10s;
+	animation-duration: 12s;
+	animation-iteration-count: infinite;
+}
+
 h1,h2,h3,h4,h5,h6{
 	font-family: var(--font-one);
 
@@ -26,8 +33,14 @@ p{
 	font-family: var(--font-two);
 	font-size: 0.8rem;
 }
-p:hover{
+/*p:hover{
 	opacity: 50%;
+}*/
+a:link, a:visited{
+	color:inherit;
+}
+a:hover{
+	color:var(--color-netural-medium);
 }
 #css-zen-garden{
 	display: flex;
@@ -98,7 +111,6 @@ header h2{
     position: absolute;
     top: 20%;
     left: 80%;
-    transform: translateX(-50%);
 /*    border: 5px solid #2b2b285c;*/
     border-radius: 66%;
     padding: 2em 0;
@@ -106,11 +118,68 @@ header h2{
     box-shadow: 1px -1px 15px #00000080;
     background-color: var(--color-netural-light);
     z-index: 4;
+    animation-name: moveUp;
+	animation-duration: 3s;
+	animation-delay: 0.2s;
+    transform: translateX(-50%);
 
 
 
 }
 
+@keyframes disappear{
+	0%{
+		opacity:1;
+
+		
+	}
+	15%{
+		opacity:0;
+		
+	}
+	100%{
+		opacity:0;
+		
+	}
+}
+.sidebar .wrapper, .extra1{
+	background: white;
+}
+@keyframes appear{
+	0%{
+		opacity:0;
+		
+	}
+	75%{
+		opacity:0;
+		
+	}
+	95%{
+		opacity:1;
+
+		
+	}
+	100%{
+		opacity:0;
+	}
+}
+
+.extra1{
+	background:inherit;
+	position: absolute;
+	top: 50%;
+	left: 30%;
+	animation-name: appear;
+	animation-delay:0s;
+	animation-duration: 15s;
+	animation-iteration-count: infinite;
+}
+.extra1::before{
+	content:"OH IT BREAKS";
+	color:black;
+	font-size: 10rem;
+	font-weight:600;
+}
 .summary p{
 	padding: 0 4rem;
 	font-family: var(--font-two);
@@ -159,10 +228,13 @@ header h2{
 	text-decoration: none;
 	color: inherit;
 }
-.sidebar .wrapper , .extra1{
+.sidebar .wrapper{
+	background: var(--color-netural-dark);
+}
+.extra1{
 	font-family: var(--font-two);
-	color: var(--color-netural-light);
-	background:var(--color-netural-dark);
+	color: var(--color-netural-dark);
+	background:white;
 	/*display: none;*/
 }
 .sidebar h3.select,.sidebar h3.archives,.sidebar h3.resources{
@@ -178,7 +250,10 @@ header h2{
 
 .preamble{
 	width: 650px;
-  padding: 1em 5em;
+	padding: 1em 5em;
+/*	animation-name: moveToRight;
+	animation-duration: 5s;
+	animation-delay: 0.2s;*/
 
 }
 
@@ -196,10 +271,16 @@ header h2{
 	padding: 15em 5em;
 	background-color: var(--color-netural-dark);
 	color:var(--color-netural-light);
+    transition: width ease 0.5s;
+
 
 }
-.supporting >*:nth-child(1):hover{
+.explanation{
+
+}
+.explanation:hover{
 	width: 1200px;
+    transition: ease 0.5s;
 }
 
 .supporting >*:nth-child(2){
@@ -209,6 +290,39 @@ header h2{
 	position: relative;
 	left: 65%;
 	margin-bottom: 3em;
+	animation-name: moveToRight;
+	animation-duration: 5s;
+	animation-delay: 0.5s;
+}
+@keyframes moveToLeft{
+	0%{
+		transform: translateX(-400px);
+		opacity: 0;
+	}
+	100%{
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+@keyframes moveToRight{
+	0%{
+		transform: translateX(400px);
+		opacity: 0;
+	}
+	100%{
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+@keyframes moveUp{
+	0%{
+		transform: translate(-50%,150px);
+		opacity: 0;
+	}
+	100%{
+		transform: translate(-50%,0);
+		opacity: 1;
+	}
 }
 
 .supporting >*:nth-child(3){
@@ -218,6 +332,9 @@ header h2{
 	margin: 0;
 	padding: 15em;
 	margin-bottom:3em;
+	animation-name: moveToLeft;
+	animation-duration: 3s;
+	animation-delay: 0.2s;
 }
 
 .supporting >*:nth-child(4){
@@ -238,6 +355,9 @@ header h2{
 	font-family: var(--font-one);
 	text-transform: uppercase;
 	margin:auto;
+}
+.supporting >*:nth-child(5):hover{
+	display: none;
 }
 
 .supporting >*:nth-child(5) a{
@@ -288,3 +408,5 @@ header h2{
 	}
 	
 	}
+
+
