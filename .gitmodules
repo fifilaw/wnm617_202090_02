@@ -1,0 +1,3 @@
+[submodule "law.fifi/Purry"]
+	path = law.fifi/Purry
+	url = https://github.com/fifilaw/Purry.git
