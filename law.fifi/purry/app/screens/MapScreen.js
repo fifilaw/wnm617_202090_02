@@ -1,7 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
+import { View, Text, ImageBackground } from "react-native";
+import { Styles } from "../../styles/Styles";
 
-export default class componentName extends Component {
-  render() {
-    return <div> textInComponent </div>;
-  }
+function MapScreen({ navigation }) {
+  return (
+    <View style={Styles.Pagecontainer}>
+      <ImageBackground
+        style={Styles.mapImage}
+        source={require("../../assets/map.PNG")}
+      >
+        <Text style={Styles.tabTitle}>Map</Text>
+      </ImageBackground>
+    </View>
+  );
 }
+
+export default MapScreen;
