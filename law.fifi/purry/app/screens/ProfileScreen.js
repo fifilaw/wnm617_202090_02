@@ -6,7 +6,13 @@ function ProfileScreen({ navigation }) {
   return (
     <View style={Styles.Pagecontainer}>
       <Text style={Styles.tabTitle}>User Profile</Text>
-      <Text onPress={() => navigation.navigate("SignInScreen")}>Logout</Text>
+      <Text>This is the user profile page</Text>
+      <Text
+        onPress={() => navigation.navigate("SignInScreen")}
+        style={Styles.EditButton}
+      >
+        Logout
+      </Text>
     </View>
   );
 }

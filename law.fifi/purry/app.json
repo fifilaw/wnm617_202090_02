@@ -14,7 +14,9 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/img/*.png",
+      "assets/snd/*.mp3",
+      "assets/fonts/*.ttf"
     ],
     "ios": {
       "supportsTablet": true

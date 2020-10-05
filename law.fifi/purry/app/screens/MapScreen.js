@@ -7,7 +7,7 @@ function MapScreen({ navigation }) {
     <View style={Styles.Pagecontainer}>
       <ImageBackground
         style={Styles.mapImage}
-        source={require("../../assets/map.PNG")}
+        source={require("../../assets/img/map2.png")}
       >
         <Text style={Styles.tabTitle}>Map</Text>
       </ImageBackground>
