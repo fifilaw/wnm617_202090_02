@@ -1,19 +1,33 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { SafeAreaView, View, Text, Image } from "react-native";
 import { Styles } from "../../styles/Styles";
 
 function ProfileScreen({ navigation }) {
   return (
-    <View style={Styles.Pagecontainer}>
+    <SafeAreaView style={Styles.Pagecontainer}>
       <Text style={Styles.tabTitle}>User Profile</Text>
-      <Text>This is the user profile page</Text>
+      <View style={Styles.ProfileCard}>
+        <Image
+          source={require("../../assets/img/suju.png")}
+          style={Styles.CatProfileImage}
+        />
+        <View style={Styles.CatInfo}>
+          <Text style={Styles.CatProfileTitle}>User</Text>
+          <Text
+            style={Styles.EditButton}
+            onPress={() => navigation.navigate("EditUser")}
+          >
+            Edit Profile
+          </Text>
+        </View>
+      </View>
       <Text
         onPress={() => navigation.navigate("SignInScreen")}
-        style={Styles.EditButton}
+        style={Styles.LogOutButton}
       >
         Logout
       </Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
