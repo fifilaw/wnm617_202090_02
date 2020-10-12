@@ -1,6 +1,7 @@
 import React from "react";
 import { SafeAreaView, View, Text, ImageBackground } from "react-native";
 import { Styles } from "../../styles/Styles";
+import BottomNav from "../component/BottomNav";
 
 function MapScreen({ navigation }) {
   return (
@@ -9,8 +10,12 @@ function MapScreen({ navigation }) {
         style={Styles.mapImage}
         source={require("../../assets/img/map2.png")}
       >
-        <Text style={Styles.tabTitle}>Map</Text>
+        <View style={Styles.header}>
+          <Text style={Styles.tabTitle}>Map</Text>
+        </View>
       </ImageBackground>
+
+      <BottomNav />
     </SafeAreaView>
   );
 }

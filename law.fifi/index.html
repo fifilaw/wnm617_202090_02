@@ -2,7 +2,9 @@
 <html>
 <head>
 	<title>Purry</title>
-	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Poppins:400,800|Raleway&display=swap" rel="stylesheet">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;1,400&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="css/style.css"> -->
 
 	<!-- All libray files go before local files -->
@@ -17,10 +19,13 @@
 </head>
 <body>
 	<section data-role="page" id="signin-page">
-		<div data-role="main" class="display-flex flex-column">
-			
+		<div data-role="main" class="flex-justify-center flex-align-center ">
+			<!-- <h1>Welcome back, login to Purry</h1> -->
+			<div class="display-flex flex-justify-center flex-align-center padding-bot-2">
+				<img src="images/purry-logo.svg">
+			</div>
 			<form action="" id="signin-form" data-ajax="false">
-				<div class="form-control">
+				<div class="form-control display-flex flex-column">
 					<label for="signin-username" class="form-label">Username</label>
 					<input type="text" class="form-input" id="signin-username" data-role="none">
 				</div>
@@ -29,7 +34,7 @@
 					<input type="text" class="form-input" id="signin-password" data-role="none">
 				</div>
 				<div class="form-control">
-					<a href="#recent-page" class="form-button">Sign In</a>
+					<a href="#list-page" class="form-button">Sign In</a>
 				</div>
 
 				<div class="form-control signin-alt">Don't have an account? <a href="#signup-page">Sign Up</a></div>
@@ -38,9 +43,12 @@
 	</section>
 
 	<section data-role="page" id="signup-page">
-		<div data-role="main">
+		<div data-role="main" class="flex-justify-center flex-align-center">
+			<div class="display-flex flex-justify-center flex-align-center padding-bot-2 padding-top-5" >
+				<img src="images/purry-logo.svg">
+			</div>
 			<form action="" id="signup-form" data-ajax="false">
-				<div class="form-control">
+				<div class="form-control display-flex flex-column">
 					<label for="signup-username" class="form-label">Username</label>
 					<input type="text" class="form-input" id="signup-username" data-role="none">
 				</div>
@@ -53,7 +61,7 @@
 					<input type="text" class="form-input" id="signup-password" data-role="none">
 				</div>
 				<div class="form-control">
-					<a href="#recent-page" class="form-button">Sign Up</a>
+					<a href="#list-page" class="form-button">Sign Up</a>
 				</div>
 
 				<div class="form-control signin-alt">Already have an account? <a href="#signin-page">Sign In</a></div>
@@ -62,39 +70,231 @@
 		
 	</section>
 
-	<section data-role="page" id="recent-page">
-		<div data-role="main">
-			
-		</div>
-		
-	</section>
+
 
 	<section data-role="page" id="list-page">
-			<header data-role="header">
-         <h1>List Page</h1>
-      </header>
+		<header data-role="header">
+        	<h1>Cat List</h1>
+          
+            <a href="#add-animal-page" class="add-icon"><img src="images/add.svg" ></a>
+	
+      	</header>
       <div data-role="main">
-         This is an animal List
+      	<div>
+      		<div class="search-control">
+				<div class="display-flex search-bar ">
+				<input type="text" class="flex-stretch" id="search" data-role="none">
+				<img src="images/search.svg" class="flex-none">
+			</div>
+			</div>
+			<div class="display-flex filter-bar">
+				<h4 class="flex-stretch">Filter</h4>
+				<h4 class="flex-none">Sort</h4>
+			</div>
+      	</div>
+     	<div class="overscroll">
+     		<ul class="animal-list">
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 1</p></a></li>
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 2</p></a></li>
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 3</p></a></li>
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 4</p></a></li>
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 5</p></a></li>
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 6</p></a></li>
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 7</p></a></li>
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 8</p></a></li>
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 9</p></a></li>
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 10</p></a></li>
+     			<li><a href="#animal-profile-page"><img src="images/venus.png" class="animal-list-img"><p>Animal 11</p></a></li>
+               	
+     		</ul>
+     	</div>	
       </div>
       <footer data-role="footer">
          <ul>
-            <li><a href="#recent-page">Recent</a></li>
-            <li><a href="#list-page">List</a></li>
-            <li><a href="#user-profile-page">Profile</a></li>
+            <li><a href="#list-page"><img src="images/list.svg" class="footer-icon"></a></li>
+            <li><a href="#map-page"> <img src="images/map.svg" class="footer-icon"></a></li>
+            <li><a href="#user-profile-page"> <img src="images/profile.svg" class="footer-icon"></a></li>
          </ul>
       </footer>
 		
 	</section>
 
-	<section data-role="page" id="user-profile-page">
+	<section data-role="page" id="map-page">
 		<div data-role="main">
-			Animal Profile
+			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-1"></a>
+			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-2"></a>
+			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-3"></a>
+			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-4"></a>
+		</div>
+		<footer data-role="footer">
+         <ul>
+            <li><a href="#list-page"><img src="images/list.svg" class="footer-icon"></a></li>
+            <li><a href="#map-page"> <img src="images/map.svg" class="footer-icon"></a></li>
+            <li><a href="#user-profile-page"> <img src="images/profile.svg" class="footer-icon"></a></li>
+         </ul>
+      </footer>
+	</section>
+
+	<section data-role="page" id="user-profile-page">
+
+		<div data-role="main">
+			<div class="display-flex user-profile-card space-around">
+				<div class="user-icon flex-none"><img src="https://picsum.photos/100" class="user-icon"></div>
+				
+				<div class="user-detail flex-stretch">
+					<h2>User 1</h2>
+					<p>Joined Jan 2020</p>
+				</div>
+				<a href="#edit-user-page" class="flex-none more-icon"><img src="images/more.png" ></a>
+				
+			</div>
+			<div class="display-flex space-around" style="flex-wrap: wrap;">
+				<div class="user-achievement">
+					<h4>Cats Found</h4>
+					<p>15</p>
+				</div>
+				<div class="user-achievement">
+					<h4>Breed</h4>
+					<p>6</p>
+				</div>
+				<div class="user-achievement">
+					<h4>Colors</h4>
+					<p>4</p>
+				</div>
+				<div class="user-achievement">
+					<h4>Neutered</h4>
+					<p>12</p>
+				</div>
+			</div>
+
+		</div>
+		<footer data-role="footer">
+         <ul>
+            <li><a href="#list-page"><img src="images/list.svg" class="footer-icon"></a></li>
+            <li><a href="#map-page"> <img src="images/map.svg" class="footer-icon"></a></li>
+            <li><a href="#user-profile-page"> <img src="images/profile.svg" class="footer-icon"></a></li>
+         </ul>
+      </footer>
+	</section>
+
+	<section data-role="page" id="animal-profile-page">
+
+		<div data-role="main" class="overscroll">
+			<div class="hero-image">
+			<div class="display-flex back-header" style="padding:0 1em;">
+				<a href="#list-page"><p>&larr; </p></a>
+
+			</div>
+		</div>
+			<div class="display-flex user-profile-card space-around cat-profile-card" >
+				<div class="cat-icon flex-none"><img src="images/venus.png" class="user-icon"></div>
+				
+				<div class="user-detail flex-stretch">
+					<h2>Cat 1</h2>
+					
+				</div>
+				<a href="#edit-user-page" class="flex-none more-icon"><img src="images/more.png" ></a>
+				
+			</div>
+			<div class="cat-profile-detail">
+				<p>Breed: Tabby</p>
+				<p>Color: Tri-color</p>
+				<p>Neutered</p>
+			</div>
+			<div class="display-flex add-note-div">
+				<div class="flex-stretch"></div>
+				<div class="add-note-btn flex-none"><a href="#add-note-page" >Add Note</a></div>
+			</div>
+			<div class="cat-note grid gap">
+				
+				<div class="cat-note-detail col-sm-6">
+					<img src="https://picsum.photos/200/250">
+					<p>Cat Note</p>
+				</div>
+				<div class="cat-note-detail col-sm-6">
+					<img src="https://picsum.photos/200/250">
+					<p>Cat Note</p>
+				</div>
+				<div class="cat-note-detail col-sm-6">
+					<img src="https://picsum.photos/200/250">
+					<p>Cat Note</p>
+				</div>
+				<div class="cat-note-detail col-sm-6">
+					<img src="https://picsum.photos/200/250">
+					<p>Cat Note</p>
+				</div>
+				<div class="cat-note-detail col-sm-6">
+					<img src="https://picsum.photos/200/250">
+					<p>Cat Note</p>
+				</div>
+				<div class="cat-note-detail col-sm-6">
+					<img src="https://picsum.photos/200/250">
+					<p>Cat Note</p>
+				</div>
+				<div class="cat-note-detail col-sm-6">
+					<img src="https://picsum.photos/200/250">
+					<p>Cat Note</p>
+				</div>
+				<div class="cat-note-detail col-sm-6">
+					<img src="https://picsum.photos/200/250">
+					<p>Cat Note</p>
+				</div>
+			
 		</div>
 		
 	</section>
 
-	<section data-role="page" id="animal-profile-page">
-		<div data-role="main"></div>
+	<section data-role="page" id="add-animal-page">
+
+		<div data-role="main">
+			<div class="display-flex back-header" style="margin-bottom: 2em;">
+				<a href="#list-page"><p>&larr; </p></a>
+				<div class="display-stretch"><h3 style="margin-left: 20px;">Add Cat</h3></div>
+			</div>
+			<div>
+				<form action="" id="addcat-form" data-ajax="false">
+					<div class="form-control display-flex">
+						<div class="form-upload-photo">
+							<img src="images/add.svg" class="flex-none ">
+						</div>
+						<div class="flex-stretch">
+							<label for="cat-name" class="form-label">Cat Name</label>
+							<input type="text" class="form-input" id="cat-name" data-role="none">
+						</div>
+					</div>
+					<div class="form-control display-flex">
+						<label for="cat-location" class="form-label flex-none">Location</label>
+						<a href="#add-animal-page" class="flex-stretch pin-location-btn">Pin on Map</a>
+						
+					</div>
+					<div class="form-control">
+						<label for="cat-breed" class="form-label">Breed</label>
+						<input type="text" class="form-input" id="cat-breed" data-role="none">
+					</div>
+					<div class="form-control">
+						<label for="cat-color" class="form-label">Color</label>
+						<input type="text" class="form-input" id="cat-color" data-role="none">
+					</div>
+					<div class="form-control">
+						<label for="neutered" class="form-label">Neutered?</label>
+						<select name="neutered" id="neutered" class="drop-down">
+							<option  class="options"  value="option1">Yes</option>
+							<option  class="options" value="option2">No</option>
+
+						</select>
+					</div>
+					<div class="form-control">
+						<label for="cat-note" class="form-label">Notes about the cat:</label>
+						<textarea name="cat-note" class="add-cat-note"></textarea>
+					</div>
+					<div class="form-control">
+						<a href="#list-page" class="form-button">Add Cat</a>
+					</div>
+
+				</form>
+			</div>
+
+		</div>
 		
 	</section>
 </body>

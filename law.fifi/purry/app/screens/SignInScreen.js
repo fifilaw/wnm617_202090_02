@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 import { Styles } from "../../styles/Styles";
+import { HashRouter, Route, Link } from "react-router-dom";
 
 function SignInScreen({ navigation }) {
   return (
@@ -10,20 +11,18 @@ function SignInScreen({ navigation }) {
       <TextInput style={Styles.formInput}></TextInput>
       <Text style={Styles.formTitle}>password</Text>
       <TextInput style={Styles.formInput}></TextInput>
-      <Button
-        onPress={() => navigation.navigate("HomeScreen")}
-        title="Sign In"
-        color="#edb97f"
-        style={Styles.formButton}
-      ></Button>
+      <Link to={"/HomeScreen"} style={{ textDecoration: "none" }}>
+        <Button
+          title="Sign In"
+          color="#edb97f"
+          style={Styles.formButton}
+        ></Button>
+      </Link>
       <Text style={{ textAlign: "center", padding: 10 }}>
         Don't have an account?{" "}
-        <Text
-          onPress={() => navigation.navigate("SignUpScreen")}
-          style={{ fontWeight: "bold" }}
-        >
-          Sign Up
-        </Text>
+        <Link to={"/SignUp"} style={{ textDecoration: "none", color: "black" }}>
+          <Text style={{ fontWeight: "bold" }}>Sign Up</Text>
+        </Link>
       </Text>
     </View>
   );

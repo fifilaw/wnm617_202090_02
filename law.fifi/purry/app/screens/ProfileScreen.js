@@ -1,11 +1,15 @@
 import React from "react";
 import { SafeAreaView, View, Text, Image } from "react-native";
 import { Styles } from "../../styles/Styles";
+import { HashRouter, Route, Link } from "react-router-dom";
+import BottomNav from "../component/BottomNav";
 
 function ProfileScreen({ navigation }) {
   return (
     <SafeAreaView style={Styles.Pagecontainer}>
-      <Text style={Styles.tabTitle}>User Profile</Text>
+      <View style={Styles.header}>
+        <Text style={Styles.tabTitle}>User Profile</Text>
+      </View>
       <View style={Styles.ProfileCard}>
         <Image
           source={require("../../assets/img/suju.png")}
@@ -27,6 +31,8 @@ function ProfileScreen({ navigation }) {
       >
         Logout
       </Text>
+
+      <BottomNav />
     </SafeAreaView>
   );
 }

@@ -17,7 +17,9 @@ function AddCatScreen({ navigation }) {
       <Text style={Styles.formTitle}>Description</Text>
       <TextInput style={Styles.formInput}></TextInput>
       <Button
-        onPress={() => navigation.navigate("HomeScreen")}
+        onPress={() => {
+          console.log("Added");
+        }}
         title="Add Cat"
         color="#edb97f"
         style={Styles.formButton}

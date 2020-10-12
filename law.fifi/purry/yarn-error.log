@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Users\Fifi Law\Downloads\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add webpack --dev
+  C:\Users\Fifi Law\Downloads\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-sticky
 
 PATH: 
   C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64_win\compiler;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;D:\Chrome Download\QTSystem\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Users\Fifi Law\Downloads\;C:\Program Files (x86)\Yarn\bin\;C:\Users\Fifi Law\AppData\Local\Microsoft\WindowsApps;C:\Users\Fifi Law\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Fifi Law\AppData\Local\atom\bin;C:\Users\Fifi Law\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Users\Fifi Law\AppData\Local\Microsoft\WindowsApps;C:\Users\Fifi Law\AppData\Roaming\npm;C:\Users\Fifi Law\AppData\Local\Yarn\bin
@@ -24,8 +24,7 @@ npm manifest:
       "android": "expo start --android",
       "ios": "expo start --ios",
       "web": "expo start --web",
-      "eject": "expo eject",
-      "build": "webpack --config webpack.config.js"
+      "eject": "expo eject"
     },
     "dependencies": {
       "@react-native-community/masked-view": "0.1.10",
@@ -49,7 +48,8 @@ npm manifest:
       "react-router-native": "^5.2.0"
     },
     "devDependencies": {
-      "@babel/core": "~7.9.0"
+      "@babel/core": "~7.9.0",
+      "babel-plugin-react-native-web": "^0.13.16"
     },
     "private": true
   }
@@ -1691,6 +1691,11 @@ Lockfile:
       pkg-up "^2.0.0"
       reselect "^3.0.1"
       resolve "^1.4.0"
+  
+  babel-plugin-react-native-web@^0.13.16:
+    version "0.13.16"
+    resolved "https://registry.yarnpkg.com/babel-plugin-react-native-web/-/babel-plugin-react-native-web-0.13.16.tgz#790716b782ec1d08c7c60b9eb1479287a19261b6"
+    integrity sha512-R1FYWRBebO4iERc91mdjq66i5sDhMZyB2S8hr0nErW81AdYgpdK9GCxQiQT093gD+jgIHNMFNqm+Ly9lMrZFsw==
   
   babel-plugin-react-native-web@~0.13.6:
     version "0.13.14"
