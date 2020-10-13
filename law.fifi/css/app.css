@@ -169,11 +169,35 @@ a:hover {
 }
 */
 
+.login-error{
+    text-align: center;
+    opacity: 0;
+    line-height: 1px;
+    /* padding-top: 10px; */
+    position: relative;
+    margin: 0;
+    top: 4%;
+}
 
+.login-error.active{
+   color: red;
+  opacity: 1;
+
+
+}
 
 
 
 /*Page layouts*/
+
+.ui-link,
+.ui-link:active,
+.ui-link:visited{
+   font-weight:inherit;
+   text-decoration: none;
+}
+
+
 .ui-mobile .ui-page-active {
    display:flex;
    flex-direction:column;
@@ -219,7 +243,7 @@ a:hover {
 
 
 .more-icon img{
-   width: 15%;
+   width: 25%;
 
 }
 
@@ -375,7 +399,9 @@ a:hover {
    background-image: url("../images/map.PNG");
    background-position: center;
    background-size: cover;
+
 }
+
 
 .location-1,
 .location-2,
@@ -424,6 +450,8 @@ a:hover {
    border-radius: 50%;
 }
 
+
+
 .user-detail{
        display: flex;
     /* display: block; */
@@ -442,14 +470,18 @@ a:hover {
 .user-detail p{
    font-size:0.8em;
 }
-
+.user-profile-detail{
+   padding: 0 1em;
+}
 .more-icon{
-       max-width: 100px;
+    max-width: 100px;
     text-align: end;
     margin-top: 1em;
+    display: block;
+}
 }
 .more-icon img{
-   width: 20%;
+   width: 25%;
 }
 
 .user-achievement{
@@ -460,6 +492,57 @@ a:hover {
     border-radius: 5px;
 }
 
+.modal{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: all 0.3s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal.active{
+   opacity: 1;
+}
+
+.modal-back{
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0,0,0,0.7);
+}
+
+
+.modal-popup{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,calc(-50% + 3em));
+    width: 80vw;
+    transition: all 0.3s;
+
+}
+
+.modal-body {
+    background-color: white;
+    padding: 1em;
+}
+.modal-head, .modal-foot {
+    background-color: var(--color-neutral-light);
+    padding: 0.8em 1em;
+
+}
+.modal.active .modal-popup,
+.modal.active .modal-back{
+   pointer-events: initial;
+
+}
+
+.modal.active .modal-popup{
+   transform: translate(-50%,-50%);
+   
+}
 
 
 /*Add cat page*/
@@ -481,6 +564,7 @@ a:hover {
 }
 
 .pin-location-btn{
+   max-width: 200px;
        background-color: var(--color-main-medium);
     padding: 0.2em 4em;
     text-align: center;
@@ -547,10 +631,11 @@ a:hover {
 
 
 .cat-profile-detail{
-   padding: 0.2em 2.5em;
-   position: relative;
-   bottom: 10%;
-   line-height: 10px;
+    padding: 0.2em 2.5em;
+    position: relative;
+    bottom: 10%;
+    line-height: 8px;
+    margin-right: 50px;
 }
 
 .cat-note{
@@ -587,7 +672,9 @@ a:hover {
    align-items: center;
 }
 
-
+.cat-note-detail p{
+   padding: 0 0.5em;
+}
 
 .grid {
    display:grid;

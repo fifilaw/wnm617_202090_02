@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="css/app.css">
 
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
+	<script src="js/signin.js"></script>
 	<script src="js/app.js"></script>
 
 	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
@@ -20,10 +21,10 @@
 <body>
 	<section data-role="page" id="signin-page">
 		<div data-role="main" class="flex-justify-center flex-align-center ">
-			<!-- <h1>Welcome back, login to Purry</h1> -->
-			<div class="display-flex flex-justify-center flex-align-center padding-bot-2">
+			<div class="display-flex flex-justify-center flex-align-center ">
 				<img src="images/purry-logo.svg">
 			</div>
+			<div class="login-error"><p>Login failed. Please try again.</p></div>
 			<form action="" id="signin-form" data-ajax="false">
 				<div class="form-control display-flex flex-column">
 					<label for="signin-username" class="form-label">Username</label>
@@ -31,10 +32,10 @@
 				</div>
 				<div class="form-control">
 					<label for="signin-password" class="form-label">Password</label>
-					<input type="text" class="form-input" id="signin-password" data-role="none">
+					<input type="password" class="form-input" id="signin-password" data-role="none">
 				</div>
 				<div class="form-control">
-					<a href="#list-page" class="form-button">Sign In</a>
+					<input type="submit" name="" for="form-button" value="Sign In" class="form-button" data-role="none">
 				</div>
 
 				<div class="form-control signin-alt">Don't have an account? <a href="#signup-page">Sign Up</a></div>
@@ -44,7 +45,7 @@
 
 	<section data-role="page" id="signup-page">
 		<div data-role="main" class="flex-justify-center flex-align-center">
-			<div class="display-flex flex-justify-center flex-align-center padding-bot-2 padding-top-5" >
+			<div class="display-flex flex-justify-center flex-align-center  padding-top-5" >
 				<img src="images/purry-logo.svg">
 			</div>
 			<form action="" id="signup-form" data-ajax="false">
@@ -57,8 +58,8 @@
 					<input type="text" class="form-input" id="signup-password" data-role="none">
 				</div>
 				<div class="form-control">
-					<label for="signup-password" class="form-label">Confirm Password</label>
-					<input type="text" class="form-input" id="signup-password" data-role="none">
+					<label for="signup-confirm-password" class="form-label">Confirm Password</label>
+					<input type="text" class="form-input" id="signup-confirm-password" data-role="none">
 				</div>
 				<div class="form-control">
 					<a href="#list-page" class="form-button">Sign Up</a>
@@ -88,8 +89,8 @@
 			</div>
 			</div>
 			<div class="display-flex filter-bar">
-				<h4 class="flex-stretch">Filter</h4>
-				<h4 class="flex-none">Sort</h4>
+				<h4 class="flex-stretch" ><a href="#" data-activate="#filter-menu">Filter</a></h4>
+				<h4 class="flex-none" data-activate="#sort-menu">Sort</h4>
 			</div>
       	</div>
      	<div class="overscroll">
@@ -111,12 +112,33 @@
       </div>
       <footer data-role="footer">
          <ul>
-            <li><a href="#list-page"><img src="images/list.svg" class="footer-icon"></a></li>
-            <li><a href="#map-page"> <img src="images/map.svg" class="footer-icon"></a></li>
-            <li><a href="#user-profile-page"> <img src="images/profile.svg" class="footer-icon"></a></li>
+            <li><a href="#list-page"><img src="images/list.svg" class="footer-icon  list-icon"></a></li>
+            <li><a href="#map-page"> <img src="images/map.svg" class="footer-icon map-icon"></a></li>
+            <li><a href="#user-profile-page"> <img src="images/profile.svg" class="footer-icon profile-icon"></a></li>
          </ul>
       </footer>
-		
+		<div class="modal" id="filter-menu">
+	      	<div class="modal-back" data-deactivate="#filter-menu"></div>
+	      	<div class="modal-popup">
+	      		<div class="modal-head"><a href="#list-page">Neutered?</a></div>
+	      		<div class="modal-body"><a href="#list-page">Yes</a></div>
+	      		<div class="modal-body"><a href="#list-page">No</a></div>
+	      		<div class="modal-head"><a href="#list-page">Coat</a></div>
+	      		<div class="modal-body"><a href="#list-page">Short</a></div>
+	      		<div class="modal-body"><a href="#list-page">Medium</a></div>
+	      		<div class="modal-body"><a href="#list-page">Long</a></div>
+	      	</div>
+	      </div>
+	      <div class="modal" id="sort-menu">
+	      	<div class="modal-back" data-deactivate="#sort-menu"></div>
+	      	<div class="modal-popup">
+	      		<div class="modal-head"><a href="#list-page">Sort by:</a></div>
+	      		<div class="modal-body"><a href="#list-page">Name (A-Z)</a></div>
+	      		<div class="modal-body"><a href="#list-page">Name (Z-A)</a></div>
+	      		<div class="modal-body"><a href="#list-page">Breed</a></div>
+	      		<div class="modal-body"><a href="#list-page">Color</a></div>
+	      	</div>
+	      </div>
 	</section>
 
 	<section data-role="page" id="map-page">
@@ -128,9 +150,9 @@
 		</div>
 		<footer data-role="footer">
          <ul>
-            <li><a href="#list-page"><img src="images/list.svg" class="footer-icon"></a></li>
-            <li><a href="#map-page"> <img src="images/map.svg" class="footer-icon"></a></li>
-            <li><a href="#user-profile-page"> <img src="images/profile.svg" class="footer-icon"></a></li>
+            <li><a href="#list-page"><img src="images/list.svg" class="footer-icon list-icon"></a></li>
+            <li><a href="#map-page"> <img src="images/map.svg" class="footer-icon map-icon"></a></li>
+            <li><a href="#user-profile-page"> <img src="images/profile.svg" class="footer-icon profile-icon"></a></li>
          </ul>
       </footer>
 	</section>
@@ -145,8 +167,14 @@
 					<h2>User 1</h2>
 					<p>Joined Jan 2020</p>
 				</div>
-				<a href="#edit-user-page" class="flex-none more-icon"><img src="images/more.png" ></a>
-				
+
+				<div class="flex-none">
+				<a href="#" class="more-icon" data-activate="#list-add-modal"><img src="images/more.png" ></a>
+				</div>
+			</div>
+			<div class="user-profile-detail">
+				<p>Gender: Female</p>
+				<p>Location: San Leandro, CA</p>
 			</div>
 			<div class="display-flex space-around" style="flex-wrap: wrap;">
 				<div class="user-achievement">
@@ -166,15 +194,24 @@
 					<p>12</p>
 				</div>
 			</div>
-
+	
 		</div>
 		<footer data-role="footer">
          <ul>
-            <li><a href="#list-page"><img src="images/list.svg" class="footer-icon"></a></li>
-            <li><a href="#map-page"> <img src="images/map.svg" class="footer-icon"></a></li>
-            <li><a href="#user-profile-page"> <img src="images/profile.svg" class="footer-icon"></a></li>
+            <li><a href="#list-page"><img src="images/list.svg" class="footer-icon list-icon"></a></li>
+            <li><a href="#map-page"> <img src="images/map.svg" class="footer-icon map-icon"></a></li>
+            <li><a href="#user-profile-page"> <img src="images/profile.svg" class="footer-icon profile-icon"></a></li>
          </ul>
       </footer>
+
+
+      <div class="modal" id="list-add-modal">
+      	<div class="modal-back" data-deactivate="#list-add-modal"></div>
+      	<div class="modal-popup">
+      		<div class="modal-head"><div><a href="#edit-user-page">Edit Profile</a></div></div>
+      		<div class="modal-foot"><div class="js-logout">Logout</div></div>
+      	</div>
+      </div>
 	</section>
 
 	<section data-role="page" id="animal-profile-page">
@@ -193,13 +230,18 @@
 					<h2>Cat 1</h2>
 					
 				</div>
-				<a href="#edit-user-page" class="flex-none more-icon"><img src="images/more.png" ></a>
+				<a href="#" class="flex-none more-icon" data-activate="#cat-menu"><img src="images/more.png" ></a>
 				
 			</div>
-			<div class="cat-profile-detail">
-				<p>Breed: Tabby</p>
-				<p>Color: Tri-color</p>
-				<p>Neutered</p>
+			<div class="cat-profile-detail display-flex space-between">
+				<div class="flex-none">
+					<p>Breed: Tabby</p>
+					<p>Color: Tri-color</p>
+					<p>Size: Small</p>
+				</div>
+				<div class="flex-none"><p>Coat: Short</p>
+				<p>Neutered</p></div>
+				
 			</div>
 			<div class="display-flex add-note-div">
 				<div class="flex-stretch"></div>
@@ -241,18 +283,24 @@
 				</div>
 			
 		</div>
-		
+		<div class="modal" id="cat-menu" style="top: 0; z-index: 6;">
+      	<div class="modal-back" data-deactivate="#cat-menu"></div>
+      	<div class="modal-popup">
+      		<div class="modal-head"><div><a href="#edit-cat-page">Edit Cat Profile</a></div></div>
+      		<div class="modal-foot"><a href="#">Delete Cat Profile</a></div>
+      	</div>
+      </div>
 	</section>
 
 	<section data-role="page" id="add-animal-page">
 
-		<div data-role="main">
+		<div data-role="main" class="overscroll">
 			<div class="display-flex back-header" style="margin-bottom: 2em;">
 				<a href="#list-page"><p>&larr; </p></a>
-				<div class="display-stretch"><h3 style="margin-left: 20px;">Add Cat</h3></div>
+				<div class="display-stretch"><h4 style="margin: 25px 0 0 20px; ">Add Cat</h4></div>
 			</div>
 			<div>
-				<form action="" id="addcat-form" data-ajax="false">
+				<form action="" id="add-cat-form" data-ajax="false">
 					<div class="form-control display-flex">
 						<div class="form-upload-photo">
 							<img src="images/add.svg" class="flex-none ">
@@ -262,7 +310,7 @@
 							<input type="text" class="form-input" id="cat-name" data-role="none">
 						</div>
 					</div>
-					<div class="form-control display-flex">
+					<div class="form-control display-flex space-between">
 						<label for="cat-location" class="form-label flex-none">Location</label>
 						<a href="#add-animal-page" class="flex-stretch pin-location-btn">Pin on Map</a>
 						
@@ -274,6 +322,14 @@
 					<div class="form-control">
 						<label for="cat-color" class="form-label">Color</label>
 						<input type="text" class="form-input" id="cat-color" data-role="none">
+					</div>
+					<div class="form-control">
+						<label for="cat-coat" class="form-label">Coat</label>
+						<input type="text" class="form-input" id="cat-coat" data-role="none">
+					</div>
+					<div class="form-control">
+						<label for="cat-size" class="form-label">Size</label>
+						<input type="text" class="form-input" id="cat-size" data-role="none">
 					</div>
 					<div class="form-control">
 						<label for="neutered" class="form-label">Neutered?</label>
@@ -296,6 +352,121 @@
 
 		</div>
 		
+	</section>
+
+	<section data-role="page" id="add-note-page">
+
+		<div data-role="main">
+			<div class="display-flex back-header" style="margin-bottom: 2em;">
+				<a href="#animal-profile-page"><p>&larr; </p></a>
+				<div class="display-stretch"><h4 style="margin: 25px 0 0 20px; ">Add Note</h4></div>
+			</div>
+			<form action="" id="add-note-form" data-ajax="false">
+				<div class="form-control display-flex space-between">
+					<label for="cat-location" class="form-label flex-none">New Location</label>
+					<a href="#" class="flex-stretch pin-location-btn">Pin on Map</a>
+					
+				</div>
+				<div class="form-control display-flex space-between">
+					<label for="cat-location" class="form-label flex-none">New Photo</label>
+					<a href="#" class="flex-stretch pin-location-btn">Add Photo</a>
+					
+				</div>
+				<div class="form-control">
+					<label for="cat-note" class="form-label">New Note:</label>
+					<textarea name="cat-note" class="add-cat-note"></textarea>
+				</div>
+				<div class="form-control">
+					<a href="#animal-profile-page" class="form-button">Add Note</a>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<section data-role="page" id="edit-user-page">
+		<div data-role="main">
+			<div class="display-flex back-header" style="margin-bottom: 2em;">
+				<a href="#user-profile-page"><p>&larr; </p></a>
+				<div class="display-stretch"><h4 style="margin: 25px 0 0 20px; ">Edit User</h4></div>
+			</div>
+			<div>
+				<form action="" id="edit-user-form" data-ajax="false">
+					<div class="form-control display-flex">
+						<div class="form-upload-photo">
+							<img src="images/add.svg" class="flex-none ">
+						</div>
+						<div class="flex-stretch">
+							<label for="user-profile-name" class="form-label">User Name</label>
+							<input type="text" class="form-input" id="user-profile-name" data-role="none">
+						</div>
+					</div>
+					
+					<div class="form-control">
+						<label for="user-location" class="form-label">User Location</label>
+						<input type="text" class="form-input" id="user-location" data-role="none">
+					</div>
+					<div class="form-control">
+						<label for="user-gender" class="form-label">Gender</label>
+						<input type="text" class="form-input" id="user-gender" data-role="none">
+					</div>
+
+				
+					<div class="form-control">
+						<a href="#user-profile-page" class="form-button">Edit User</a>
+					</div>
+
+				</form>
+			</div>
+
+		</div>
+	</section>
+
+	<section data-role="page" id="edit-cat-page">
+
+
+		<div data-role="main">
+			<div class="display-flex back-header" style="margin-bottom: 2em;">
+				<a href="#animal-profile-page"><p>&larr; </p></a>
+				<div class="display-stretch"><h4 style="margin: 25px 0 0 20px; ">Edit Cat</h4></div>
+			</div>
+			<div>
+				<form action="" id="edit-cat-form" data-ajax="false">
+					<div class="form-control display-flex">
+						<div class="form-upload-photo">
+							<img src="images/add.svg" class="flex-none ">
+						</div>
+						<div class="flex-stretch">
+							<label for="edit-cat-name" class="form-label">Cat Name</label>
+							<input type="text" class="form-input" id="edit-cat-name" data-role="none">
+						</div>
+					</div>
+			
+
+					<div class="form-control">
+						<label for="edit-cat-breed" class="form-label">Breed</label>
+						<input type="text" class="form-input" id="edit-cat-breed" data-role="none">
+					</div>
+					<div class="form-control">
+						<label for="edit-cat-color" class="form-label">Color</label>
+						<input type="text" class="form-input" id="edit-cat-color" data-role="none">
+					</div>
+					<div class="form-control">
+						<label for="edit-neutered" class="form-label">Neutered?</label>
+						<select name="edit-neutered" id="edit-neutered" class="drop-down">
+							<option  class="options"  value="option1">Yes</option>
+							<option  class="options" value="option2">No</option>
+
+						</select>
+					</div>
+				
+					<div class="form-control">
+						<a href="#animal-profile-page" class="form-button">Edit Cat</a>
+					</div>
+
+				</form>
+			</div>
+
+		</div>
 	</section>
 </body>
 </html>
