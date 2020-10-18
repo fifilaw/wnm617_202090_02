@@ -44,7 +44,9 @@ h5,
 h6 {
    font-family:var(--font-heading);
 }
-
+h2{
+   font-size:1rem;
+}
 
 a {
    color:inherit;
@@ -55,8 +57,13 @@ a:hover {
    text-decoration:underline;
 }
 
+span{
+   font-weight:bold;
+}
 
-
+svg.selected  .cls-2{
+   fill:#000;
+}
 
 
 
@@ -172,7 +179,7 @@ a:hover {
 .login-error{
     text-align: center;
     opacity: 0;
-    line-height: 1px;
+    /*line-height: 5px;*/
     /* padding-top: 10px; */
     position: relative;
     margin: 0;
@@ -243,7 +250,7 @@ a:hover {
 
 
 .more-icon img{
-   width: 25%;
+   max-width: 100%;
 
 }
 
@@ -328,6 +335,43 @@ a:hover {
 }
 
 
+/*Onboarding*/
+.onboarding-img{
+   width: 250px;
+   margin:20px auto;
+}
+
+.onboarding-img img{
+   max-width: 100%;
+}
+
+.onboarding-description{
+       width: 80vw;
+    margin: 10px auto;
+}
+
+a.onboarding-next-btn.ui-link {
+    display: block;
+    background-color: var(--color-neutral-medium);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+a.onboarding-back-btn.ui-link {
+    color: var(--color-neutral-medium);
+    padding: 10px 0;
+    display: block;
+}
+
+.onboarding-btn-div{
+   width: 90vw;
+   padding: 0 1em;
+}
+
+
+
+
 
 
 .animal-list{
@@ -356,14 +400,30 @@ a:hover {
     width: 100%;
 }
 
-.animal-list li p{
+/*.animal-list li p{
    padding: 5px;
-}
+}*/
 
 .animal-list-img{
-   max-width: 20%;
-   border-radius: 50%;
-   margin-right: 15px;
+    width: 70px;
+    /* border-radius: 50%; */
+    margin-right: 15px;
+}
+.animal-list-img img{
+   max-width: 100%;
+    border-radius: 50%;
+}
+
+.list-title{
+       margin: 15px 0 0;
+    font-size: 1.2em;
+    padding-left: 5px;
+}
+
+.list-type{
+       padding: 0 5px;
+    font-size: 0.8em;
+    margin: 2px 0 0;
 }
 
 .search-bar{
@@ -440,14 +500,14 @@ a:hover {
    margin:1em auto;
 
 }
-.user-icon{
-       margin: 10px;
-
-   max-width: 150px;
-
+.user-icon img {
+    border-radius: 50%;
+    max-width: 100%;
 }
-.user-icon img{
-   border-radius: 50%;
+.user-icon {
+    /* margin: 10px; */
+    width: 100px;
+    margin-right: 10px;
 }
 
 
@@ -471,17 +531,19 @@ a:hover {
    font-size:0.8em;
 }
 .user-profile-detail{
-   padding: 0 1em;
+    padding: 0 1em 0;
+    line-height: 14px;
 }
+
 .more-icon{
-    max-width: 100px;
+    width: 30px;
     text-align: end;
-    margin-top: 1em;
+    /* margin-top: 1em; */
     display: block;
 }
 }
 .more-icon img{
-   width: 25%;
+   max-width: 100%;
 }
 
 .user-achievement{
@@ -533,6 +595,11 @@ a:hover {
     padding: 0.8em 1em;
 
 }
+
+
+.modal-head a, .modal-foot a{
+   display: block;
+}
 .modal.active .modal-popup,
 .modal.active .modal-back{
    pointer-events: initial;
@@ -548,13 +615,24 @@ a:hover {
 /*Add cat page*/
 
 .form-upload-photo{
-    background-color: grey;
+   background-color: grey;
     border-radius: 50%;
     width: 80px;
     height: 80px;
     margin-right: 15px;
 }
-
+.form-upload-photo.user{
+       background: url("../images/fifi.png");
+    background-position:center;
+   background-repeat: no-repeat;
+    background-size: cover;
+}
+.form-upload-photo.cat{
+       background: url("../images/venus.png");
+    background-position:center;
+   background-repeat: no-repeat;
+    background-size: cover;
+}
 .form-upload-photo img{
    max-width: 30px;
    position: relative;
@@ -566,7 +644,7 @@ a:hover {
 .pin-location-btn{
    max-width: 200px;
        background-color: var(--color-main-medium);
-    padding: 0.2em 4em;
+    padding: 0.2em 0;
     text-align: center;
     color: var(--color-main-dark);
     padding: auto;
@@ -579,11 +657,14 @@ a:hover {
     line-height: 25px;
 }
 
-.ui-input-text input, .ui-input-search input, textarea.ui-input-text,.add-cat-note{
+.add-cat-note{
 
-    background-color: var(--color-neutral-light);
+   background-color: var(--color-neutral-light);
     border: 1px solid var(--color-neutral-medium);
     border-radius: 5px;
+    height: 100px;
+    width: 100%;
+    padding: 10px;
 
 }
 
@@ -594,9 +675,9 @@ a:hover {
 
 
 #animal-profile-page [data-role='main']{
-   padding:0;
+   padding:1em;
 }
-.hero-image{
+/*.hero-image{
     background-image: url(../images/map.PNG);
 
     height: 100px;
@@ -605,59 +686,87 @@ a:hover {
     background-size: cover;
     position: relative;
 }
-
+*/
 .cat-profile-card{
-       padding: 0 1em;
-    position: relative;
-    bottom: 7%;
+    /*   padding: 0 1em;*/
+/*    position: relative;
+    bottom: 7%;*/
 }
 
 .cat-icon{
-   margin: 10px;
+    margin: 0;
+    width: 100px;
 
 
 }
 
 .cat-icon img{
    border-radius: 50%;
-   max-width: 100px;
+   max-width: 100%;
 
 }
-
-.cat-profile-card .more-icon{
-       margin-top: 3em;
+.cat-user-detail h2{
+   font-size:1rem;
 }
 
+.back-icon{
+    display: block;
+    width: 30px;
+    margin: 0;
+    /* margin-top: 1em; *//*
+     line-height: var(--header-height);*/
+}
 
-
+.back-icon img{
+   max-width: 100%;
+}
+.back-header h2{
+       margin: 0 1em;
+    font-size: 1rem;
+    line-height: 1.5em;
+}
+.reverse-btn{
+border: 2px solid var(--color-neutral-medium);
+    background-color: inherit;
+    padding: 5px;
+    width: 110px;
+    border-radius: 5px;
+    margin: 10px 30px 0;
+    text-align: center;
+    font-size: 0.8em;
+}
 .cat-profile-detail{
-    padding: 0.2em 2.5em;
-    position: relative;
-    bottom: 10%;
+    margin: 10px 0;
     line-height: 8px;
-    margin-right: 50px;
+    /* margin-right: 50px; */
+    background-color: var(--color-neutral-light);
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-size:0.8em;
 }
 
 .cat-note{
-    position: absolute;
-    top: 40%;
-    padding: 2em;
+/*    position: absolute;
+    top: 40%;*/
+    padding-top: 2em;
 }
 
 .add-note-div{
-          position: relative;
-     bottom: 10%; 
+/*          position: relative;
+     bottom: 10%; */
     text-align: right;
-    padding: 0 2em;
+ /*   padding: 0 2em;*/
     z-index: 4;
 }
 .add-note-btn{
-    display: block;
-    padding: 0.5em;
-    font-size: 0.8em;
+   border: 2px solid var(--color-neutral-medium);
     background-color: var(--color-neutral-medium);
+    padding: 5px;
+    width: 110px;
     border-radius: 5px;
-    /*margin-right: 15px;*/
+    margin: 10px 30px;
+    text-align: center;
+    font-size: 0.8em;
 }
 
 .cat-note-detail{
@@ -665,10 +774,11 @@ a:hover {
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 2px 2px 4px 0px #4d463e33;
+        font-size: 0.8em;
 }
 
 .cat-note-detail img{
-   max-width: 150px;
+   max-width: 100%;
    align-items: center;
 }
 
@@ -706,3 +816,5 @@ a:hover {
 
    }
 }
+
+

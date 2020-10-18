@@ -1,18 +1,29 @@
+
+const makeWarning = (target,message) => {
+   $(target).addClass("active").html(message);
+   setTimeout(()=>{
+      $(target).removeClass("active")
+   },2000);
+}
+
 const checkSigninForm = () =>{
 
 	let user = $("#signin-username").val();
 	let pass = $("#signin-password").val();
 
 
+	if(user=="" || pass==""){
+		makeWarning(".login-error", "Please enter a username and password");
+		return;
+	}
+
 	if(user=='user' && pass=='pass'){
-		console.log("success")
 		sessionStorage.userId=3;
 		$("#signin-form")[0].reset();
 
 	}else{
-		console.log("fail")
-		$(".login-error").addClass("active");
 		sessionStorage.removeItem("userId");
+		makeWarning(".login-error", "Incorrect Username/Password");
 	}
 
 	checkUserId();
@@ -31,6 +42,6 @@ const checkUserId = () =>{
 			$.mobile.navigate("#signin-page");
 	}else{
 		if(p.some(o=>window.location.hash===o))
-			$.mobile.navigate("#list-page");
+			$.mobile.navigate("#onboarding1-page");
 	}
 }

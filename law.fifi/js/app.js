@@ -38,6 +38,12 @@ $(()=>{
 
 	})
 
+	.on("click", ".footer-icon", function(e){
+		console.log("click")
+		$(this).addClass("active").siblings().removeClass("selected");
+		$(this).closest(".footer-icon")
+		.addClass("selected").siblings().removeClass("selected")
+	})
 
 
 
