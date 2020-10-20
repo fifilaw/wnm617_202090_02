@@ -549,10 +549,18 @@ a.onboarding-back-btn.ui-link {
 
 .user-achievement{
     flex: 0 45%;
-    background-color: var(--color-neutral-medium);
+    background-color: var(--color-neutral-light);
     padding: 5px 15px;
     margin: 6px;
     border-radius: 5px;
+}
+
+.cat-badge{
+   width: 30px;
+}
+
+.cat-badge img{
+   max-width: 100%;
 }
 
 .modal{
