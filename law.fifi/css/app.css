@@ -92,6 +92,7 @@ svg.selected  .cls-2{
 .flex-column{flex-direction:column;}
 .flex-row{flex-direction:row;}
 
+.padding-top-2{padding-top: 2em;}
 .padding-top-5{padding-top: 5em;}
 .padding-bot-2{padding-bottom: 2em;}
 
@@ -590,10 +591,27 @@ a.onboarding-back-btn.ui-link {
     background-color: white;
     padding: 1em;
 }
+
+.modal-body a{
+   display: block;
+}
+
 .modal-head, .modal-foot {
     background-color: var(--color-neutral-light);
     padding: 0.8em 1em;
 
+}
+
+.modal-question {
+    text-align: center;
+    background: var(--color-neutral-light);
+    padding: 2em 1em;
+}
+
+.modal-select{
+       background: var(--color-main-medium);
+    text-align: center;
+    padding: 1em;
 }
 
 

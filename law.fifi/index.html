@@ -20,8 +20,8 @@
 </head>
 <body>
 	<section data-role="page" id="signin-page">
-		<div data-role="main" class="flex-justify-center flex-align-center ">
-			<div class="display-flex flex-justify-center flex-align-center ">
+		<div data-role="main" class="flex-justify-center flex-align-center overscroll">
+			<div class="display-flex flex-justify-center flex-align-center  padding-top-2">
 				<img src="images/purry-logo.svg">
 			</div>
 			<div class="login-error">Login failed. Please try again.</div>
@@ -44,7 +44,7 @@
 	</section>
 
 	<section data-role="page" id="signup-page">
-		<div data-role="main" class="flex-justify-center flex-align-center">
+		<div data-role="main" class="flex-justify-center flex-align-center overscroll">
 			<div class="display-flex flex-justify-center flex-align-center  padding-top-5" >
 				<img src="images/purry-logo.svg">
 			</div>
@@ -201,23 +201,23 @@
 		<div class="modal" id="filter-menu">
 	      	<div class="modal-back" data-deactivate="#filter-menu"></div>
 	      	<div class="modal-popup">
-	      		<div class="modal-head"><a href="#list-page">Neutered?</a></div>
-	      		<div class="modal-body"><a href="#list-page">Yes</a></div>
-	      		<div class="modal-body"><a href="#list-page">No</a></div>
-	      		<div class="modal-head"><a href="#list-page">Coat</a></div>
-	      		<div class="modal-body"><a href="#list-page">Short</a></div>
-	      		<div class="modal-body"><a href="#list-page">Medium</a></div>
-	      		<div class="modal-body"><a href="#list-page">Long</a></div>
+	      		<div class="modal-head">Neutered?</div>
+	      		<div class="modal-body"><a href="#" data-deactivate="#filter-menu">Yes</a></div>
+	      		<div class="modal-body"><a href="#" data-deactivate="#filter-menu">No</a></div>
+	      		<div class="modal-head">Coat</div>
+	      		<div class="modal-body"><a href="#list-page" data-deactivate="#filter-menu">Short</a></div>
+	      		<div class="modal-body"><a href="#list-page" data-deactivate="#filter-menu">Medium</a></div>
+	      		<div class="modal-body"><a href="#list-page" data-deactivate="#filter-menu">Long</a></div>
 	      	</div>
 	      </div>
 	      <div class="modal" id="sort-menu">
 	      	<div class="modal-back" data-deactivate="#sort-menu"></div>
 	      	<div class="modal-popup">
-	      		<div class="modal-head"><a href="#list-page">Sort by:</a></div>
-	      		<div class="modal-body"><a href="#list-page">Name (A-Z)</a></div>
-	      		<div class="modal-body"><a href="#list-page">Name (Z-A)</a></div>
-	      		<div class="modal-body"><a href="#list-page">Breed</a></div>
-	      		<div class="modal-body"><a href="#list-page">Color</a></div>
+	      		<div class="modal-head">Sort by:</div>
+	      		<div class="modal-body"><a href="#list-page" data-deactivate="#sort-menu">Name (A-Z)</a></div>
+	      		<div class="modal-body"><a href="#list-page" data-deactivate="#sort-menu">Name (Z-A)</a></div>
+	      		<div class="modal-body"><a href="#list-page" data-deactivate="#sort-menu">Breed</a></div>
+	      		<div class="modal-body"><a href="#list-page" data-deactivate="#sort-menu">Color</a></div>
 	      	</div>
 	      </div>
 	</section>
@@ -292,8 +292,8 @@
       <div class="modal" id="list-add-modal">
       	<div class="modal-back" data-deactivate="#list-add-modal"></div>
       	<div class="modal-popup">
-      		<div class="modal-head"><div><a href="#edit-user-page">Edit Profile</a></div></div>
-      		<div class="modal-head"><div><a href="#change-password-page">Change Password</a></div></div>
+      		<div class="modal-head"><div><a href="#edit-user-page" data-deactivate="#list-add-modal">Edit Profile</a></div></div>
+      		<div class="modal-head"><div><a href="#change-password-page" data-deactivate="#list-add-modal">Change Password</a></div></div>
       		<div class="modal-foot"><div class="js-logout">Logout</div></div>
       	</div>
       </div>
@@ -337,19 +337,19 @@
 				
 				<div class="cat-note-detail col-sm-6">
 					<img src="images/venus-1.png">
-					<p>Venus Photo 1</p>
+					<p>Venus waering a hat.</p>
 				</div>
 				<div class="cat-note-detail col-sm-6">
 					<img src="images/venus-2.png">
-					<p>Venus Photo 2</p>
+					<p>Venus being cute.</p>
 				</div>
 				<div class="cat-note-detail col-sm-6">
 					<img src="images/venus-3.png">
-					<p>Venus Photo 3</p>
+					<p>Venus forgets to put her toungue back.</p>
 				</div>
 				<div class="cat-note-detail col-sm-6">
 					<img src="images/venus-4.png">
-					<p>Venus Photo 4</p>
+					<p>Venus wearing scarf.</p>
 				</div>
 				
 				
@@ -358,8 +358,20 @@
 		<div class="modal" id="cat-menu" style="top: 0; z-index: 6; left: 0;">
       	<div class="modal-back" data-deactivate="#cat-menu"></div>
       	<div class="modal-popup">
-      		<div class="modal-head"><div><a href="#edit-cat-page">Edit Cat Profile</a></div></div>
-      		<div class="modal-foot"><a href="#">Delete Cat Profile</a></div>
+      		<div class="modal-head"><div><a href="#edit-cat-page" data-deactivate="#cat-menu">Edit Cat Profile</a></div></div>
+      		<div class="modal-foot" data-activate="#delete-cat" data-deactivate="#cat-menu"><a href="#">Delete Cat Profile</a></div>
+      	</div>
+      </div>
+
+      <div class="modal" id="delete-cat" style="top: 0; z-index: 6; left: 0;">
+      	<div class="modal-back" data-deactivate="#delete-cat"></div>
+      	<div class="modal-popup">
+      		
+      		<div class="modal-question"><div>Are you sure?</div></div>
+      		<div class="display-flex space-around" style="background: var(--color-main-medium);">
+      			<div class="modal-select flex-none" data-deactivate="#delete-cat"><div><a href="#">No</a></div></div>
+      			<div class="modal-select flex-none yes"><div><a href="#list-page" data-deactivate="#delete-cat">Yes</a></div></div>
+      		</div>
       	</div>
       </div>
 	</section>
