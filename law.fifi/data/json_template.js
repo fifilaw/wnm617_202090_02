@@ -4,22 +4,66 @@
   '{{repeat(10)}}',
   {
     id:'{{index(1)}}',
-    name: '{{firstName()}} {{surname()}}',
+    firstname: '{{firstName()}}',
+    lastname: '{{surname()}}',
     username: function(){
       return 'user' + this.id;
     },
     email: function(){
      return this.username +'@gmail.com'; 
     },
+    gender:'{{gender()}}',
+  
     password: 'md5(pass)',
     
+    location: '{{city()}}'+', '+ '{{state()}}',
+    
+    bio:'{{lorem(2, "sentences")}}',
+    
+    intial: function(tags){
+      return this.firstname.charAt(0) + this.lastname.charAt(0);
+    },
+    
     img: function(tags){
-      return 'https;//via.placeholder.com/400/' + tags.integer(700,999)+ '/fff/?text=' + this.username;
+      return 'https;//via.placeholder.com/400/' + tags.integer(700,999)+ '/fff/?text=' + this.intial;
     }, 
     date_create:'{{date(new Date(2020, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
 
   }
 ]
+
+//New Animal Template
+
+[
+  '{{repeat(50)}}',
+  {
+    id:'{{index(1)}}',
+    user_id:'{{integer(1,10)}}',
+    name: '{{company()}} ',
+    
+    breed:'{{random("tabby","maine coon", "rag doll","siamese")}}',
+    
+    color:'{{random("grey", "black","tri-color","ginger")}}',
+    
+    coat:'{{random("short","medium","long")}}',
+    
+    size:'{{random("small","medium","large")}}',
+    neutered:'{{bool()}}',
+    
+    description:'{{lorem(3, "sentences")}}',
+    
+    img: function(tags){
+      return 'https;//via.placeholder.com/400/' + tags.integer(700,999)+ '/fff/?text=' + this.name;
+    }, 
+    date_create:'{{date(new Date(2020, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
+
+
+  }
+]
+
+
+
+
 
 //Animal template
 
