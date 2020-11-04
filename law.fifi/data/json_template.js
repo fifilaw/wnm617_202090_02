@@ -25,7 +25,7 @@
     },
     
     img: function(tags){
-      return 'https;//via.placeholder.com/400/' + tags.integer(700,999)+ '/fff/?text=' + this.intial;
+      return 'https://via.placeholder.com/400/' + tags.integer(700,999)+ '/fff/?text=' + this.intial;
     }, 
     date_create:'{{date(new Date(2020, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
 
@@ -53,7 +53,7 @@
     description:'{{lorem(3, "sentences")}}',
     
     img: function(tags){
-      return 'https;//via.placeholder.com/400/' + tags.integer(700,999)+ '/fff/?text=' + this.name;
+      return 'https://via.placeholder.com/400/' + tags.integer(700,999)+ '/fff/?text=' + this.name;
     }, 
     date_create:'{{date(new Date(2020, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
 
@@ -93,7 +93,7 @@
     description:'{{lorem(3, "sentences")}}',
     
     img: function(tags){
-      return 'https;//via.placeholder.com/400/' + tags.integer(700,999)+ '/fff/?text=' + this.name;
+      return 'https://via.placeholder.com/400/' + tags.integer(700,999)+ '/fff/?text=' + this.name;
     }, 
     date_create:'{{date(new Date(2020, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
 
@@ -118,8 +118,8 @@
     
     description:'{{lorem(3, "sentences")}}',
     
-    photo: 'https;//via.placeholder.com/400/', 
-    icon: 'https;//via.placeholder.com/100/?text=ICON', 
+    photo: 'https://via.placeholder.com/400/', 
+    icon: 'https://via.placeholder.com/100/?text=ICON', 
     
     date_create:'{{date(new Date(2020, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
 

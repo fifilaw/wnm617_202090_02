@@ -3,7 +3,37 @@ $(()=>{
 
 	checkUserId();
 
-	$(document).on("submit","#signin-form", function(e){
+	$(document)
+
+
+	.on("pagecontainerbeforeshow",function(e,ui){
+
+		console.log(ui.toPage[0].id)
+
+		//Routing
+		switch(ui.toPage[0].id){
+			case 'list-page': 
+			ListPage();
+			break;
+
+			case 'recent-page':
+			RecentPage();
+			break;
+
+			case 'user-profile-page':
+			UserProfilePage();
+			break;
+
+			case 'animal-profile-page':
+			AnimalProfilePage();
+			break;
+
+		}
+	})
+
+
+
+	.on("submit","#signin-form", function(e){
 		e.preventDefault();
 		checkSigninForm();
 	})

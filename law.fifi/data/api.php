@@ -49,6 +49,59 @@ function makeQuery($c,$ps,$p, $makeResults=true){
 }
 
 
+function makeStatement($data){
+
+	$c = makeConn();
+	$t = @$data->type;
+	$p = @$data->params;
+
+	switch ($t) {
+		case 'users_all':
+			return makeQuery($c,"SELECT * FROM track_users",[]);
+			break;
+
+		case 'animals_all':
+			return makeQuery($c,"SELECT * FROM track_animals",[]);
+			break;
+
+		case 'locations_all':
+			return makeQuery($c,"SELECT * FROM track_locations",[]);
+			break;
+
+		case 'user_by_id':
+			return makeQuery($c,"SELECT * FROM track_users WHERE id =?",$p);
+			break;
+
+		case 'animal_by_id':
+			return makeQuery($c,"SELECT * FROM track_animals WHERE id =?",$p);
+			break;
+
+		case 'location_by_id':
+			return makeQuery($c,"SELECT * FROM track_locations WHERE id =?",$p);
+			break;
+
+		case 'animals_by_user_id':
+			return makeQuery($c,"SELECT * FROM track_animals WHERE user_id =?",$p);
+			break;
+
+		case 'locations_by_animal_id':
+			return makeQuery($c,"SELECT * FROM track_locations WHERE animal_id =?",$p);
+			break;
+		
+		case "check_signin":
+        	return makeQuery($c,"SELECT * FROM track_users WHERE username =? AND password =?",$p);
+        	break;
+
+		default:
+			return ["error"=>"No Matched Type"];
+			break;
+	}
+}
+
+$data = json_decode(file_get_contents("php://input"));
+
+
 echo json_encode(
-	makeQuery(makeConn(),"SELECT * FROM track_animals WHERE type =?",['dog']),JSON_NUMERIC_CHECK
+	makeStatement($data),
+	JSON_NUMERIC_CHECK
 );

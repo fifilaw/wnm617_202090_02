@@ -6,22 +6,28 @@ const makeWarning = (target,message) => {
    },2000);
 }
 
-const checkSigninForm = () =>{
+const checkSigninForm = async () => {
+   let user = $("#signin-username").val();
+   let pass = $("#signin-password").val();
 
-	let user = $("#signin-username").val();
-	let pass = $("#signin-password").val();
+   console.log(user,pass)
 
+   if(user=="" || pass=="") {
+      makeWarning(".login-error","Type a Username and Password");
+      return;
+   }
 
-	if(user=="" || pass==""){
-		makeWarning(".login-error", "Please enter a username and password");
-		return;
-	}
+   let found_user = await query({
+      type:'check_signin',
+      params:[user,pass]
+   });
 
-	if(user=='user' && pass=='pass'){
-		sessionStorage.userId=3;
-		$("#signin-form")[0].reset();
-
-	}else{
+   if(found_user.result.length) {
+      // logged in
+      console.log('success');
+      sessionStorage.userId = found_user.result[0].id;
+      $("#signin-form")[0].reset();
+   } else{
 		sessionStorage.removeItem("userId");
 		makeWarning(".login-error", "Incorrect Username/Password");
 	}
