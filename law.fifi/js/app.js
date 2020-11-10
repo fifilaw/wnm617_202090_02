@@ -28,6 +28,14 @@ $(()=>{
 			AnimalProfilePage();
 			break;
 
+			case 'edit-cat-page':
+			EditAnimalProfilePage();
+			break;
+
+			case 'edit-user-page':
+			EditUserProfilePage();
+			break;
+
 		}
 	})
 

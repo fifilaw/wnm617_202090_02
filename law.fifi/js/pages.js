@@ -60,3 +60,19 @@ const AnimalProfilePage= async()=>{
 	console.log(d)
 	$('#animal-profile-page .animal-profile').html(makeAnimalProfile(d.result));
 }
+
+const EditAnimalProfilePage= async()=>{
+
+	let d = await query({type:'animal_by_id',params:[sessionStorage.animalId]});
+
+	console.log(d)
+	$('#edit-cat-page .edit-cat').html(EditAnimalProfileForm(d.result));
+}
+
+const EditUserProfilePage= async()=>{
+
+	let d = await query({type:'user_by_id',params:[sessionStorage.userId]});
+
+	console.log(d)
+	$('#edit-user-page .edit-user').html(EditUserProfileForm(d.result));
+}
