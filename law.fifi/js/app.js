@@ -16,8 +16,8 @@ $(()=>{
 			ListPage();
 			break;
 
-			case 'recent-page':
-			RecentPage();
+			case 'map-page':
+			MapPage();
 			break;
 
 			case 'user-profile-page':
@@ -45,6 +45,16 @@ $(()=>{
 		
 		checkUserId();
 	})
+
+
+
+
+
+   .on("click",".js-animal-jump",function(e){
+      sessionStorage.animalId = $(this).data("id");
+      $.mobile.navigate("#animal-profile-page");
+   })
+
 
 
 

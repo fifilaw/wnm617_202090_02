@@ -387,15 +387,14 @@ a.onboarding-back-btn.ui-link {
 .animal-list ul:last-child li a{
 }
 
-.animal-list li{
+.js-animal-jump{
    background-color: var(--color-neutral-light);
    margin-bottom:10px  ;
    display: flex;
    padding: 5px 0;
    border-radius: 5px;
    box-shadow: 0px 2px 6px #6a625424;
-}
-.animal-list li a{
+
     display: flex;
     padding: 10px;
     width: 100%;

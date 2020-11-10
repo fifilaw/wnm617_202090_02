@@ -92,6 +92,10 @@ function makeStatement($data){
         	return makeQuery($c,"SELECT * FROM track_users WHERE username =? AND password =md5(?)",$p);
         	break;
 
+        case "check_animals_locations_by_id":
+        	return makeQuery($c,"SELECT * FROM track_locations WHERE animal_id =?",$p);
+        	break;
+
 		default:
 			return ["error"=>"No Matched Type"];
 			break;

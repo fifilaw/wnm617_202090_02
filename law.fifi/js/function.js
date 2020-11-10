@@ -15,3 +15,6 @@ const query = (options) => {
 //currying functions
 const templater= f => a =>
 	(Array.isArray(a)?a:[a]).reduce((r,o,i,a)=>r+f(o,i,a),'');
+
+
+
