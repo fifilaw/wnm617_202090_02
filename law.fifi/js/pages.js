@@ -1,39 +1,21 @@
 
 const MapPage= async()=>{
-	let d = await query({type:'animals_by_user_id',params:[sessionStorage.userId]});
-
-	// console.log(d.result[0].id)
-
-	let animalsID = d.result.map(a=>a.id)
-
-	// console.log(animalsID)
-
-	for (var i=0; i<animalsID.length; i++){
-
-		let found_animals_id = await query({
-	      type:'check_animals_locations_by_id',
-	      params:[animalsID[i]]
-	   });
-
-		let animal_details = found_animals_id.result.map(a=>{
-
-			let reduce_data = {};
-
-			reduce_data[a.animal_id]= [a.lat, a.lng];
 
 
+	let d = await query({type:'recent_locations',params:[sessionStorage.userId]});
 
-			return reduce_data;
-		});
+		console.log(d);
 
-		console.log(animal_details);
+
+	let map_el= await makeMap("#map-page .map");
+
+	makeMarkers(map_el, d.result);
 
 
 	}
 	
 	
 	// $('#list-page .animal-list').html(makeAnimalList(d.result));
-}
 
 //async and await
 const ListPage= async()=>{
@@ -71,8 +53,12 @@ const EditAnimalProfilePage= async()=>{
 
 const EditUserProfilePage= async()=>{
 
-	let d = await query({type:'user_by_id',params:[sessionStorage.userId]});
+	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
 
 	console.log(d)
 	$('#edit-user-page .edit-user').html(EditUserProfileForm(d.result));
+	})
+
+	
+
 }

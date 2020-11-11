@@ -39,7 +39,7 @@
   {
     id:'{{index(1)}}',
     user_id:'{{integer(1,10)}}',
-    name: '{{company()}} ',
+    name: '{{company()}}',
     
     breed:'{{random("tabby","maine coon", "rag doll","siamese")}}',
     
@@ -48,7 +48,7 @@
     coat:'{{random("short","medium","long")}}',
     
     size:'{{random("small","medium","large")}}',
-    neutered:'{{bool()}}',
+    neutered:'{{random("yes","no")}}',
     
     description:'{{lorem(3, "sentences")}}',
     

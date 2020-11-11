@@ -90,8 +90,8 @@ const makeAnimalProfile= templater(o=>`
 			</div>
 			<div class="cat-profile-detail display-flex space-between">
 				<div class="flex-none">
-					<p><span>Breed:</span>${o.breed}</p>
-					<p><span>Color:</span>${o.color}</p>
+					<p><span>Breed: </span>${o.breed}</p>
+					<p><span>Color: </span>${o.color}</p>
 					<p><span>Size: </span>${o.size}</p>
 				</div>
 				<div class="flex-none" style="margin-right: 2em;"><p><span>Coat: </span>${o.coat}</p>
