@@ -216,10 +216,10 @@
 	<section data-role="page" id="map-page">
 		<div data-role="main">
 			<div class="map"></div>
-			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-1"></a>
+			<!-- <a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-1"></a>
 			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-2"></a>
 			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-3"></a>
-			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-4"></a>
+			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-4"></a> -->
 		</div>
 		<footer data-role="footer">
          <ul>
@@ -258,17 +258,49 @@
 	</section>
 
 	<section data-role="page" id="animal-profile-page">
+		<div class="overscroll">
+		<div class="display-flex back-header space-around" >
+				<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+					<h2 class="flex-stretch" style="padding-right:1em">Cat Profile</h2>
+				<a href="#" class="flex-none more-icon" data-activate="#cat-menu"><img src="images/more.png" ></a>
+			</div>
 
-		<div data-role="main" class="overscroll animal-profile">
+		<div data-role="main" class="animal-profile">
+
 			
-				
-  </div>
+		</div>
+  		</div>
+
+  		<div class="modal" id="cat-menu" style="top: 0; z-index: 6; left: 0;">
+	      	<div class="modal-back" data-deactivate="#cat-menu"></div>
+	      	<div class="modal-popup">
+	      		<div class="modal-head"><div><a href="#edit-cat-page" data-deactivate="#cat-menu">Edit Cat Profile</a></div></div>
+	      		<div class="modal-foot" data-activate="#delete-cat" data-deactivate="#cat-menu"><a href="#">Delete Cat Profile</a></div>
+	      	</div>
+      </div>
+
+      <div class="modal" id="delete-cat" style="top: 0; z-index: 6; left: 0;">
+      	<div class="modal-back" data-deactivate="#delete-cat"></div>
+      	<div class="modal-popup">
+      		
+      		<div class="modal-question"><div>Are you sure?</div></div>
+      		<div class="display-flex space-around" style="background: var(--color-main-medium);">
+      			<div class="modal-select flex-none" data-deactivate="#delete-cat"><div><a href="#">No</a></div></div>
+      			<div class="modal-select flex-none yes"><div><a href="#list-page" data-deactivate="#delete-cat">Yes</a></div></div>
+      		</div>
+      	</div>
+      </div>
+	</section>
+
+	<section data-role="page" id="animal-map-page">
+		<div class="map"></div>
+		<a href="#" class="map-back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
 	</section>
 
 	<section data-role="page" id="add-animal-page">
 
 		<div data-role="main" class="overscroll">
-			<div class="display-flex back-header" style="margin-top: 1em;">
+			<div class="display-flex regular-back-header" style="margin-top: 1em;">
 					<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
 						<h2 class="flex-stretch">Add Cat</h2>
 					
@@ -314,8 +346,8 @@
 						</select>
 					</div>
 					<div class="form-control">
-						<label for="cat-note" class="form-label">Notes about the cat:</label>
-						<textarea data-role="none" name="cat-note" class="add-cat-note"></textarea>
+						<label for="add-cat-note" class="form-label">Notes about the cat:</label>
+						<textarea data-role="none" name="add-cat-note" class="add-cat-note"></textarea>
 					</div>
 					<div class="form-control">
 						<a href="#list-page" class="form-button">Add Cat</a>
@@ -348,8 +380,8 @@
 					
 				</div>
 				<div class="form-control">
-					<label for="cat-note" class="form-label">New Note:</label>
-					<textarea data-role="none" name="cat-note" class="add-cat-note"></textarea>
+					<label for="update-cat-note" class="form-label">New Note:</label>
+					<textarea data-role="none" name="update-cat-note" class="add-cat-note"></textarea>
 				</div>
 				<div class="form-control">
 					<a href="#animal-profile-page" class="form-button">Add Note</a>

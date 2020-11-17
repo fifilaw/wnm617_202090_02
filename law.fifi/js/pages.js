@@ -6,10 +6,18 @@ const MapPage= async()=>{
 
 		console.log(d);
 
+	let valid_animals = d.result.reduce((r,o)=>{
+      o.icon = o.img;
+      if(o.lat && o.lng) r.push(o);
+      return r;
+   },[])
+
+	console.log(valid_animals);
 
 	let map_el= await makeMap("#map-page .map");
 
-	makeMarkers(map_el, d.result);
+	makeMarkers(map_el, valid_animals);
+
 
 
 	}
@@ -37,10 +45,30 @@ const UserProfilePage= async()=>{
 
 const AnimalProfilePage= async()=>{
 
-	let d = await query({type:'animal_by_id',params:[sessionStorage.animalId]});
+	query({type:'animal_by_id',params:[sessionStorage.animalId]}).then(d=>{
 
-	console.log(d)
-	$('#animal-profile-page .animal-profile').html(makeAnimalProfile(d.result));
+		console.log(d)
+		$('#animal-profile-page .animal-profile').html(makeAnimalProfile(d.result));
+	})
+
+	query({type:'locations_by_animal_id',params:[sessionStorage.animalId]}).then(d=>{
+
+		console.log(d)
+		$('#animal-profile-page .animal-profile .cat-note ').html(makeAnimalNote(d.result));
+	})
+
+	
+}
+
+const AnimalMapPage= async()=>{
+	let d = await query({type:'locations_by_animal_id',params:[sessionStorage.animalId]});
+
+		console.log(d);
+
+
+	let map_el= await makeMap("#animal-map-page .map");
+
+	makeMarkers(map_el, d.result);
 }
 
 const EditAnimalProfilePage= async()=>{

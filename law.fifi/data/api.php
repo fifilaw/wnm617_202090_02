@@ -104,6 +104,19 @@ function makeStatement($data){
             GROUP BY l.animal_id
             ",$p);
 
+
+            case "animal_profile_and_notes":
+        	return makeQuery($c,"SELECT * FROM
+            `track_animals` a
+            LEFT JOIN (
+               SELECT animal_id, photo, description FROM `track_locations`
+               ORDER BY `date_create` DESC
+            ) l
+            ON a.id = l.animal_id
+            WHERE animal_id = ?
+      		GROUP BY l.animal_id
+            ",$p);
+
 		default:
 			return ["error"=>"No Matched Type"];
 			break;

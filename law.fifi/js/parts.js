@@ -68,86 +68,74 @@ const makeUserProfile =templater(o=>`
 				</div>
 	`);
 
-const makeAnimalProfile= templater(o=>`
-		<div class="display-flex back-header" >
-				<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
-					<h2 class="flex-stretch">${o.name}</h2>
-				<a href="#" class="flex-none more-icon" data-activate="#cat-menu"><img src="images/more.png" ></a>
-			</div>
+
+const makeAnimalNote= templater(o=>`
+
 	
-			<div class="display-flex space-around " >
+				
+				<div class="cat-note-detail col-sm-6">
+					<img src="${o.photo}">
+					<p>${o.description}</p>
+				</div>
+			
+
+	`);
+
+const makeAnimalProfile= templater(o=>`
 		<div class="cat-icon flex-none"><img src="${o.img}"></div>
 		
-		<div class="user-detail flex-stretch">
-			<div class="reverse-btn flex-none"><a href="#map-page" >View Location</a></div>
-		
+	
+			<div class="cat-profile">
+				<div class="display-flex space-around " >
+			
+					<div class="cat-detail flex-stretch">
+						<div class="reverse-btn flex-none js-animal-map"data-id="${o.id}" >View Location</div>
+					
 
-		<div class="add-note-btn flex-none"><a href="#add-note-page" >Add Note</a></div>
-			
-		</div>	
+					<div class="add-note-btn flex-none"><a href="#add-note-page" >Add Note</a></div>
+				
+					</div>	
 			
 				
-			</div>
-			<div class="cat-profile-detail display-flex space-between">
-				<div class="flex-none">
-					<p><span>Breed: </span>${o.breed}</p>
-					<p><span>Color: </span>${o.color}</p>
-					<p><span>Size: </span>${o.size}</p>
 				</div>
-				<div class="flex-none" style="margin-right: 2em;"><p><span>Coat: </span>${o.coat}</p>
-				<p><span>Neutered:</span>${o.neutered}</p></div>
-				
-			</div>
+				<div class="cat-profile-detail display-flex space-between">
+					<div class="display-flex flex-column">
+						<span>Breed</span>
+						<p>${o.breed}</p>
+					</div>
+					<div class="display-flex flex-column">
+						<span>Color</span><p>${o.color}</p>
+					</div>
+					<div class="display-flex flex-column">
+						<span>Size</span><p>${o.size}</p>
+					</div>	
+					<div class="display-flex flex-column">
+						<span>Coat</span><p>${o.coat}</p>
+					</div>	
+					<div class="display-flex flex-column">
+						<span>Neutered</span><p>${o.neutered}</p>
+					</div>
+				</div>		
+					
+  					<h2 style="padding-left: 1em;">Cat Notes</h2>
+				<div class="cat-note grid gap">
+
+  				</div>
 		
-			<div class="cat-note grid gap">
-				
-				<div class="cat-note-detail col-sm-6">
-					<img src="images/venus-1.png">
-					<p>Venus is wearing a hat.</p>
-				</div>
-				<div class="cat-note-detail col-sm-6">
-					<img src="images/venus-2.png">
-					<p>Venus being cute.</p>
-				</div>
-				<div class="cat-note-detail col-sm-6">
-					<img src="images/venus-3.png">
-					<p>Venus forgets to put her toungue back.</p>
-				</div>
-				<div class="cat-note-detail col-sm-6">
-					<img src="images/venus-4.png">
-					<p>Venus is wearing a scarf.</p>
-				</div>
-				
-				
+			</div>
 			
 		</div>
-		<div class="modal" id="cat-menu" style="top: 0; z-index: 6; left: 0;">
-      	<div class="modal-back" data-deactivate="#cat-menu"></div>
-      	<div class="modal-popup">
-      		<div class="modal-head"><div><a href="#edit-cat-page" data-deactivate="#cat-menu">Edit Cat Profile</a></div></div>
-      		<div class="modal-foot" data-activate="#delete-cat" data-deactivate="#cat-menu"><a href="#">Delete Cat Profile</a></div>
-      	</div>
-      </div>
-
-      <div class="modal" id="delete-cat" style="top: 0; z-index: 6; left: 0;">
-      	<div class="modal-back" data-deactivate="#delete-cat"></div>
-      	<div class="modal-popup">
-      		
-      		<div class="modal-question"><div>Are you sure?</div></div>
-      		<div class="display-flex space-around" style="background: var(--color-main-medium);">
-      			<div class="modal-select flex-none" data-deactivate="#delete-cat"><div><a href="#">No</a></div></div>
-      			<div class="modal-select flex-none yes"><div><a href="#list-page" data-deactivate="#delete-cat">Yes</a></div></div>
-      		</div>
-      	</div>
-      </div>
+	
 
 
 		`
 	);
 
 
+
+
 const EditAnimalProfileForm= templater(o=>`
-		<div class="display-flex back-header" style="margin-top: 1em;">
+		<div class="display-flex regular-back-header" style="margin-top: 1em;">
 			<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
 						<h2 class="flex-stretch">Edit ${o.name}</h2>
 					
@@ -200,7 +188,7 @@ const EditAnimalProfileForm= templater(o=>`
 
 
 const EditUserProfileForm= templater(o=>`
-		<div class="display-flex back-header" style="margin-top: 1em;">
+		<div class="display-flex regular-back-header" style="margin-top: 1em;">
 					<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
 						<h2 class="flex-stretch">Edit User</h2>
 					

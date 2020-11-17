@@ -24,10 +24,22 @@ const makeMarkers = (map_el, map_locs)=>{
 
 	let markers = map_el.data("markers");
 
+	if(markers) markers.forEach(o=>o.setMap(null));
+
+	markers=[];
+
 	map_locs.forEach(o=>{
 		let m = new google.maps.Marker({
-	    position: map_locs[0],
-	    map: map,
+
+		    position: o,
+		    map: map,
+		    icon:{
+		    	url:'images/map.svg',
+		    	scaledSize:{
+		    		width:50,
+		    		height:50
+		    	}
+		    }
   });
 
 		markers.push(m);
@@ -35,5 +47,8 @@ const makeMarkers = (map_el, map_locs)=>{
 	})
 
 	map_el.data("markers", markers);
+
+
+
 	
 }

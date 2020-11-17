@@ -36,6 +36,10 @@ $(()=>{
 			EditUserProfilePage();
 			break;
 
+			case 'animal-map-page':
+			AnimalMapPage();
+			break;
+
 		}
 	})
 
@@ -61,6 +65,12 @@ $(()=>{
    .on("click",".js-animal-jump",function(e){
       sessionStorage.animalId = $(this).data("id");
       $.mobile.navigate("#animal-profile-page");
+   })
+
+      .on("click",".js-animal-map",function(e){
+      sessionStorage.animalId = $(this).data("id");
+
+      $.mobile.navigate("#animal-map-page");
    })
 
 
