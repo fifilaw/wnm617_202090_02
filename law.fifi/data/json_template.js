@@ -41,14 +41,14 @@
     user_id:'{{integer(1,10)}}',
     name: '{{company()}}',
     
-    breed:'{{random("tabby","maine coon", "rag doll","siamese")}}',
+    breed:'{{random("Tabby","Maine Coon", "Rag doll","Siamese")}}',
     
-    color:'{{random("grey", "black","tri-color","ginger")}}',
+    color:'{{random("Grey", "Black","Tri-color","Ginger")}}',
     
-    coat:'{{random("short","medium","long")}}',
+    coat:'{{random("Short","Medium","Long")}}',
     
-    size:'{{random("small","medium","large")}}',
-    neutered:'{{random("yes","no")}}',
+    size:'{{random("Small","Medium","Large")}}',
+    neutered:'{{random("Yes","No")}}',
     
     description:'{{lorem(3, "sentences")}}',
     
@@ -114,12 +114,12 @@
     lat: '{{floating(37.796072, 37.701525)}}',
     lng:'{{floating(-122.526401 , -122.362700)}}',
     
+    status:'{{random("Eating","Sleeping","Walking")}}',
     
+    description:'{{lorem(2, "sentences")}}',
     
-    description:'{{lorem(3, "sentences")}}',
-    
-    photo: 'https://via.placeholder.com/400/', 
-    icon: 'https://via.placeholder.com/100/?text=ICON', 
+    photo: 'https://via.placeholder.com/400x500', 
+    icon: 'images/map.svg', 
     
     date_create:'{{date(new Date(2020, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
 

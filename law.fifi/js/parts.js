@@ -118,9 +118,7 @@ const makeAnimalProfile= templater(o=>`
 				</div>		
 					
   					<h2 style="padding-left: 1em;">Cat Notes</h2>
-				<div class="cat-note grid gap">
-
-  				</div>
+				
 		
 			</div>
 			
@@ -133,8 +131,27 @@ const makeAnimalProfile= templater(o=>`
 
 
 
+const FormControl=({namespace, name. displayname,type,placeholder,value})=>{
+	return`
+	<div class="form-control">
+		<label for="${spacename}-${name}" class="form-label">${{displayname}}</label>
+		<input type="text" class="form-input" id="user-firstname" data-role="none" value="${value} placeholder=${placeholder}">
+	</div>
+
+	`
+}
 
 const EditAnimalProfileForm= templater(o=>`
+
+${FormControl({
+	namespace:"edit-cat",
+	name:"name",
+	displayname:"Name",
+	type:"text",
+	placeholder:"Type Animal Name",
+	value:o.type
+})}
+
 		<div class="display-flex regular-back-header" style="margin-top: 1em;">
 			<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
 						<h2 class="flex-stretch">Edit ${o.name}</h2>
@@ -234,3 +251,5 @@ const EditUserProfileForm= templater(o=>`
 			</div>
 
 	`)
+
+

@@ -19,6 +19,23 @@ const MapPage= async()=>{
 	makeMarkers(map_el, valid_animals);
 
 
+	map_el.data("markers").forEach((o,i)=>{
+		o.addListener("click", function(){
+			// console.log("click")
+
+			// sessionStorage.animalId= valid_animals[i].animal_id;
+			// $.mobile.navigate("#animal-profile-page");
+
+			// map_el.data("infoWindow")
+   //          .open(map_el.data("map"),o);
+   //       map_el.data("infoWindow")
+   //          .setContent(valid_animals[i].name);
+
+   
+
+
+		})
+	})
 
 	}
 	
@@ -48,13 +65,13 @@ const AnimalProfilePage= async()=>{
 	query({type:'animal_by_id',params:[sessionStorage.animalId]}).then(d=>{
 
 		console.log(d)
-		$('#animal-profile-page .animal-profile').html(makeAnimalProfile(d.result));
+		$('#animal-profile-page .animal-profile .cat-info').html(makeAnimalProfile(d.result));
 	})
 
-	query({type:'locations_by_animal_id',params:[sessionStorage.animalId]}).then(d=>{
+	query({type:'locations_by_animal_id',params:[sessionStorage.animalId]}).then(d2=>{
 
-		console.log(d)
-		$('#animal-profile-page .animal-profile .cat-note ').html(makeAnimalNote(d.result));
+		console.log(d2)
+		$('#animal-profile-page .animal-profile .cat-note ').html(makeAnimalNote(d2.result));
 	})
 
 	
