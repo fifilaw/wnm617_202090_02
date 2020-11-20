@@ -40,6 +40,8 @@
     id:'{{index(1)}}',
     user_id:'{{integer(1,10)}}',
     name: '{{company()}}',
+
+    gender:'{{random("Boy","Girl")}}',
     
     breed:'{{random("Tabby","Maine Coon", "Rag doll","Siamese")}}',
     
@@ -48,9 +50,10 @@
     coat:'{{random("Short","Medium","Long")}}',
     
     size:'{{random("Small","Medium","Large")}}',
+
     neutered:'{{random("Yes","No")}}',
     
-    description:'{{lorem(3, "sentences")}}',
+    description:'{{lorem(2, "sentences")}}',
     
     img: function(tags){
       return 'https://via.placeholder.com/400/' + tags.integer(700,999)+ '/fff/?text=' + this.name;

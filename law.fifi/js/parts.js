@@ -22,7 +22,7 @@ const makeUserProfile =templater(o=>`
 					</div>
 				
 					<div class="flex-none">
-					<a href="#" class="more-icon" data-activate="#list-add-modal" style="margin-top: 1em;"><img src="images/more.png" ></a>
+					<a href="#" class="more-icon black" data-activate="#list-add-modal" style="margin-top: 1em;"><img src="images/more-black.png" ></a>
 					</div>
 				</div>
 				<div class="user-profile-detail">
@@ -82,59 +82,85 @@ const makeAnimalNote= templater(o=>`
 	`);
 
 const makeAnimalProfile= templater(o=>`
-		<div class="cat-icon flex-none"><img src="${o.img}"></div>
-		
-	
-			<div class="cat-profile">
-				<div class="display-flex space-around " >
+	<div class="cat-icon flex-none"><img src="${o.img}"></div>
+	<div class="display-flex flex-end"> 
+		<div class="add-note-btn flex-none"><a href="#add-note-page">Add Updates</a></div>
+	</div>
+		<div class="display-flex flex-justify-center flex-align-center">
 			
-					<div class="cat-detail flex-stretch">
-						<div class="reverse-btn flex-none js-animal-map"data-id="${o.id}" >View Location</div>
-					
-
-					<div class="add-note-btn flex-none"><a href="#add-note-page" >Add Note</a></div>
-				
-					</div>	
-			
-				
-				</div>
-				<div class="cat-profile-detail display-flex space-between">
-					<div class="display-flex flex-column">
-						<span>Breed</span>
-						<p>${o.breed}</p>
-					</div>
-					<div class="display-flex flex-column">
-						<span>Color</span><p>${o.color}</p>
-					</div>
-					<div class="display-flex flex-column">
-						<span>Size</span><p>${o.size}</p>
-					</div>	
-					<div class="display-flex flex-column">
-						<span>Coat</span><p>${o.coat}</p>
-					</div>	
-					<div class="display-flex flex-column">
-						<span>Neutered</span><p>${o.neutered}</p>
-					</div>
-				</div>		
-					
-  					<h2 style="padding-left: 1em;">Cat Notes</h2>
-				
-		
-			</div>
-			
+				<h1 class="cat-name-title">${o.name}</h1>
+				<div class="gender-icon"><img src="images/${o.gender}.png" alt=""></div>		
 		</div>
-	
+		
+	</div>
 
-
-		`
+	`
 	);
 
 
+const makeAnimalProfileStatus=templater(o=>`
 
-const FormControl=({namespace, name. displayname,type,placeholder,value})=>{
+			
+			<h5 class="cat-name-title">Last Seen Status: </h5>
+			<p class="status-icon">Sleeping</p>
+
+	`)
+
+const makeAnimalProfileAbout=templater(o=>`
+			<hr>
+		<div class="view-location-btn flex-none js-animal-map"data-id="${o.id}">View Location History</div>
+		
+
+		<h2 style="margin-top:2em;">About ${o.name}</h2>
+		<div class="display-flex cat-detail">
+			<span>Breed</span>
+			<p>${o.breed}</p>
+		</div>
+		<div class="display-flex cat-detail">
+			<span>Color</span><p>${o.color}</p>
+		</div>
+		<div class="display-flex cat-detail">
+			<span>Size</span><p>${o.size}</p>
+		</div>	
+		<div class="display-flex cat-detail">
+			<span>Coat</span><p>${o.coat}</p>
+		</div>	
+		<div class="display-flex cat-detail">
+			<span>Neutered</span><p>${o.neutered}</p>
+		</div>
+		
+
+
+	`)
+
+
+
+
+
+const MakeCatMapPage=o=>`
+
+			<p>Click on the markers to see previous updates!</p>
+	
+	<div class="detail-info">
+		<div class="cat-note-photo">
+			<img src="${o.photo}" alt="">
+		</div>
+		<p>${o.description}</p>
+		<p>${o.description}</p>
+		<p>Created at: ${o.date_create}</p>
+
+
+	</div>
+
+	`;
+
+
+
+
+const FormControl=({namespace, name, displayname,type,placeholder,value})=>{
 	return`
 	<div class="form-control">
-		<label for="${spacename}-${name}" class="form-label">${{displayname}}</label>
+		<label for="${namespace}-${name}" class="form-label">${{displayname}}</label>
 		<input type="text" class="form-input" id="user-firstname" data-role="none" value="${value} placeholder=${placeholder}">
 	</div>
 

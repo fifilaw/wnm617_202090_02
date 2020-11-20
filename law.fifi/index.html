@@ -155,17 +155,17 @@
 
 
 	<section data-role="page" id="list-page">
-		<header data-role="header">
+		<!-- <header data-role="header">
         	<h1>Cat List</h1>
           
-            <a href="#add-animal-page" class="add-icon"><img src="images/add.svg" ></a>
+            
 	
-      	</header>
+      	</header> -->
       <div data-role="main">
       	<div>
       		<div class="search-control">
 				<div class="display-flex search-bar ">
-				<input type="text" class="flex-stretch" id="search" data-role="none">
+				<input type="text" class="flex-stretch" id="search" data-role="none" placeholder="Type a cat name...">
 				<img src="images/search.svg" class="flex-none">
 			</div>
 			</div>
@@ -174,6 +174,8 @@
 				<h4 class="flex-none" data-activate="#sort-menu">Sort</h4>
 			</div>
       	</div>
+      	<div class="add-icon">
+      	<a href="#add-animal-page">+<!-- <img src="images/add.svg" > --></a></div>
      	<div class="overscroll">
      		<ul class="animal-list">
      			
@@ -269,10 +271,14 @@
 			<div class="cat-info">
 				
 			</div>
-			<div class="cat-note grid gap">
+
+			<div class="cat-status display-flex flex-justify-center flex-align-center">
 
   			</div>
+  				
+  			<div class="cat-profile-detail"  style="margin-bottom:3em;">
 
+  			</div>
 			
 		</div>
   		</div>
@@ -299,8 +305,17 @@
 	</section>
 
 	<section data-role="page" id="animal-map-page">
-		<div class="map"></div>
-		<a href="#" class="map-back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+		<div class="map cat-profile-map">
+			
+		</div>
+	<a href="#" class="map-back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+
+		<div class="cat-note overscroll">
+
+
+		
+			
+		</div>
 	</section>
 
 	<section data-role="page" id="add-animal-page">

@@ -34,6 +34,7 @@ body {
    margin:0;
    font-size:100%;
    font-family:var(--font-parapragh);
+   color: var(--color-neutral-dark);
 }
 
 h1,
@@ -58,13 +59,19 @@ a:hover {
 }
 
 span{
-   font-weight:bold;
+   font-weight:800;
+   line-height: 3em;
 }
 
-svg.selected  .cls-2{
-   fill:#000;
-}
 
+hr{
+  display: block;
+    border-color: var(--color-neutral-medium);
+    border-style: solid none none;
+    border-width: 4px;
+    width: 25%;
+    margin-top: 2%;
+}
 
 
 /* Layout Classes */
@@ -88,6 +95,7 @@ svg.selected  .cls-2{
 
 .space-between{justify-content: space-between;}
 .space-around{justify-content: space-around;}
+.flex-end{justify-content: flex-end;}
 
 .flex-column{flex-direction:column;}
 .flex-row{flex-direction:row;}
@@ -236,16 +244,30 @@ svg.selected  .cls-2{
 
 
 .add-icon{
-    width: 15%;
-    /* display: block; */
-    position: relative;
-    top: 20%;
-    left: 85%;
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: fixed;
+    top: 84%;
+    left: 80%;
     padding: 8px;
-
+    background: #ffc792;
+    box-shadow: 0px 1px 6px 0px #5d291038;
+    border-radius: 50%;
+    text-align: center;
+    margin: auto;
+    align-items: center;
+    line-height: 0.8em;
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--color-neutral-light);
 }
 
 
+.more-icon.black{
+  width: 30px;
+  height: 30px;
+}
 
 .more-icon img{
    max-width: 100%;
@@ -264,7 +286,7 @@ svg.selected  .cls-2{
     /* margin: 0.5em 1em; */
     background-color: #fffbf2;
     box-shadow: -1px 0px 16px 2px #998c78;
-    padding: 0.5em 1em;
+    padding: 0.5em;
 }
 
 
@@ -456,7 +478,9 @@ a.onboarding-back-btn.ui-link {
    width: 9%;
    margin-right: 2px;
 }
-
+.filter-bar{
+   margin: 0.5em 0;
+}
 .filter-bar h4{
    margin:0 0 8px 0 ;
 }
@@ -533,8 +557,6 @@ a.onboarding-back-btn.ui-link {
 
 }
 
-}
-
 .user-detail p,
 .user-detail h2{
    line-height: 15px;
@@ -550,14 +572,15 @@ a.onboarding-back-btn.ui-link {
 }
 
 .more-icon{
-    width: 30px;
+    width: 40px;
+    height: 40px;
     text-align: end;
     /* margin-top: 1em; */
     display: block;
     margin: auto;
 }
-}
-.more-icon img{
+
+a.flex-none.more-icon.ui-link img{
    max-width: 100%;
 }
 
@@ -717,32 +740,11 @@ a.onboarding-back-btn.ui-link {
 #animal-profile-page [data-role='main']{
    padding:0;
 }
-/*.hero-image{
-    background-image: url(../images/map.PNG);
-
-    height: 100px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-}
-*/
-.cat-profile-card{
-    /*   padding: 0 1em;*/
-/*    position: relative;
-    bottom: 7%;*/
-}
 
 .cat-icon{
     margin: 0;
     width: 100vw;
-    /* height: 20vh; */
-/*    position: absolute;
-    top: 0;
-    left: 0;*/
     pointer-events: none;
-
-
 }
 
 .cat-icon img{
@@ -752,21 +754,37 @@ a.onboarding-back-btn.ui-link {
 }
 
 .cat-profile{
-
     display: flex;
     flex-direction: column;
-
 }
+
+
+.cat-name-title{
+
+  text-align: center;
+}
+
+.gender-icon{
+  width: 30px;
+  height: 30px;
+  margin-left: 0.2em;
+}
+
+.gender-icon img{
+  max-width: 100%;
+}
+
+
 .cat-user-detail h2{
    font-size:1rem;
 }
 
 .map-back-icon{
 
-      position: absolute;
+    position: absolute;
     top: 2%;
     left: 6%;
-        display: block;
+    display: block;
     width: 40px;
     margin: 0;
 }
@@ -775,8 +793,6 @@ a.onboarding-back-btn.ui-link {
     display: block;
     width: 40px;
     margin: 0;
-    /* margin-top: 1em; *//*
-     line-height: var(--header-height);*/
 }
 
 .back-icon img{
@@ -789,6 +805,23 @@ a.onboarding-back-btn.ui-link {
     color: var(--color-neutral-medium);
 
 }
+
+.view-location-btn {
+    color: var(--color-neutral-light);
+    font-weight: 700;
+    background-color: var(--color-neutral-dark);
+    text-align: center;
+    width: 100%;
+    padding: 1em;
+    margin: 1em auto;
+    height: 50px;
+    line-height: 1.5em;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 2px 1px 4px 1px #5d291030;
+    border:none;
+}
+
 .reverse-btn{
 border: 2px solid var(--color-neutral-medium);
     background-color: inherit;
@@ -800,52 +833,59 @@ border: 2px solid var(--color-neutral-medium);
     font-size: 0.8em;
 }
 .cat-profile-detail{
-    line-height: 10px;
-    /* margin-right: 50px; */
-    background-color: var(--color-neutral-light);
-    padding: 20px 25px 10px;
+    /*background-color: var(--color-neutral-light);*/
+    padding: 0px 1em;
     border-radius: 10px;
     font-size: 0.8em;
     width: 90vw;
     margin: 10px auto;
 }
 
-.cat-profile-detail>div {
-    display: inline-block;
-    width: 50px;
-    text-align: center;
+.cat-profile-detail>.cat-detail{
+    border-bottom: 1px solid var(--color-neutral-medium);
+    justify-content: space-between;
+  
 }
 
-.cat-note{
+
+.cat-status{
+
+    line-height: 0.5em;
+    /* background-color: var(--color-neutral-light); */
+    width: 80vw;
+    height: 20px;
+    margin: 0.2em auto;
     padding: 1em;
+    font-size: 0.9em;
 }
 
 .add-note-div{
-/*          position: relative;
-     bottom: 10%; */
+
     text-align: right;
- /*   padding: 0 2em;*/
     z-index: 4;
 }
 .add-note-btn{
-   border: 2px solid var(--color-neutral-medium);
+    border: 2px solid var(--color-neutral-medium);
     background-color: var(--color-neutral-medium);
+    box-shadow: 1px 3px 3px 2px #5d29106e;
     padding: 10px;
     width: 110px;
     border-radius: 5px;
-    margin: 10px 30px;
+    margin: 10px;
     text-align: center;
     font-size: 0.8em;
+    position: absolute;
+    top: 35%;
 }
 
-.cat-note-detail{
-    background-color: var(--color-neutral-light);
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 2px 2px 4px 0px #4d463e33;
-        font-size: 0.8em;
-}
+/*.cat-note{
 
+    position: absolute; 
+    top:50%;
+    margin: 1em;
+
+}
+*/
 .cat-note-detail img{
    max-width: 100%;
    align-items: center;
@@ -854,6 +894,31 @@ border: 2px solid var(--color-neutral-medium);
 .cat-note-detail p{
    padding: 0 0.5em;
 }
+
+
+
+.detail-info{
+
+    position: absolute;
+    top: 50%;
+    margin: 1em;
+    width: 90vw;
+}
+
+.cat-note-photo{
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+}
+
+.cat-note-photo img{
+  max-width: 100%;
+}
+
+
+
+
+
 
 .grid {
    display:grid;
@@ -898,4 +963,10 @@ border: 2px solid var(--color-neutral-medium);
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+
+.map.cat-profile-map{
+
+  height:50%;
 }

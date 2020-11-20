@@ -59,6 +59,14 @@ $(()=>{
 	})
 
 
+	// .on("click", ".map-bac", function(e){
+	// 	sessionStorage.removeItem('userId');
+	// 	$(".login-error").removeClass("active");
+		
+	// 	checkUserId();
+	// })
+
+
 
 
 
