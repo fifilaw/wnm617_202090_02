@@ -19,6 +19,7 @@
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
 
 	<script src="js/function.js"></script>
+	<script src="js/forms.js"></script>
 	<script src="js/map.js"></script>
 	<script src="js/pages.js"></script>
 	<script src="js/parts.js"></script>
@@ -59,21 +60,25 @@
 			<div class="display-flex flex-justify-center flex-align-center  padding-top-5" >
 				<img src="images/purry-logo.svg">
 			</div>
-			<form action="" id="signup-form" data-ajax="false">
+			<form id="signup-form" data-ajax="false">
 				<div class="form-control display-flex flex-column">
 					<label for="signup-username" class="form-label">Username</label>
 					<input type="text" class="form-input" id="signup-username" data-role="none">
 				</div>
+				<div class="form-control display-flex flex-column">
+					<label for="signup-email" class="form-label">Email</label>
+					<input type="email" class="form-input" id="signup-email" data-role="none">
+				</div>
 				<div class="form-control">
 					<label for="signup-password" class="form-label">Password</label>
-					<input type="text" class="form-input" id="signup-password" data-role="none">
+					<input type="password" class="form-input" id="signup-password" data-role="none">
 				</div>
 				<div class="form-control">
 					<label for="signup-confirm-password" class="form-label">Confirm Password</label>
-					<input type="text" class="form-input" id="signup-confirm-password" data-role="none">
+					<input type="password" class="form-input" id="signup-confirm-password" data-role="none">
 				</div>
 				<div class="form-control">
-					<a href="#list-page" class="form-button">Sign Up</a>
+					<input type="submit" class="form-button" value="Sign Up" data-role="none">
 				</div>
 
 				<div class="form-control signin-alt">Already have an account? <a href="#signin-page" style="font-weight:bold;">Sign In</a></div>
@@ -165,7 +170,7 @@
       	<div>
       		<div class="search-control">
 				<div class="display-flex search-bar ">
-				<input type="text" class="flex-stretch" id="search" data-role="none" placeholder="Type a cat name...">
+				<input type="text" class="flex-stretch" id="search" data-role="none" placeholder="Search for a cat...">
 				<img src="images/search.svg" class="flex-none">
 			</div>
 			</div>
@@ -309,6 +314,10 @@
 			
 		</div>
 	<a href="#" class="map-back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+
+		<div class="catmap-instruction">
+			<p>Click on the icons to view cat's location history and notes!</p>
+		</div>
 
 		<div class="cat-note overscroll">
 

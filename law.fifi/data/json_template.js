@@ -20,7 +20,7 @@
     
     bio:'{{lorem(2, "sentences")}}',
     
-    intial: function(tags){
+    initial: function(tags){
       return this.firstname.charAt(0) + this.lastname.charAt(0);
     },
     

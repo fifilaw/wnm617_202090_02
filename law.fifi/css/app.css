@@ -970,3 +970,18 @@ border: 2px solid var(--color-neutral-medium);
 
   height:50%;
 }
+
+
+
+
+
+/*
+.catmap-instruction {
+    position: absolute;
+    background-color: var(--color-neutral-light);
+    width: 80vw;
+    margin: 1em auto;
+    border-radius: 15px;
+    padding: 0.2em 0.8em;
+    box-shadow: 2px 3px 5px 1px #5d291030;
+}*/

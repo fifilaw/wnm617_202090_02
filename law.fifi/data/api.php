@@ -58,39 +58,39 @@ function makeStatement($data){
 	switch ($t) {
 		case 'users_all':
 			return makeQuery($c,"SELECT * FROM track_users",[]);
-			break;
+			
 
 		case 'animals_all':
 			return makeQuery($c,"SELECT * FROM track_animals",[]);
-			break;
+			
 
 		case 'locations_all':
 			return makeQuery($c,"SELECT * FROM track_locations",[]);
-			break;
+			
 
 		case 'user_by_id':
 			return makeQuery($c,"SELECT * FROM track_users WHERE id =?",$p);
-			break;
+			
 
 		case 'animal_by_id':
 			return makeQuery($c,"SELECT * FROM track_animals WHERE id =?",$p);
-			break;
+			
 
 		case 'location_by_id':
 			return makeQuery($c,"SELECT * FROM track_locations WHERE id =?",$p);
-			break;
+			
 
 		case 'animals_by_user_id':
 			return makeQuery($c,"SELECT * FROM track_animals WHERE user_id =?",$p);
-			break;
+			
 
 		case 'locations_by_animal_id':
 			return makeQuery($c,"SELECT * FROM track_locations WHERE animal_id =?",$p);
-			break;
+			
 		
 		case "check_signin":
         	return makeQuery($c,"SELECT * FROM track_users WHERE username =? AND password =md5(?)",$p);
-        	break;
+        	
 
         case "recent_locations":
         	return makeQuery($c,"SELECT * FROM
@@ -103,6 +103,7 @@ function makeStatement($data){
             WHERE user_id = ?
             GROUP BY l.animal_id
             ",$p);
+        	
 
 
             case "animal_profile_and_notes":
@@ -116,10 +117,34 @@ function makeStatement($data){
             WHERE animal_id = ?
       		GROUP BY l.animal_id
             ",$p);
+        	
+
+
+
+
+
+
+            //CRUD
+            //INSERT
+
+        case "insert_user":
+         $r = makeQuery($c,"SELECT * FROM `track_users` WHERE `username` = ? OR `email` = ?",[$p[0],$p[1]]);
+         	if(count($r['result'])) return ['error'=>"Username or Email already exists"];
+
+         $r = makeQuery($c,"INSERT INTO
+            `track_users`
+            (`username`,`email`,`password`,`img`,`date_create`,`firstname`,`lastname`,gender,location,bio,initial)
+            VALUES
+            (?, ?, md5(?), 'https://via.placeholder.com/400/?text=USER', NOW(),'','','','','','')
+            ",$p,false);
+         if(isset($r['error'])) return $r;
+         return ["id"=>$c->lastInsertId()];
+			
+
 
 		default:
 			return ["error"=>"No Matched Type"];
-			break;
+			
 	}
 }
 

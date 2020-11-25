@@ -50,6 +50,13 @@ $(()=>{
 		checkSigninForm();
 	})
 
+
+	.on("submit","#signup-form", function(e){
+		e.preventDefault();
+		checkSignUpForm();
+	})
+
+
 	// Anchor clicks
 	.on("click", ".js-logout", function(e){
 		sessionStorage.removeItem('userId');

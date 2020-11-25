@@ -47,7 +47,12 @@ const checkUserId = () =>{
 		if(!p.some(o=>window.location.hash===o))
 			$.mobile.navigate("#signin-page");
 	}else{
-		if(p.some(o=>window.location.hash===o))
-			$.mobile.navigate("#onboarding1-page");
+		if(p.some(o=>window.location.hash===o)){
+
+         query({type:'animals_by_user_id', params:[sessionStorage.userId]}).then(d=>{
+            if(d.result.length)$.mobile.navigate("#list-page");
+			   else $.mobile.navigate("#onboarding1-page");
+         })
+      }
 	}
 }
