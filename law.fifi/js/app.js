@@ -88,6 +88,12 @@ $(()=>{
       $.mobile.navigate("#animal-map-page");
    })
 
+       .on("click",".view-location-btn",function(e){
+      
+
+      window.location.reload();
+   })
+
 
 
 
@@ -117,6 +123,18 @@ $(()=>{
 		$(this).closest(".footer-icon")
 		.addClass("selected").siblings().removeClass("selected")
 	})
+
+
+
+
+
+	.on("click",".profile-tab-group .tab", function(){
+		let id = $(this).index();
+
+		$(this).addClass("active").siblings().removeClass("active");
+		$(this).closest(".profile-tab-group").find(".content").eq(id).addClass("active").siblings().removeClass("active");
+	})
+	
 
 
 

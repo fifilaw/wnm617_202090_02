@@ -106,11 +106,11 @@ function makeStatement($data){
         	
 
 
-            case "animal_profile_and_notes":
+            case "animal_status":
         	return makeQuery($c,"SELECT * FROM
             `track_animals` a
             LEFT JOIN (
-               SELECT animal_id, photo, description FROM `track_locations`
+               SELECT animal_id, status FROM `track_locations`
                ORDER BY `date_create` DESC
             ) l
             ON a.id = l.animal_id

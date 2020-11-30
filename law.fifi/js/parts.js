@@ -1,73 +1,70 @@
 
 
 const makeAnimalList= templater(o=>`
-		<div class="js-animal-jump" data-id="${o.id}">
+		<div class="js-animal-jump col-sm-6" data-id="${o.id}">
 		<div class="animal-list-img" >
 			<img src="${o.img}" ></div>
-			<div class="display-flex flex-column">
-     			<h6 class="list-title">${o.name}</h6><p class="list-type">${o.breed}</p>
+			<div class="display-flex flex-column" style="padding: 0.6em;">
+				<div class="display-flex flex-align-center " >
+	     			<h6 class="list-title flex-stretch">${o.name}</h6>
+	     			<div class="list-gender-icon flex-none"><img src="images/${o.gender}.png" alt=""></div>
+     			</div>
+     			<p class="list-type">${o.breed}</p>
      		</div>
      	</div>`
 	);
 
 
-const makeUserProfile =templater(o=>`
+const makeUserProfileIcon =templater(o=>`
 
-		<div class="display-flex user-profile-card space-around">
-					<div class="user-icon flex-none"><img src="${o.img}" class="user-icon"></div>
+		<div class="display-flex user-profile-card">
+				<div class="user-icon"><img src="${o.img}" class="user-icon"></div>
 					
-					<div class="user-detail flex-stretch">
-						<h2>${o.firstname} ${o.lastname}</h2>
-						<p>Joined Jan 2020</p>
-					</div>
+					
 				
 					<div class="flex-none">
-					<a href="#" class="more-icon black" data-activate="#list-add-modal" style="margin-top: 1em;"><img src="images/more-black.png" ></a>
+					<a href="#" class="more-icon black" data-activate="#list-add-modal" style="margin: 1em 0.5em 0 0;"><img src="images/more-black.png" ></a>
 					</div>
 				</div>
-				<div class="user-profile-detail">
-					<h4 style="font-size: 0.8em;">Personal Information:</h4>
-					<p><span>Gender: </span> ${o.gender}</p>
-					<p><span>Email: </span>${o.email}</p>
-					<p><span>Location: </span>${o.location}</p>
-				</div>
-					<h4 style=" margin-top: 3em;font-size: 0.8em;   margin-left: 1em;">Personal Achievements:</h4>
-				<div class="display-flex space-around" style="flex-wrap: wrap;">
+					<div class="user-detail flex-stretch">
+						<h2>${o.firstname} ${o.lastname}</h2>
+						<p>@${o.username}</p>
+					</div>
+		
 
-					<div class="user-achievement">
-
-						<h4>Cats Found</h4>
-						<div class="display-flex flex-align-center ">
-							<p class="flex-stretch">15</p>
-							<div class="cat-badge"><img class="flex-none" src="images/badge.svg"></div>
-							<div class="cat-badge"><img class="flex-none" src="images/badge-2.svg"></div>
-						</div>
-					</div>
-					<div class="user-achievement">
-						<h4>Breed</h4>
-						<div class="display-flex flex-align-center ">
-							<p class="flex-stretch">6</p>
-							
-						</div>
-					</div>
-					<div class="user-achievement">
-						<h4>Colors</h4>
-						<div class="display-flex flex-align-center ">
-							<p class="flex-stretch">4</p>
-							
-						</div>
-					</div>
-					<div class="user-achievement">
-						<h4>Neutered</h4>
-						<div class="display-flex flex-align-center ">
-							<p class="flex-stretch">10</p>
-							<div class="cat-badge"><img class="flex-none" src="images/badge.svg"></div>
-							
-						</div>
-					</div>
+				
 				</div>
+					
 	`);
 
+
+const makeUserProfileAchievement =o=>`
+
+		
+
+			<div class="user-achievement ">
+
+				<h4>Cats Found</h4>
+				<div class="display-flex flex-align-center ">
+					<p class="flex-stretch">${o.length}</p>
+					<div class="cat-badge"><img class="flex-none" src="images/badge.svg"></div>
+					<div class="cat-badge"><img class="flex-none" src="images/badge-2.svg"></div>
+				</div>
+			</div>
+			
+	
+	`;
+
+
+const makeUserProfileInfo =templater(o=>`
+
+	<p><span>Gender: </span> ${o.gender}</p>
+	<p><span>Email: </span>${o.email}</p>
+	<p><span>Location: </span>${o.location}</p>
+	<p><span>Date Joined: </span>Jan 2020</p>
+
+
+`);
 
 const makeAnimalNote= templater(o=>`
 
@@ -101,8 +98,7 @@ const makeAnimalProfile= templater(o=>`
 const makeAnimalProfileStatus=templater(o=>`
 
 			
-			<h5 class="cat-name-title">Last Seen Status: </h5>
-			<p class="status-icon">Sleeping</p>
+			<h5 class="cat-name-title" style="font-size: 1em;">Last Seen Status: ${o.status}</h5>
 
 	`)
 
@@ -112,6 +108,10 @@ const makeAnimalProfileAbout=templater(o=>`
 		
 
 		<h2 style="margin-top:2em;">About ${o.name}</h2>
+		<div class="cat-bio">
+			
+			<p>${o.description}</p>
+		</div>
 		<div class="display-flex cat-detail">
 			<span>Breed</span>
 			<p>${o.breed}</p>
@@ -139,18 +139,20 @@ const makeAnimalProfileAbout=templater(o=>`
 
 const MakeCatMapPage=o=>`
 
-			<p>Click on the markers to see previous updates!</p>
-	
-	<div class="detail-info">
-		<div class="cat-note-photo">
-			<img src="${o.photo}" alt="">
+		<div class="display-flex">
+			<div class="cat-note-photo flex-none">
+				<img src="${o.photo}" alt="">
+			</div>
+		<div class="display-flex flex-column " style="padding-left: 1em;">
+			<h4 style="margin:0">Note</h4>
+			<p class="flex-stretch"><span>Status:</span> ${o.status}</p>
 		</div>
-		<p>${o.description}</p>
-		<p>${o.description}</p>
+		</div>
+			<h4>Note Description</h4>
+			<p>${o.description}</p>
 		<p>Created at: ${o.date_create}</p>
 
 
-	</div>
 
 	`;
 
@@ -167,16 +169,16 @@ const FormControl=({namespace, name, displayname,type,placeholder,value})=>{
 	`
 }
 
+// ${FormControl({
+// 	namespace:"edit-cat",
+// 	name:"name",
+// 	displayname:"Name",
+// 	type:"text",
+// 	placeholder:"Type Animal Name",
+// 	value:o.type
+// })}
 const EditAnimalProfileForm= templater(o=>`
 
-${FormControl({
-	namespace:"edit-cat",
-	name:"name",
-	displayname:"Name",
-	type:"text",
-	placeholder:"Type Animal Name",
-	value:o.type
-})}
 
 		<div class="display-flex regular-back-header" style="margin-top: 1em;">
 			<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
@@ -185,16 +187,20 @@ ${FormControl({
 			</div>
 			<div>
 				<form action="" id="edit-cat-form" data-ajax="false">
-					<div class="form-control display-flex">
+					<div class="form-control display-flex flex-align-center  flex-column">
 						<div class="form-upload-photo cat">
-							<img src="images/add.svg" class="flex-none ">
+							<img src="${o.img}">
+
 						</div>
-						<div class="flex-stretch">
-							<label for="edit-cat-name" class="form-label">Cat Name</label>
-							<input type="text" class="form-input" id="edit-cat-name" data-role="none" value="${o.name}">
+						<div >
+							<a href="#" class="edit-photo-btn">Edit Photo</a>
+							
 						</div>
 					</div>
-			
+					<div class="form-control">
+						<label for="edit-cat-name" class="form-label">Cat Name</label>
+						<input type="text" class="form-input" id="edit-cat-name" data-role="none" value="${o.name}">
+					</div>
 
 					<div class="form-control">
 						<label for="edit-cat-breed" class="form-label">Breed</label>
@@ -214,7 +220,7 @@ ${FormControl({
 					</div>
 					<div class="form-control">
 						<label for="edit-neutered" class="form-label">Neutered?</label>
-						<select name="edit-neutered" id="edit-neutered" class="drop-down">
+						<select name="edit-neutered" id="edit-neutered" class="drop-down" data-role="none">
 							<option  class="options"  value="option1">Yes</option>
 							<option  class="options" value="option2">No</option>
 
@@ -222,7 +228,7 @@ ${FormControl({
 					</div>
 				
 					<div class="form-control">
-						<a href="#animal-profile-page" class="form-button">Edit Cat</a>
+						<a href="#animal-profile-page" class="form-button fixed">Save</a>
 					</div>
 
 				</form>

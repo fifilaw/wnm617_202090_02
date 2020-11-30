@@ -60,6 +60,7 @@
 			<div class="display-flex flex-justify-center flex-align-center  padding-top-5" >
 				<img src="images/purry-logo.svg">
 			</div>
+			<div class="login-error">Login failed. Please try again.</div>
 			<form id="signup-form" data-ajax="false">
 				<div class="form-control display-flex flex-column">
 					<label for="signup-username" class="form-label">Username</label>
@@ -182,7 +183,7 @@
       	<div class="add-icon">
       	<a href="#add-animal-page">+<!-- <img src="images/add.svg" > --></a></div>
      	<div class="overscroll">
-     		<ul class="animal-list">
+     		<ul class="animal-list grid gap">
      			
      			
                	
@@ -240,8 +241,29 @@
 	<section data-role="page" id="user-profile-page">
 
 		<div data-role="main">
-			<div class="overscroll user-profile">
+				
+			<div class="user-profile">
+			</div>
+
+			<div class="profile-tab-group">
+					<div class="tabs">
+						<ul>
+							<li class="tab active">Achievements</li>
+							<li class="tab" style="margin-left: 1em;">Personal Information</li>
+						</ul>
+					</div>
+					<div class="contents ">
+						<div class="content active user-achievements display-flex overscroll">
+							
+						</div>
+						<div class="content user-profile-detail">
+					
+							
 			
+						</div>
+
+						
+					</div>
 			</div>
 	
 		</div>
@@ -310,20 +332,22 @@
 	</section>
 
 	<section data-role="page" id="animal-map-page">
-		<div class="map cat-profile-map">
+
+		<div data-role="main" class="display-flex flex-column">
+			<div class="cat-map flex-stretch">
+				<a href="#" class="map-back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+				<div class="cat-profile-map"></div>
+			</div>
+
+
+			<div class="cat-note overscroll flex-none">
+				<div class="display-flex flex-column">
+					<p class="">Click on the icons to see cat's previous location history!</p>
+					<div class="cat-journal-img"><img src="images/cat-journal.png"></div>
+				</div>
 			
-		</div>
-	<a href="#" class="map-back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
-
-		<div class="catmap-instruction">
-			<p>Click on the icons to view cat's location history and notes!</p>
-		</div>
-
-		<div class="cat-note overscroll">
-
-
-		
-			
+				
+			</div>
 		</div>
 	</section>
 
@@ -369,18 +393,14 @@
 					</div>
 					<div class="form-control">
 						<label for="neutered" class="form-label">Neutered?</label>
-						<select name="neutered" id="neutered" class="drop-down">
-							<option  class="options"  value="option1">Yes</option>
-							<option  class="options" value="option2">No</option>
-
-						</select>
+						<input type="text" class="form-input" id="neutered" data-role="none">
 					</div>
 					<div class="form-control">
-						<label for="add-cat-note" class="form-label">Notes about the cat:</label>
-						<textarea data-role="none" name="add-cat-note" class="add-cat-note"></textarea>
+						<label for="add-cat-note" class="form-label">Cat Description</label>
+						<textarea data-role="none" name="add-cat-note" class="add-cat-note margin-bot-5"></textarea>
 					</div>
 					<div class="form-control">
-						<a href="#list-page" class="form-button">Add Cat</a>
+						<a href="#list-page" class="form-button" data-role="none">Add Cat</a>
 					</div>
 
 				</form>

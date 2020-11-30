@@ -47,15 +47,31 @@ const ListPage= async()=>{
 	let d = await query({type:'animals_by_user_id',params:[sessionStorage.userId]});
 
 	console.log(d)
-	$('#list-page .animal-list').html(d.result.length?makeAnimalList(d.result):"Add a cat");
+	$('#list-page .animal-list').html(d.result.length?makeAnimalList(d.result):`<div class="no-cat"><img src="images/add-cat.png" alt=""></div>`);
 
 
 }
 const UserProfilePage= async()=>{
-	let d = await query({type:'user_by_id',params:[sessionStorage.userId]});
 
-	console.log(d)
-	$('#user-profile-page .user-profile').html(makeUserProfile(d.result));
+
+	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
+
+		console.log(d)
+		$('#user-profile-page .user-profile').html(makeUserProfileIcon(d.result));
+	})
+
+	query({type:'recent_locations',params:[sessionStorage.userId]}).then(d=>{
+
+		console.log(d)
+		$('.user-achievements').html(makeUserProfileAchievement(d.result));
+	})
+
+	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
+
+		console.log(d)
+		$('.user-profile-detail').html(makeUserProfileInfo(d.result));
+	})
+
 }
 
 
@@ -68,7 +84,7 @@ const AnimalProfilePage= async()=>{
 		$('#animal-profile-page .animal-profile .cat-info').html(makeAnimalProfile(d.result));
 	})
 
-	query({type:'animal_profile_and_notes',params:[sessionStorage.animalId]}).then(d=>{
+	query({type:'animal_status',params:[sessionStorage.animalId]}).then(d=>{
 
 		console.log(d)
 		$('#animal-profile-page .animal-profile .cat-status').html(makeAnimalProfileStatus(d.result));
@@ -94,7 +110,7 @@ const AnimalMapPage= async()=>{
 
 	query({type:'locations_by_animal_id',params:[sessionStorage.animalId]}).then(d=>{
 
-      makeMap("#animal-map-page .map").then(map_el=>{
+      makeMap(".cat-profile-map").then(map_el=>{
 
          makeMarkers(map_el,d.result);
 		console.log(d)

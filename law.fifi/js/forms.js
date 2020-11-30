@@ -4,7 +4,16 @@ const checkSignUpForm = () => {
    let password = $("#signup-password").val();
    let passwordconfirm = $("#signup-confirm-password").val();
 
-   if(password!=passwordconfirm) {
+
+   if(username=="") {
+      makeWarning(".login-error","Please enter a username");
+      return;
+   }else if (email==""){
+      makeWarning(".login-error","Please enter an email address");
+
+   }else if(password!=passwordconfirm) {
+      makeWarning(".login-error","Passwords don't match");
+
       throw "Passwords don't match";
    } else {
       query({type:'insert_user',params:[username,email,password]})
