@@ -36,6 +36,7 @@ $(()=>{
 			EditUserProfilePage();
 			break;
 
+
 			case 'animal-map-page':
 			AnimalMapPage();
 			break;
@@ -56,6 +57,7 @@ $(()=>{
 		checkSignUpForm();
 	})
 
+	
 
 	// Anchor clicks
 	.on("click", ".js-logout", function(e){
@@ -66,13 +68,29 @@ $(()=>{
 	})
 
 
-	// .on("click", ".map-bac", function(e){
-	// 	sessionStorage.removeItem('userId');
-	// 	$(".login-error").removeClass("active");
-		
-	// 	checkUserId();
-	// })
+	.on("click", ".js-user-edit", function(e){
+		checkUserEditForm();
+	})
 
+	.on("click", ".js-cat-edit", function(e){
+		checkCatEditForm();
+	})
+
+	.on("click",".js-cat-add", function(e){
+		
+		CheckCatAddForm();
+	})
+
+	.on("click",".js-cat-delete", function(e){
+		
+		checkCatDelete($(this).data("id"));
+		
+	})
+
+	.on("click",".signup-info-jump", function(e){
+		e.preventDefault();
+		SignupAddUserInfoForm();
+	})
 
 
 
@@ -118,7 +136,7 @@ $(()=>{
 	})
 
 	.on("click", ".footer-icon", function(e){
-		console.log("click")
+		
 		$(this).addClass("active").siblings().removeClass("selected");
 		$(this).closest(".footer-icon")
 		.addClass("selected").siblings().removeClass("selected")

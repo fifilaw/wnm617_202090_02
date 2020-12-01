@@ -90,7 +90,12 @@ function makeStatement($data){
 		
 		case "check_signin":
         	return makeQuery($c,"SELECT * FROM track_users WHERE username =? AND password =md5(?)",$p);
-        	
+
+    	case "check_signup":
+    		return makeQuery($c,"SELECT * FROM track_users WHERE username =? ",$p);
+
+        case "check_signup_email":
+    		return makeQuery($c,"SELECT * FROM track_users WHERE email =?",$p);
 
         case "recent_locations":
         	return makeQuery($c,"SELECT * FROM
@@ -129,17 +134,96 @@ function makeStatement($data){
 
         case "insert_user":
          $r = makeQuery($c,"SELECT * FROM `track_users` WHERE `username` = ? OR `email` = ?",[$p[0],$p[1]]);
-         	if(count($r['result'])) return ['error'=>"Username or Email already exists"];
+         	if(count($r['result']))return ['error'=>"Username or Email already exists"];
 
          $r = makeQuery($c,"INSERT INTO
             `track_users`
-            (`username`,`email`,`password`,`img`,`date_create`,`firstname`,`lastname`,gender,location,bio,initial)
+            (`username`,`email`,`password`,`img`,`date_create`,`firstname`,`lastname`,`gender`,`location`,`bio`,`initial`)
             VALUES
             (?, ?, md5(?), 'https://via.placeholder.com/400/?text=USER', NOW(),'','','','','','')
             ",$p,false);
          if(isset($r['error'])) return $r;
          return ["id"=>$c->lastInsertId()];
+
+
+
+         case "insert_animal":
+         	 $r = makeQuery($c,"INSERT INTO
+            `track_animals`
+            (`user_id`,`name`,`gender`,`breed`,`color`,`coat`,`size`,`neutered`,`description`,`img`,`date_create`)
+            VALUES
+            (?,?, ?,?,?,?,?,?,?, 'https://via.placeholder.com/400/?text=CAT', NOW())
+            ",$p,false);
+         if(isset($r['error'])) return $r;
+         return ["id"=>$c->lastInsertId()];
+
+
+
+         // UPDATE
+
+
+         case "update_cat":
+         $r = makeQuery($c,"UPDATE
+            `track_animals`
+            SET
+            	`name`=?,
+            	`gender`=?,
+            	`breed`=?,
+            	`color`=?,
+            	`coat`=?,
+            	`size`=?,
+            	`neutered`=?,
+            	`description`=? 
+           
+            WHERE `id` =?
+            ",$p,false);
+      
+         return ["result"=>"success"];
+
+
+
+         case "update_user":
+		$r= makeQuery($c, "UPDATE `track_users` 
+			SET 
 			
+			`firstname`=?,
+			`lastname`=?,
+			`username`=?,
+			`email`=?,
+			`gender`=?,
+			`location`=?,
+			`bio`=?
+
+			WHERE `id` =?
+			",$p,false);
+		return ["result"=>"success"];
+
+
+
+		// DELETE
+		case "delete_cat":
+         return makeQuery($c,"DELETE FROM `track_animals` WHERE `id` =?",$p,false);
+
+         case "delete_location":
+         return makeQuery($c,"DELETE FROM `track_locations` WHERE `id` =?",$p,false);
+
+
+
+
+
+		case "signup_add_user_info":
+		$r= makeQuery($c, "UPDATE `track_users` 
+			SET 
+			
+			`firstname`=?,
+			`lastname`=?,
+			`gender`=?,
+			`location`=?,
+			`bio`=?
+
+			WHERE `id` =?
+			",$p,false);
+		return ["result"=>"success"];
 
 
 		default:

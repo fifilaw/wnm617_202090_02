@@ -166,6 +166,7 @@ hr{
     padding: 0.8em;
     border-radius: 5px;
     border: 1.5px solid var(--color-neutral-medium);
+    background: inherit;
 
 }
 .ui-select{
@@ -178,7 +179,8 @@ hr{
 }
 
 #signup-form,
-#signin-form{
+#signin-form,
+#signup-success-form{
    padding:1em;
 }
 
@@ -216,6 +218,36 @@ hr{
 
 }
 
+
+
+
+/*Signup form info*/
+
+.welcome-msg{
+  text-align: left;
+    padding: 0 1em;
+}
+
+.skip-button{
+    background-color: inherit;
+    border: none;
+    width: 100%;
+    color: var(--color-neutral-medium);
+    position: fixed;
+    width: 80vw;
+    bottom: 4%;
+}
+/*.form-button.fixed {
+    position: fixed;
+    width: 80%;
+    bottom: 5%;
+    margin: 1em auto;
+}*/
+.signup-fixed{
+  position: fixed;
+    width: 80vw;
+    bottom: 8%;
+}
 
 
 /*Page layouts*/
@@ -433,7 +465,7 @@ a.onboarding-back-btn.ui-link {
    list-style:none;
    padding:0;
    margin:0;
-   margin-bottom: 6em;
+   margin-bottom: 8em;
 
 
 }
@@ -904,7 +936,11 @@ border: 2px solid var(--color-neutral-medium);
     justify-content: space-between;
   
 }
-
+.cat-description{
+  border-left: 1px solid var(--color-neutral-medium);
+    margin-left: 1em;
+    padding-left: 1em;
+}
 
 .cat-status{
 

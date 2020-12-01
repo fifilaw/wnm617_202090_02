@@ -17,6 +17,12 @@ const MapPage= async()=>{
 	let map_el= await makeMap("#map-page .map");
 
 	makeMarkers(map_el, valid_animals);
+	if(valid_animals=[ ]){
+
+		console.log("no data");
+		
+	}else{
+
 
 
 	map_el.data("markers").forEach((o,i)=>{
@@ -30,13 +36,11 @@ const MapPage= async()=>{
    //          .open(map_el.data("map"),o);
    //       map_el.data("infoWindow")
    //          .setContent(valid_animals[i].name);
-
+			
    
-
-
+			})
 		})
-	})
-
+	}
 	}
 	
 	
@@ -47,7 +51,7 @@ const ListPage= async()=>{
 	let d = await query({type:'animals_by_user_id',params:[sessionStorage.userId]});
 
 	console.log(d)
-	$('#list-page .animal-list').html(d.result.length?makeAnimalList(d.result):`<div class="no-cat"><img src="images/add-cat.png" alt=""></div>`);
+	$('#list-page .animal-list').html(d.result.length?makeAnimalList(d.result):`<div class="no-cat col-sm-12"><img src="images/add-cat.png" alt=""></div>`);
 
 
 }
@@ -60,10 +64,10 @@ const UserProfilePage= async()=>{
 		$('#user-profile-page .user-profile').html(makeUserProfileIcon(d.result));
 	})
 
-	query({type:'recent_locations',params:[sessionStorage.userId]}).then(d=>{
+	query({type:'animals_by_user_id',params:[sessionStorage.userId]}).then(d=>{
 
 		console.log(d)
-		$('.user-achievements').html(makeUserProfileAchievement(d.result));
+		$('.cat-found').html(d.result.length);
 	})
 
 	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
@@ -87,7 +91,7 @@ const AnimalProfilePage= async()=>{
 	query({type:'animal_status',params:[sessionStorage.animalId]}).then(d=>{
 
 		console.log(d)
-		$('#animal-profile-page .animal-profile .cat-status').html(makeAnimalProfileStatus(d.result));
+		$('#animal-profile-page .animal-profile .cat-status').html(d.result.length?makeAnimalProfileStatus(d.result):`<h5 class="cat-name-title" style="font-size: 1em;">No Status Yet</h5>`);
 	})
 
 	query({type:'animal_by_id',params:[sessionStorage.animalId]}).then(d=>{
@@ -148,7 +152,7 @@ const EditAnimalProfilePage= async()=>{
 
 const EditUserProfilePage= async()=>{
 
-	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
+	let d = query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
 
 	console.log(d)
 	$('#edit-user-page .edit-user').html(EditUserProfileForm(d.result));
@@ -157,3 +161,15 @@ const EditUserProfilePage= async()=>{
 	
 
 }
+
+
+// const UserSignupAddProfilePage = async()=>{
+
+// 	let d = query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
+
+// 	console.log(d)
+// 	$('#signup-success-page .user-signup-add-info').html(SignupAddUserInfoForm(d.result));
+// 	})
+
+
+// }

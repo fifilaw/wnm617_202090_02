@@ -40,7 +40,7 @@ const checkSigninForm = async () => {
 
 const checkUserId = () =>{
 
-	let p=['#signup-page', '#signin-page',''];
+	let p=['#signup-page', '#signin-page'];
 
 	if(sessionStorage.userId === undefined){
 		//not logged in
@@ -51,7 +51,7 @@ const checkUserId = () =>{
 
          query({type:'animals_by_user_id', params:[sessionStorage.userId]}).then(d=>{
             if(d.result.length)$.mobile.navigate("#list-page");
-			   else $.mobile.navigate("#onboarding1-page");
+			   else $.mobile.navigate("#list-page");
          })
       }
 	}
