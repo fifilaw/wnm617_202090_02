@@ -157,3 +157,29 @@ const checkCatDelete= id => {
 
 	});
 }
+
+
+const checkListSearchForm= async()=>{
+   let s = $("#list-search-input").val();
+   console.log(s)
+
+   let r = await query({type:"search_animals",params:[s,sessionStorage.userId]});
+
+   drawAnimalList(r.result,"No Result Found");
+
+   console.log(r);
+}
+
+
+
+const checkFilterList= async(d)=>{
+	let r = await query({type:'animal_filter',params:[d.field,d.value,sessionStorage.userId]});
+
+	console.log(r);
+   drawAnimalList(r.result,"No Result Found");
+	
+}
+
+
+
+

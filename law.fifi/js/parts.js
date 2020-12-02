@@ -1,3 +1,7 @@
+const drawAnimalList = (a,empty_phrase='Hey Dummy, add an animal.') => {
+   $("#list-page .animal-list")
+      .html(a.length?makeAnimalList(a):empty_phrase);
+}
 
 
 const makeAnimalList= templater(o=>`

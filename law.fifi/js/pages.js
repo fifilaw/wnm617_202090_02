@@ -17,12 +17,6 @@ const MapPage= async()=>{
 	let map_el= await makeMap("#map-page .map");
 
 	makeMarkers(map_el, valid_animals);
-	if(valid_animals=[ ]){
-
-		console.log("no data");
-		
-	}else{
-
 
 
 	map_el.data("markers").forEach((o,i)=>{
@@ -40,7 +34,7 @@ const MapPage= async()=>{
    
 			})
 		})
-	}
+	
 	}
 	
 	

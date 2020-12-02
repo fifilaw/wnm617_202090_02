@@ -7,6 +7,12 @@
 
 	<title>Purry</title>
 	<meta charset="UTF-8">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+   	<meta name="mobile-web-app-capable" content="yes">
+
+   	<link rel="icon" href="images/purry-logo.svg">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;1,400&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="css/style.css"> -->
@@ -55,6 +61,20 @@
 		</div>
 	</section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<section data-role="page" id="signup-page">
 		<div data-role="main" class="flex-justify-center flex-align-center overscroll">
 			<div class="display-flex flex-justify-center flex-align-center  padding-top-5" >
@@ -87,6 +107,26 @@
 		</div>
 		
 	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<section data-role="page" id="signup-success-page">
 		<div data-role="main" class="user-signup-add-info display-flex flex-column flex-justify-center overscroll">
@@ -133,6 +173,18 @@
 	</section>
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 	<section data-role="page" id="onboarding1-page">
 		<div data-role="main" class="display-flex flex-column flex-justify-center flex-align-center">
 			<div class="onboarding-title">
@@ -155,6 +207,14 @@
 			</div>
 		</div>
 	</section>
+
+
+
+
+
+
+
+
 
 	<section data-role="page" id="onboarding2-page">
 		<div data-role="main" class="display-flex flex-column flex-justify-center flex-align-center">
@@ -181,6 +241,12 @@
 		</div>
 	</section>
 
+
+
+
+
+
+
 	<section data-role="page" id="onboarding3-page">
 		<div data-role="main" class="display-flex flex-column flex-justify-center flex-align-center">
 			<div class="onboarding-title">
@@ -206,6 +272,19 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<section data-role="page" id="list-page">
 		<!-- <header data-role="header">
         	<h1>Cat List</h1>
@@ -216,10 +295,12 @@
       <div data-role="main">
       	<div>
       		<div class="search-control">
-				<div class="display-flex search-bar ">
-				<input type="text" class="flex-stretch" id="search" data-role="none" placeholder="Search for a cat...">
-				<img src="images/search.svg" class="flex-none">
-			</div>
+				
+					<form id="list-search-form" data-ajax="false" class="display-flex search-bar">
+						<input type="text" class="flex-stretch" id="list-search-input" data-role="none" placeholder="Search for a cat...">
+						<img src="images/search.svg" class="flex-none">
+					</form>
+			
 			</div>
 			<div class="display-flex filter-bar">
 				<h4 class="flex-stretch" ><a href="#" data-activate="#filter-menu">Filter</a></h4>
@@ -250,9 +331,9 @@
 	      		<div class="modal-body"><a href="#" data-deactivate="#filter-menu">Yes</a></div>
 	      		<div class="modal-body"><a href="#" data-deactivate="#filter-menu">No</a></div>
 	      		<div class="modal-head">Coat</div>
-	      		<div class="modal-body"><a href="#list-page" data-deactivate="#filter-menu">Short</a></div>
-	      		<div class="modal-body"><a href="#list-page" data-deactivate="#filter-menu">Medium</a></div>
-	      		<div class="modal-body"><a href="#list-page" data-deactivate="#filter-menu">Long</a></div>
+	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="short" data-field="coat">Short</a></div>
+	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="medium" data-field="coat">Medium</a></div>
+	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="long" data-field="coat">Long</a></div>
 	      	</div>
 	      </div>
 	      <div class="modal" id="sort-menu">
@@ -266,6 +347,23 @@
 	      	</div>
 	      </div>
 	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<section data-role="page" id="map-page">
 		<div data-role="main">
@@ -283,6 +381,24 @@
          </ul>
       </footer>
 	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<section data-role="page" id="user-profile-page">
 
@@ -341,6 +457,27 @@
       </div>
 	</section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<section data-role="page" id="animal-profile-page">
 		<div class="overscroll">
 		<div class="display-flex back-header space-around">
@@ -376,6 +513,20 @@
       
 	</section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<section data-role="page" id="animal-map-page">
 
 		<div data-role="main" class="display-flex flex-column">
@@ -395,6 +546,28 @@
 			</div>
 		</div>
 	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<section data-role="page" id="add-animal-page">
 
@@ -460,6 +633,21 @@
 		
 	</section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<section data-role="page" id="add-note-page">
 
 		<div data-role="main">
@@ -490,12 +678,51 @@
 		</div>
 	</section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<section data-role="page" id="edit-user-page">
 		<div data-role="main" class="edit-user">
 			
 
 		</div>
 	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<section data-role="page" id="change-password-page">
 		<div data-role="main">
@@ -533,6 +760,23 @@
 
 		</div>
 	</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 	<section data-role="page" id="edit-cat-page">
 

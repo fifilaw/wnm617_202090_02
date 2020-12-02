@@ -57,6 +57,12 @@ $(()=>{
 		checkSignUpForm();
 	})
 
+	.on("submit","#list-search-form", function(e){
+		e.preventDefault();
+
+		checkListSearchForm();
+	})
+
 	
 
 	// Anchor clicks
@@ -84,6 +90,12 @@ $(()=>{
 	.on("click",".js-cat-delete", function(e){
 		
 		checkCatDelete($(this).data("id"));
+		
+	})
+
+	.on("click",".filter", function(e){
+		
+		checkFilterList($(this).data());
 		
 	})
 

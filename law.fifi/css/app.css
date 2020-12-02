@@ -558,40 +558,6 @@ a.onboarding-back-btn.ui-link {
 
 /*Map*/
 
-#map-page [data-role='main']{
-   background-image: url("../images/map.PNG");
-   background-position: center;
-   background-size: cover;
-
-}
-
-
-.location-1,
-.location-2,
-.location-3,
-.location-4{
-   position: absolute;
-   width: 20%;
-
-}
-
-.location-1{
-   top:40%;
-   left: 10%;
-}
-.location-2{
-   top:70%;
-   left: 32%;
-}
-.location-3{
-   top:20%;
-   left: 18%;
-}
-.location-4{
-   top:50%;
-   left: 80%;
-}
-
 
 
 
@@ -705,6 +671,7 @@ a.flex-none.more-icon.ui-link img{
     transition: all 0.3s;
     opacity: 0;
     pointer-events: none;
+    z-index: 3;
 }
 
 .modal.active{
