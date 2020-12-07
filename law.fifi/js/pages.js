@@ -78,21 +78,21 @@ const AnimalProfilePage= async()=>{
 
 	query({type:'animal_by_id',params:[sessionStorage.animalId]}).then(d=>{
 
-		console.log(d)
+
 		$('#animal-profile-page .animal-profile .cat-info').html(makeAnimalProfile(d.result));
+		$('#animal-profile-page .animal-profile .cat-profile-detail').html(makeAnimalProfileAbout(d.result));
+		$('#animal-profile-page  .animal-profile-modal').html(makeAnimalProfileOptions(d.result));
 	})
 
 	query({type:'animal_status',params:[sessionStorage.animalId]}).then(d=>{
 
-		console.log(d)
+		console.log(d.result)
 		$('#animal-profile-page .animal-profile .cat-status').html(d.result.length?makeAnimalProfileStatus(d.result):`<h5 class="cat-name-title" style="font-size: 1em;">No Status Yet</h5>`);
 	})
 
-	query({type:'animal_by_id',params:[sessionStorage.animalId]}).then(d=>{
+	
 
-		console.log(d)
-		$('#animal-profile-page .animal-profile .cat-profile-detail').html(makeAnimalProfileAbout(d.result));
-	})
+
 
 
 	// query({type:'locations_by_animal_id',params:[sessionStorage.animalId]}).then(d2=>{
@@ -157,13 +157,38 @@ const EditUserProfilePage= async()=>{
 }
 
 
-// const UserSignupAddProfilePage = async()=>{
-
-// 	let d = query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
-
-// 	console.log(d)
-// 	$('#signup-success-page .user-signup-add-info').html(SignupAddUserInfoForm(d.result));
-// 	})
 
 
-// }
+
+
+
+
+const LocationAddPage= async()=>{
+
+
+	let map_el= await makeMap("#location-add-page .map");
+	makeMarkers(map_el,[]);
+
+	let map=map_el.data("map");
+
+	map.addListener("click",function(e){
+		console.log(e,map.getCenter())
+
+		let posFromClick={
+			lat:e.latLng.lat(),
+			lng:e.latLng.lng(),
+			icon:"images/map-icon.svg"
+		}
+
+		let posFromCenter={
+			lat:map.getCenter().lat(),
+			lng:map.getCenter().lng()
+		}
+
+
+		$("#location-add-lat").val(posFromClick.lat);
+		$("#location-add-lng").val(posFromClick.lng);
+
+		makeMarkers(map_el,[posFromClick])
+	})
+}

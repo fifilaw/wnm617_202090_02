@@ -152,7 +152,7 @@ const checkCatDelete= id => {
 		if(d.error){
 			throw d.error;
 		}
-
+		console.log(id);
 		window.history.back();
 
 	});
@@ -180,6 +180,52 @@ const checkFilterList= async(d)=>{
 	
 }
 
+
+
+const checkSortList= async(d) =>{
+
+	
+		console.log(d);
+	
+		// query({type:'animal_sort',params:[]})
+
+	let r = await query({type:'animal_sort',params:[d.field,d.value,sessionStorage.userId]});
+
+
+	// console.log(r);
+   drawAnimalList(r.result,"No Result Found");
+	
+}
+
+
+
+
+
+
+
+const checkLocationAddForm=()=>{
+
+	let lat =$("#location-add-lat").val();
+	let lng =$("#location-add-lng").val();
+	let status =$("#add-cat-status").val();
+	let description =$("#update-cat-description").val();
+
+
+	query({type:"insert_location",params:[sessionStorage.animalId,lat,lng,status,description]})
+	.then(d=>{
+		if(d.error){
+			throw d.error;
+		}
+	
+         $("#add-note-form")[0].reset();
+
+         window.history.go(-2);
+    
+	})
+
+
+
+}
 
 
 

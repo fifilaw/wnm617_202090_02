@@ -91,7 +91,7 @@ const makeAnimalNote= templater(o=>`
 const makeAnimalProfile= templater(o=>`
 	<div class="cat-icon flex-none"><img src="${o.img}"></div>
 	<div class="display-flex flex-end"> 
-		<div class="add-note-btn flex-none"><a href="#add-note-page">Add Updates</a></div>
+		<div class="add-note-btn flex-none"><a href="#location-add-page">Add Updates</a></div>
 	</div>
 		<div class="display-flex flex-justify-center flex-align-center">
 			
@@ -110,7 +110,7 @@ const makeAnimalProfileStatus=templater(o=>`
 			
 			<h5 class="cat-name-title" style="font-size: 1em;">Last Seen Status: ${o.status}</h5>
 
-	`)
+	`);
 
 const makeAnimalProfileAbout=templater(o=>`
 			<hr>
@@ -139,22 +139,37 @@ const makeAnimalProfileAbout=templater(o=>`
 		<div class="display-flex cat-detail">
 			<span>Neutered</span><p>${o.neutered}</p>
 		</div>
+		
 
-		<div class="modal" id="delete-cat" style="top: 0; z-index: 6; left: 0;">
+
+	`);
+
+const makeAnimalProfileOptions=templater(o=>`
+		
+
+	<div class="modal" id="delete-cat" style="top: 0; z-index: 6; left: 0;">
       	<div class="modal-back" data-deactivate="#delete-cat"></div>
       	<div class="modal-popup">
       		
       		<div class="modal-question"><div>Are you sure?</div></div>
       		<div class="display-flex space-around" style="background: var(--color-main-medium);">
-      			<div class="modal-select flex-none" data-deactivate="#delete-cat"><div><a href="#">No</a></div></div>
-      			<div class="modal-select flex-none yes"><div><a href="#" data-deactivate="#delete-cat" class="js-cat-delete" data-id="${o.id}">Yes</a></div></div>
+      			<div class="modal-select flex-none" data-deactivate="#delete-cat"><a href="#">No</a></div>
+      			<div class="modal-select flex-none yes" data-deactivate="#delete-cat"><a href="#" class="js-cat-delete" data-id="${o.id}">Yes</a></div>
       		</div>
       	</div>
       </div>
-		
+
+    <div class="modal" id="cat-menu" style="top: 0; z-index: 6; left: 0;">
+      	<div class="modal-back" data-deactivate="#cat-menu"></div>
+      	<div class="modal-popup">
+      		<div class="modal-head"><div><a href="#edit-cat-page" data-deactivate="#cat-menu">Edit Cat Profile</a></div></div>
+      		<div class="modal-foot" data-activate="#delete-cat" data-deactivate="#cat-menu"><a href="#">Delete Cat Profile</a></div>
+      	</div>
+    </div>
 
 
-	`)
+
+`);
 
 
 
@@ -178,6 +193,22 @@ const MakeCatMapPage=o=>`
 
 
 	`;
+
+
+
+
+const SelectOptions = (a,selected=0) => {
+	console.log(selected)
+
+	return a.reduce((r,o,i)=>{
+		return`<option class="options" value="${o[0]}" ${(selected==o[0])?"selected":""}>${o[1]} </option>`
+	},"");
+};
+
+const animalgenders = [
+	['Girl','Girl'],
+	['Boy','Boy']
+];
 
 
 
@@ -228,7 +259,9 @@ const EditAnimalProfileForm= templater(o=>`
 						<label for="edit-cat-gender" class="form-label">Gender</label>
 						<select name="edit-neutered" id="edit-cat-gender" class="drop-down" data-role="none">
 							<option  class="options"  value="Girl">Girl</option>
-							<option  class="options" value="Boy">Boy</option>
+							<option  class="options"  value="Boy">Boy</option>
+
+							$({SelectOptions(animalgenders,${o.gender})})
 
 						</select>
 						
@@ -329,7 +362,7 @@ const EditUserProfileForm= templater(o=>`
 				</form>
 			</div>
 
-	`)
+	`);
 
 
 const MakeUserAddInfoPage=o=>`
@@ -372,4 +405,4 @@ const MakeUserAddInfoPage=o=>`
 	</form>
 
 
-`
+`;

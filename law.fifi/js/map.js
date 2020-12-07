@@ -18,6 +18,10 @@ const makeMap= async (target, center={ lat: 37.785981, lng: -122.399262})=>{
    return map_el;
 }
 
+
+
+
+
 const makeMarkers = (map_el, map_locs)=>{
 	
 	let map = map_el.data('map');
@@ -73,8 +77,8 @@ const setMapBounds =(map_el, map_locs)=>{
 			navigator.geolocation.getCurrentPosition(
 				p=>{
 					let pos= {
-						lat:o.coords.latitude,
-						lng:o.coords.longitude,
+						lat:p.coords.latitude,
+						lng:p.coords.longitude,
 					};
 					map.setCenter(pos);
 					map.setZoom(zoom);

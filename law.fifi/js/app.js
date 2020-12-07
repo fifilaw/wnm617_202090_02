@@ -41,6 +41,10 @@ $(()=>{
 			AnimalMapPage();
 			break;
 
+			case 'location-add-page':
+			LocationAddPage();
+			break;
+
 		}
 	})
 
@@ -62,6 +66,7 @@ $(()=>{
 
 		checkListSearchForm();
 	})
+
 
 	
 
@@ -99,10 +104,24 @@ $(()=>{
 		
 	})
 
+	.on("click",".sort", function(e){
+		
+		checkSortList($(this).data());
+		
+	})
+
 	.on("click",".signup-info-jump", function(e){
 		e.preventDefault();
 		SignupAddUserInfoForm();
 	})
+
+
+	.on("click",".js-location-add", function(e){
+		// e.preventDefault();
+
+		checkLocationAddForm();
+	})
+
 
 
 

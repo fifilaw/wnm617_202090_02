@@ -147,6 +147,15 @@ function makeStatement($data){
             `$p[0]` =?
             AND user_id = ?
             ",[$p[1],$p[2]]);
+
+
+         case "animal_sort":
+        	return makeQuery($c,"SELECT * FROM
+            `track_animals` 
+            ORDER BY `$p[0]` $p[1]
+            WHERE
+            user_id = ?
+            ",[$p[1],$p[2]]);
         	
         	
 
@@ -155,12 +164,12 @@ function makeStatement($data){
         	return makeQuery($c,"SELECT * FROM
             `track_animals` a
             LEFT JOIN (
-               SELECT animal_id, status FROM `track_locations`
+               SELECT * FROM `track_locations`
                ORDER BY `date_create` DESC
             ) l
             ON a.id = l.animal_id
             WHERE animal_id = ?
-      		GROUP BY l.animal_id
+            GROUP BY l.animal_id
             ",$p);
         	
 
@@ -193,6 +202,19 @@ function makeStatement($data){
             (`user_id`,`name`,`gender`,`breed`,`color`,`coat`,`size`,`neutered`,`description`,`img`,`date_create`)
             VALUES
             (?,?, ?,?,?,?,?,?,?, 'https://via.placeholder.com/400/?text=CAT', NOW())
+            ",$p,false);
+         if(isset($r['error'])) return $r;
+         return ["id"=>$c->lastInsertId()];
+
+
+
+
+         case "insert_location":
+         	 $r = makeQuery($c,"INSERT INTO
+            `track_locations`
+            (`animal_id`,`lat`,`lng`,`status`,`description`,`photo`,`icon`,`date_create`)
+            VALUES
+            (?,?,?,?,?, 'https://via.placeholder.com/400/?text=LOCATION','images/map.svg', NOW())
             ",$p,false);
          if(isset($r['error'])) return $r;
          return ["id"=>$c->lastInsertId()];

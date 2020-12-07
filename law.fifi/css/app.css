@@ -26,7 +26,7 @@
 
 
 
-   --header-height:3.4rem;
+   --header-height:4rem;
 }
 
 
@@ -282,7 +282,7 @@ hr{
    height:var(--header-height);
    line-height:var(--header-height);
    border-width:0;
-   background-color:var(--color-white);
+   background-color:inherit;
    overflow:hidden;
    position:relative;
 }
