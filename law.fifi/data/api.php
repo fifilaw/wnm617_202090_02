@@ -152,10 +152,11 @@ function makeStatement($data){
          case "animal_sort":
         	return makeQuery($c,"SELECT * FROM
             `track_animals` 
-            ORDER BY `$p[0]` $p[1]
+
             WHERE
-            user_id = ?
-            ",[$p[1],$p[2]]);
+            user_id = $p[2]
+            ORDER BY `$p[0]` $p[1]
+            ",$p);
         	
         	
 

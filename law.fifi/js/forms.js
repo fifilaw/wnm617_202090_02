@@ -165,7 +165,7 @@ const checkListSearchForm= async()=>{
 
    let r = await query({type:"search_animals",params:[s,sessionStorage.userId]});
 
-   drawAnimalList(r.result,"No Result Found");
+   drawAnimalList(r.result,`<div class="col-sm-12 no-result-search"><img src="images/cat-sad.png" alt=""></div>`);
 
    console.log(r);
 }
@@ -173,7 +173,14 @@ const checkListSearchForm= async()=>{
 
 
 const checkFilterList= async(d)=>{
-	let r = await query({type:'animal_filter',params:[d.field,d.value,sessionStorage.userId]});
+	let r = d.value=="all"?
+
+   await query({
+      type:'animals_by_user_id',
+      params:[sessionStorage.userId]}):
+   await query({
+      type:'animal_filter',
+      params:[d.field,d.value,sessionStorage.userId]});
 
 	console.log(r);
    drawAnimalList(r.result,"No Result Found");

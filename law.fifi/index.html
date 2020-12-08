@@ -328,15 +328,17 @@
 		<div class="modal" id="filter-menu">
 	      	<div class="modal-back" data-deactivate="#filter-menu"></div>
 	      	<div class="modal-popup">
+	      		<div class="modal-head">Filter by:</div>
+	      		
 	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="all" data-field="type">All</a></div>
 
 	      		<div class="modal-head">Neutered?</div>
 	      		<div class="modal-body"><a href="#" class="filter" data-deactivate="#filter-menu" data-value="yes" data-field="neutered">Yes</a></div>
 	      		<div class="modal-body"><a href="#" class="filter" data-deactivate="#filter-menu" data-value="no" data-field="neutered">No</a></div>
-	      		<div class="modal-head">Coat</div>
-	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="short" data-field="coat">Short</a></div>
-	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="medium" data-field="coat">Medium</a></div>
-	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="long" data-field="coat">Long</a></div>
+	      		<div class="modal-head">Gender</div>
+	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="Girl" data-field="gender">Girl</a></div>
+	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="Boy" data-field="gender">Boy</a></div>
+	      		
 	      	</div>
 	      </div>
 		
@@ -345,10 +347,10 @@
 	      	<div class="modal-back" data-deactivate="#sort-menu"></div>
 	      	<div class="modal-popup">
 	      		<div class="modal-head">Sort by:</div>
-	      		<div class="modal-body"><a href="#list-page" class="sort" data-deactivate="#sort-menu">Name (A-Z)</a></div>
-	      		<div class="modal-body"><a href="#list-page" class="sort" data-deactivate="#sort-menu">Name (Z-A)</a></div>
-	      		<div class="modal-body"><a href="#list-page" class="sort" data-value="ASC" data-field="date-create" data-deactivate="#sort-menu">Date Added (Old to New)</a></div>
-	      		<div class="modal-body"><a href="#list-page" class="sort" data-value="DESC" data-field="date-create" data-deactivate="#sort-menu">Date Added (New to Old)</a></div>
+	      		<div class="modal-body"><a href="#list-page" class="sort" data-value="ASC" data-field="name" data-deactivate="#sort-menu">Name (A-Z)</a></div>
+	      		<div class="modal-body"><a href="#list-page" class="sort" data-value="DESC" data-field="name" data-deactivate="#sort-menu">Name (Z-A)</a></div>
+	      		<div class="modal-body"><a href="#list-page" class="sort" data-value="ASC" data-field="date_create" data-deactivate="#sort-menu">Date Added (Old to New)</a></div>
+	      		<div class="modal-body"><a href="#list-page" class="sort" data-value="DESC" data-field="date_create" data-deactivate="#sort-menu">Date Added (New to Old)</a></div>
 	      	</div>
 	      </div>
 	</section>
@@ -664,8 +666,27 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	<section data-role="page" id="location-add-page">
-		<header>
+		<!-- <header>
 			<div class="display-flex regular-back-header">
 				<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
 				
@@ -673,9 +694,14 @@
 				<a href="#add-note-page" class="">Next</a>
 				
 			</div>
-		</header>
+		</header> -->
 		<div data-role="main">
-			
+			<div class="display-flex space-around map-header">
+				<a href="#" class="back-icon flex-none" data-rel="back"><img src="images/back-icon.svg"></a>
+				
+				<h2 class="flex-stretch">Choose Location</h2>
+				
+			</div>
 
 			 <div>
 		         <input type="hidden" id="location-add-lat">
@@ -684,7 +710,7 @@
 		      </div>
 
 		      <div class="form-control">
-					<a href="#" class="form-button js-location-add">Add Note</a>
+					<a href="#add-note-page" class="map-next form-button">Next</a>
 				</div>
 		</div>
 
@@ -720,7 +746,7 @@
 					</div>
 					
 					<div class="form-control">
-						<label for="update-cat-description" class="form-label">Descript</label>
+						<label for="update-cat-description" class="form-label">Description</label>
 						<textarea data-role="none" name="update-cat-description" id="update-cat-description" class="add-cat-note"></textarea>
 					</div>
 					<div class="form-control">

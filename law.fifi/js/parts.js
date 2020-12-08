@@ -177,18 +177,22 @@ const makeAnimalProfileOptions=templater(o=>`
 
 const MakeCatMapPage=o=>`
 
+		
 		<div class="display-flex">
-			<div class="cat-note-photo flex-none">
-				<img src="${o.photo}" alt="">
+			<div class="flex-stretch">
+				<h4 style="margin:0">Note</h4>
+				<p><span>Status:</span> ${o.status}</p>
+				<span>Description:</span>
+				<p>${o.description}</p>
 			</div>
-		<div class="display-flex flex-column " style="padding-left: 1em;">
-			<h4 style="margin:0">Note</h4>
-			<p class="flex-stretch"><span>Status:</span> ${o.status}</p>
+				<div class="cat-note-photo flex-none">
+					<img src="${o.photo}" alt="">
+				</div>
+			
 		</div>
-		</div>
-			<h4>Note Description</h4>
-			<p>${o.description}</p>
 		<p>Created at: ${o.date_create}</p>
+
+		
 
 
 
