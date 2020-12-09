@@ -308,7 +308,7 @@
 			</div>
       	</div>
       	<div class="add-icon">
-      	<a href="#location-add-page">+<!-- <img src="images/add.svg" > --></a></div>
+      	<a href="#add-animal-page">+<!-- <img src="images/add.svg" > --></a></div>
      	<div class="overscroll">
      		<ul class="animal-list grid gap">
      			
@@ -409,7 +409,9 @@
 
 	<section data-role="page" id="user-profile-page">
 
-		<div data-role="main">
+
+
+		<div data-role="main" style="display: flex; flex-direction: column;">
 				
 			<div class="user-profile">
 			</div>
@@ -421,8 +423,9 @@
 							<li class="tab" style="margin-left: 1em;">Personal Information</li>
 						</ul>
 					</div>
-					<div class="contents ">
-						<div class="content active user-achievements display-flex overscroll">
+					<div class="overscroll">
+					<div class="contents">
+						<div class="content active user-achievements display-flex">
 							<div class="user-achievement ">
 
 								<h4>Cats Found</h4>
@@ -434,17 +437,21 @@
 							</div>
 							
 						</div>
-						<div class="content user-profile-detail">
-					
+						<div class="content">
+							
+							<div class="user-profile-detail">
+								
+							</div>
 							
 			
 						</div>
-
+					</div>
 						
 					</div>
 			</div>
 	
 		</div>
+
 		<footer data-role="footer">
          <ul>
             <li><a href="#list-page"><img src="images/list.svg" class="footer-icon list-icon"></a></li>
@@ -463,6 +470,32 @@
       	</div>
       </div>
 	</section>
+
+
+
+
+   <section data-role="page" id="user-upload-page">
+      
+      <div data-role="main">
+
+      	<div class="display-flex regular-back-header" style="margin-top: 1em;">
+					<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+					<h2 class="flex-stretch" >Choose Photo</h2>
+					
+			</div>
+         <form id="user-upload-form" data-ajax="false">
+            <input type="hidden" id="user-upload-image">
+            <label class="image-uploader full">
+
+               <input type="file" data-role="none" id="user-upload-input">
+            </label>
+
+            <div class="form-control">
+					<a href="#" class="js-user-upload map-next form-button">Save</a>
+				</div>
+         </form>
+      </div>
+   </section>
 
 
 
@@ -517,9 +550,6 @@
 
 
 
-  		
-
-      
 	</section>
 
 
@@ -545,8 +575,8 @@
 			</div>
 
 
-			<div class="cat-note overscroll flex-none">
-				<div class="display-flex flex-column">
+			<div class="cat-note overscroll">
+				<div class="display-flex flex-column" style="padding:1em">
 					<p class="">Click on the icons to see cat's previous location history!</p>
 					<div class="cat-journal-img"><img src="images/cat-journal.png"></div>
 				</div>
@@ -595,7 +625,7 @@
 		<div data-role="main" class="overscroll">
 			<div class="display-flex regular-back-header" style="margin-top: 1em;">
 					<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
-					<h2 class="flex-stretch">Add Cat</h2>
+					<h2 class="flex-stretch" >Add Cat</h2>
 					
 			</div>
 			<div>
@@ -610,11 +640,7 @@
 							<input type="text" class="form-input" id="add-cat-name" data-role="none">
 						</div>
 					</div>
-					<!-- <div class="form-control display-flex space-between">
-						<label for="cat-location" class="form-label flex-none">Location</label>
-						<a href="#add-animal-page" class="flex-stretch pin-location-btn">Pin on Map</a>
-						
-					</div> -->
+
 					<div class="form-control">
 						<label for="add-cat-gender" class="form-label">Gender</label>
 						<input type="text" class="form-input" id="add-cat-gender" data-role="none">
@@ -686,20 +712,12 @@
 
 
 	<section data-role="page" id="location-add-page">
-		<!-- <header>
-			<div class="display-flex regular-back-header">
-				<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
-				
-				<h2 class="">Choose Location</h2>
-				<a href="#add-note-page" class="">Next</a>
-				
-			</div>
-		</header> -->
+
 		<div data-role="main">
 			<div class="display-flex space-around map-header">
 				<a href="#" class="back-icon flex-none" data-rel="back"><img src="images/back-icon.svg"></a>
 				
-				<h2 class="flex-stretch">Choose Location</h2>
+				<h2 class="flex-stretch" style="padding: 0 2em 0 0;">Choose Location</h2>
 				
 			</div>
 
@@ -715,6 +733,80 @@
 		</div>
 
 	</section>
+
+
+
+
+
+
+<!--    <section data-role="page" id="cat-upload-page">
+      
+      <div data-role="main">
+
+      	<div class="display-flex regular-back-header" style="margin-top: 1em;">
+					<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+					<h2 class="flex-stretch" >Upload Image</h2>
+					
+			</div>
+         <form id="cat-upload-form" data-ajax="false">
+            <input type="hidden" id="cat-upload-image">
+            <label class="image-uploader full">
+
+               <input type="file" data-role="none" id="cat-upload-input">
+            </label>
+
+            <div class="form-control">
+					<a href="#add-note-page" class="js-cat-upload map-next form-button">Next</a>
+				</div>
+         </form>
+      </div>
+   </section>
+ -->
+
+
+
+
+
+
+
+<!-- 
+
+
+
+	<section data-role="page" id="new-cat-location-add-page">
+	
+		<div data-role="main">
+			<div class="display-flex space-around map-header">
+				<a href="#" class="back-icon flex-none" data-rel="back"><img src="images/back-icon.svg"></a>
+				
+				<h2 class="flex-stretch" style="padding: 0 2em 0 0;">Choose Location</h2>
+				
+			</div>
+
+			 <div>
+		         <input type="hidden" id="location-add-lat">
+		         <input type="hidden" id="location-add-lng">
+		         <div class="map"></div>
+		      </div>
+
+		      <div class="form-control">
+					<a href="#add-animal-page" class="map-next form-button">Next</a>
+				</div>
+		</div>
+
+	</section>
+ -->
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -740,18 +832,7 @@
 				</div>
 				<div class="overscroll">
 				<form action="" id="add-note-form" data-ajax="false">
-					<div class="form-control">
-						<label for="add-cat-status" class="form-label">Cat Status</label>
-						<input type="text" class="form-input" id="add-cat-status" data-role="none">
-					</div>
 					
-					<div class="form-control">
-						<label for="update-cat-description" class="form-label">Description</label>
-						<textarea data-role="none" name="update-cat-description" id="update-cat-description" class="add-cat-note"></textarea>
-					</div>
-					<div class="form-control">
-						<a href="#" class="form-button js-location-add">Add Note</a>
-					</div>
 				</form>
 			</div>
 		</div>
@@ -786,6 +867,12 @@
 
 
 
+	<section data-role="page" id="edit-user-photo-page">
+		<div data-role="main" class="edit-user">
+			
+
+		</div>
+	</section>
 
 
 

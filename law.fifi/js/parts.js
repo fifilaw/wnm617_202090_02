@@ -175,37 +175,86 @@ const makeAnimalProfileOptions=templater(o=>`
 
 
 
+
+
+
+const makeAddNotePage=templater(o=>`
+
+	<div class="form-control">
+		<label for="add-cat-status" class="form-label">Cat Status</label>
+		<input type="text" class="form-input" id="add-cat-status" data-role="none">
+	</div>
+
+	<div class="form-control">
+		<label for="animal-upload-note-image" class="form-label">Upload a photo of the cat:</label>
+		<input type="hidden" id="animal-edit-image" value="${o.img}">
+		<label class="image-uploader add-location" style="background-image:url('https://via.placeholder.com/400/fffbf2?text=Click to upload a photo')">
+			<input type="file" data-role="none" id="cat-upload-input">
+		</label>
+	</div>
+	
+	<div class="form-control">
+		<label for="update-cat-description" class="form-label">Description</label>
+		<textarea data-role="none" name="update-cat-description" id="update-cat-description" class="add-cat-note"></textarea>
+	</div>
+	<div class="form-control">
+		<a href="#" class="form-button js-location-add">Add Note</a>
+	</div>
+	`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const MakeCatMapPage=o=>`
 
 		
-		<div class="display-flex">
-			<div class="flex-stretch">
+		<div class="display-flex flex-column">
+		<div class="cat-note-photo flex-none flex-align-center">
+					<img src="${o.photo}" alt="">
+				</div>
+			<div class="flex-stretch" style="padding:1em">
 				<h4 style="margin:0">Note</h4>
 				<p><span>Status:</span> ${o.status}</p>
 				<span>Description:</span>
 				<p>${o.description}</p>
+				<p>Created at: ${o.date_create}</p>
 			</div>
-				<div class="cat-note-photo flex-none">
-					<img src="${o.photo}" alt="">
-				</div>
+				
 			
 		</div>
-		<p>Created at: ${o.date_create}</p>
 
-		
-
-
+	
 
 	`;
 
 
 
 
-const SelectOptions = (a,selected=0) => {
-	console.log(selected)
+const SelectOptions = (a,selected) => {
+
 
 	return a.reduce((r,o,i)=>{
-		return`<option class="options" value="${o[0]}" ${(selected==o[0])?"selected":""}>${o[1]} </option>`
+
+		return r+`<option class="options" value="${o[0]}" ${(selected==o[0])?"selected":""}>${o[1]} </option>`
+
 	},"");
 };
 
@@ -214,6 +263,11 @@ const animalgenders = [
 	['Boy','Boy']
 ];
 
+
+const animalneutered = [
+	['Yes','Yes'],
+	['No','No']
+];
 
 
 
@@ -246,13 +300,12 @@ const EditAnimalProfileForm= templater(o=>`
 			<div class="overscroll">
 				<form action="" id="edit-cat-form" data-ajax="false" class="margin-bot-5">
 					<div class="form-control display-flex flex-align-center  flex-column">
-						<div class="form-upload-photo cat">
-							<img src="${o.img}">
-
-						</div>
-						<div >
-							<a href="#" class="edit-photo-btn">Edit Photo</a>
-							
+						
+						<div>
+							<input type="hidden" id="animal-edit-image" value="${o.img}">
+							<label class="image-uploader thumbnail" style="background-image:url('${o.img}')">
+								<input type="file" data-role="none" id="cat-upload-input">
+							</label>
 						</div>
 					</div>
 					<div class="form-control">
@@ -262,10 +315,9 @@ const EditAnimalProfileForm= templater(o=>`
 					<div class="form-control">
 						<label for="edit-cat-gender" class="form-label">Gender</label>
 						<select name="edit-neutered" id="edit-cat-gender" class="drop-down" data-role="none">
-							<option  class="options"  value="Girl">Girl</option>
-							<option  class="options"  value="Boy">Boy</option>
+							
 
-							$({SelectOptions(animalgenders,${o.gender})})
+							${SelectOptions(animalgenders,o.gender)}
 
 						</select>
 						
@@ -290,18 +342,17 @@ const EditAnimalProfileForm= templater(o=>`
 					<div class="form-control">
 						<label for="edit-cat-neutered" class="form-label">Neutered?</label>
 						<select name="edit-neutered" id="edit-cat-neutered" class="drop-down" data-role="none">
-							<option  class="options"  value="Yes">Yes</option>
-							<option  class="options" value="No">No</option>
-
+							${SelectOptions(animalneutered,o.neutered)}
+							
 						</select>
 					</div>
 					<div class="form-control">
 						<label for="edit-cat-description" class="form-label">Cat Description</label>
-						<textarea data-role="none" name="edit-cat-description" class="add-cat-note margin-bot-5" id="edit-cat-description">${o.description}</textarea>
+						<textarea data-role="none" name="edit-cat-description" class="add-cat-note " id="edit-cat-description">${o.description}</textarea>
 					</div>
 				
 					<div class="form-control">
-						<a href="#animal-profile-page" class="form-button fixed js-cat-edit">Save</a>
+						<a href="#animal-profile-page" class="form-button js-cat-edit">Save</a>
 					</div>
 
 				</form>
@@ -323,7 +374,7 @@ const EditUserProfileForm= templater(o=>`
 
 						</div>
 						<div >
-							<a href="#" class="edit-photo-btn">Edit Photo</a>
+							<a href="#user-upload-page" class="edit-photo-btn">Edit Photo</a>
 							
 						</div>
 					</div>
@@ -410,3 +461,33 @@ const MakeUserAddInfoPage=o=>`
 
 
 `;
+
+
+
+const filterList = (animals,type) => {
+   let a = [...(new Set(animals.map(o=>o[type])))];
+   return templater(o=>`<div class="filter" data-field="${type}" data-value="${o}">${o[0].toUpperCase()+o.substr(1)}</div>`)(a);
+}
+
+const makeFilterList = (animals) => {
+   return `
+   <div class="filter" data-field="type" data-value="all">All</div> | 
+   ${filterList(animals,'type')} | 
+   ${filterList(animals,'breed')} 
+   `;
+}
+
+
+
+
+
+
+
+
+
+
+
+const makeUploaderImage = (el,name,folder='') => {
+   $(el).parent().css({'background-image':`url('${folder+name}')`}).addClass("picked")
+      .prev().val(folder+name)
+}

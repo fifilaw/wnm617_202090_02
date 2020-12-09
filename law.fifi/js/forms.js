@@ -84,11 +84,12 @@ const checkCatEditForm =()=>{
    let breed = $("#edit-cat-breed").val();
    let color = $("#edit-cat-color").val();
    let coat = $("#edit-cat-coat").val();	
-   let size = $("#edit-cat-size").val();	
+   let size = $("#edit-cat-size").val();  
+   let img = $("#animal-edit-image").val();	
    let neutered = $("#edit-cat-neutered").val();	
    let description = $("#edit-cat-description").val();	
 
-    query({type:'update_cat',params:[name,gender,breed,color,coat,size,neutered,description,sessionStorage.animalId]})
+    query({type:'update_cat',params:[name,gender,breed,color,coat,size,neutered,description,img,sessionStorage.animalId]})
       .then(d=>{
          if(d.error) {
             throw d.error;
@@ -215,10 +216,11 @@ const checkLocationAddForm=()=>{
 	let lat =$("#location-add-lat").val();
 	let lng =$("#location-add-lng").val();
 	let status =$("#add-cat-status").val();
+   let photo = $("#animal-edit-image").val();
 	let description =$("#update-cat-description").val();
 
 
-	query({type:"insert_location",params:[sessionStorage.animalId,lat,lng,status,description]})
+	query({type:"insert_location",params:[sessionStorage.animalId,lat,lng,status,description,photo]})
 	.then(d=>{
 		if(d.error){
 			throw d.error;
@@ -236,3 +238,44 @@ const checkLocationAddForm=()=>{
 
 
 
+
+
+
+
+
+
+
+
+const checkUpload=file=>{
+
+   let fd= new FormData();
+   fd.append("image",file);
+
+   return fetch('data/api.php',{
+      method:'POST',
+      body:fd
+   }).then(d=>d.json())
+}
+
+
+
+
+
+
+const checkUserUpload=()=>{
+   let upload = $("#user-upload-image").val();
+
+   if(upload=="")return;
+
+   query({type:'update_user_image',
+      params:[upload,sessionStorage.userId]
+   }).then(d=>{
+      if(d.error){
+         throw d.error;
+      }
+      console.log("done")
+      window.history.back();
+
+
+   })
+}

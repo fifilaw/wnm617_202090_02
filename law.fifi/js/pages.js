@@ -4,7 +4,7 @@ const MapPage= async()=>{
 
 	let d = await query({type:'recent_locations',params:[sessionStorage.userId]});
 
-		console.log(d);
+		// console.log(d);
 
 	let valid_animals = d.result.reduce((r,o)=>{
       o.icon = o.img;
@@ -12,7 +12,7 @@ const MapPage= async()=>{
       return r;
    },[])
 
-	console.log(valid_animals);
+	// console.log(valid_animals);
 
 	let map_el= await makeMap("#map-page .map");
 
@@ -44,7 +44,7 @@ const MapPage= async()=>{
 const ListPage= async()=>{
 	let d = await query({type:'animals_by_user_id',params:[sessionStorage.userId]});
 
-	console.log(d)
+	// console.log(d)
 	$('#list-page .animal-list').html(d.result.length?makeAnimalList(d.result):`<div class="no-cat col-sm-12"><img src="images/add-cat.png" alt=""></div>`);
 
 
@@ -54,19 +54,19 @@ const UserProfilePage= async()=>{
 
 	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
 
-		console.log(d)
+		// console.log(d)
 		$('#user-profile-page .user-profile').html(makeUserProfileIcon(d.result));
 	})
 
 	query({type:'animals_by_user_id',params:[sessionStorage.userId]}).then(d=>{
 
-		console.log(d)
+		// console.log(d)
 		$('.cat-found').html(d.result.length);
 	})
 
 	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
 
-		console.log(d)
+		// console.log(d)
 		$('.user-profile-detail').html(makeUserProfileInfo(d.result));
 	})
 
@@ -86,7 +86,7 @@ const AnimalProfilePage= async()=>{
 
 	query({type:'animal_status',params:[sessionStorage.animalId]}).then(d=>{
 
-		console.log(d.result)
+		// console.log(d.result)
 		$('#animal-profile-page .animal-profile .cat-status').html(d.result.length?makeAnimalProfileStatus(d.result):`<h5 class="cat-name-title" style="font-size: 1em;">No Status Yet</h5>`);
 	})
 
@@ -111,14 +111,14 @@ const AnimalMapPage= async()=>{
       makeMap(".cat-profile-map").then(map_el=>{
 
          makeMarkers(map_el,d.result);
-		console.log(d)
+		// console.log(d)
 
          map_el.data("markers").forEach((o,i)=>{
 			o.addListener("click", function(){
-				console.log("click")
+				// console.log("click")
 
 	        $("#animal-map-page .cat-note").html(MakeCatMapPage(d.result[i]))
-
+	        $(".cat-map").addClass("active")
 			})
 		})
       })
@@ -127,7 +127,7 @@ const AnimalMapPage= async()=>{
 
 	query({type:'location_by_id',params:[sessionStorage.animalId]}).then(d=>{
 
-		console.log(d)
+		// console.log(d)
 		$('#animal-map-page .map-details').html(MakeCatMapPage(d.result));
 	})
 
@@ -140,7 +140,7 @@ const EditAnimalProfilePage= async()=>{
 
 	let d = await query({type:'animal_by_id',params:[sessionStorage.animalId]});
 
-	console.log(d)
+	// console.log(d)
 	$('#edit-cat-page .edit-cat').html(EditAnimalProfileForm(d.result));
 }
 
@@ -148,7 +148,7 @@ const EditUserProfilePage= async()=>{
 
 	let d = query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
 
-	console.log(d)
+	// console.log(d)
 	$('#edit-user-page .edit-user').html(EditUserProfileForm(d.result));
 	})
 
@@ -190,5 +190,93 @@ const LocationAddPage= async()=>{
 		$("#location-add-lng").val(posFromClick.lng);
 
 		makeMarkers(map_el,[posFromClick])
+	})
+}
+
+
+
+
+
+
+
+
+
+
+
+const NewCatLocationAddPage= async()=>{
+
+
+	let map_el= await makeMap("#new-cat-location-add-page .map");
+	makeMarkers(map_el,[]);
+
+	let map=map_el.data("map");
+
+	map.addListener("click",function(e){
+		console.log(e,map.getCenter())
+
+		let posFromClick={
+			lat:e.latLng.lat(),
+			lng:e.latLng.lng(),
+			icon:"images/map-icon.svg"
+		}
+
+		let posFromCenter={
+			lat:map.getCenter().lat(),
+			lng:map.getCenter().lng()
+		}
+
+
+		$("#location-add-lat").val(posFromClick.lat);
+		$("#location-add-lng").val(posFromClick.lng);
+
+		makeMarkers(map_el,[posFromClick])
+	})
+}
+
+
+
+
+
+
+
+const UserUploadPage = async() => {
+   query({
+      type:'user_by_id',
+      params:[sessionStorage.userId]
+   }).then(d=>{
+      console.log(d)
+
+      makeUploaderImage($("#user-upload-input"),d.result[0].img)
+   });
+}
+
+
+
+
+
+
+const AddNotePage = async()=>{
+
+	query({type:'animal_by_id',params:[sessionStorage.animalId]}).then(d=>{
+
+
+		$('#add-note-page #add-note-form').html(makeAddNotePage(d.result));
+	})
+
+}
+
+
+
+
+
+
+
+
+const AddAnimalPage=async()=>{
+
+		query({type:'animal_by_id',params:[sessionStorage.animalId]}).then(d=>{
+
+
+		$('#add-note-page #add-note-form').html(makeAddNotePage(d.result));
 	})
 }

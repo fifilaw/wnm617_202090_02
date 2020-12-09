@@ -36,6 +36,14 @@ $(()=>{
 			EditUserProfilePage();
 			break;
 
+			case 'user-upload-page':
+			UserUploadPage();
+			break;
+
+			case 'add-animal-page':
+			AddAnimalPage();
+			break;
+
 
 			case 'animal-map-page':
 			AnimalMapPage();
@@ -43,6 +51,11 @@ $(()=>{
 
 			case 'location-add-page':
 			LocationAddPage();
+			break;
+
+
+			case 'add-note-page':
+			AddNotePage();
 			break;
 
 		}
@@ -109,6 +122,25 @@ $(()=>{
 		checkSortList($(this).data());
 		
 	})
+
+	.on("change",".image-uploader input", function(e){
+		
+		checkUpload(this.files[0])
+		.then(d=>{
+			console.log(d)
+			makeUploaderImage(this,d.result,'uploads/')
+		})
+		
+	})
+
+
+	.on("click",".js-user-upload", function(e){
+		checkUserUpload();
+	})
+
+
+
+
 
 	.on("click",".signup-info-jump", function(e){
 		e.preventDefault();

@@ -13,7 +13,7 @@
 
    --color-neutral-light: #fffbf2;
    --color-neutral-medium: #ffc792;
-   --color-neutral-dark: #5d2910;
+   --color-neutral-dark: #8d4d2e;
    --color-neutral-black: #3b3a39;
    --color-neutral-accent: #92caff;
 
@@ -492,7 +492,12 @@ a.onboarding-back-btn.ui-link {
 
 .animal-list-img{
     width: 100%;
+    height: 20vh;
     margin-right: 15px;
+    overflow: hidden;
+    justify-content: center;
+        display: flex;
+    align-items: center;
 
 }
 .animal-list-img img{
@@ -622,10 +627,12 @@ a.onboarding-back-btn.ui-link {
     text-align: center;
     font-weight: 700;
 }
-
+.contents{
+  height:300px;
+}
 .content.active{
   display: block;
-
+  height:300px;
 }
 .content{
   display: none;
@@ -657,6 +664,7 @@ a.onboarding-back-btn.ui-link {
 }
 .user-profile-detail>p{
   line-height: 15px;
+  margin:0;
 }
 
 .more-icon{
@@ -825,13 +833,17 @@ a.edit-photo-btn {
 
 .cat-icon{
     margin: 0;
-    width: 100vw;
+    width: 750px;
+    height: 45vh;
+    overflow: hidden;
     pointer-events: none;
+    display: flex;
+    align-items: center;
 }
 
 .cat-icon img{
-    max-width: 100%;
-    margin: auto;
+    width: 50%;
+
 
 }
 
@@ -967,6 +979,7 @@ border: 2px solid var(--color-neutral-medium);
 
 .cat-note>div>div>p{
   margin:0;
+  padding: 0.6em 0;
 }
 
 
@@ -991,21 +1004,22 @@ border: 2px solid var(--color-neutral-medium);
 }
 
 .cat-note-photo{
-    width: 150px;
-    height: 150px;
-    border-radius: 15px;
-    padding-left: 0.5em;
-    margin-top: 2em;
+    width: 750px;
+    height: 300px;
+    overflow: hidden;
+    /* border-radius: 15px 15px 0 0; */
+    display: flex;
 }
 
 .cat-note-photo img{
-  max-width: 100%;
+  width: 50%;
+
 }
 
 
 .cat-bio {
     background-color: #fffbf2;
-    padding: 1em 1.5em;
+    padding: 0.5em 1.5em;
     border-radius: 5px;
     box-shadow: 0px 1px 3px #5d291024;
     margin: 1em auto;
@@ -1058,7 +1072,10 @@ border: 2px solid var(--color-neutral-medium);
   height: 100%;
 }
 
-
+.cat-map.flex-stretch.active{
+  flex:20%;
+  transition: 0.5s ease all ;
+}
 .cat-map{
     flex: 60%;
 
@@ -1074,7 +1091,7 @@ border: 2px solid var(--color-neutral-medium);
 
 .cat-note{
   flex:40%;
-  padding: 1em;
+/*  padding: 1em;*/
       /*background-color: var(--color-neutral-light);*/
 }
 
@@ -1111,3 +1128,77 @@ border: 2px solid var(--color-neutral-medium);
 
 
 
+
+
+
+
+
+
+
+
+
+.image-uploader.full {
+   position:absolute;
+   top:15%;
+   left:0;
+   width:100%;
+   height:100%;
+
+   background-size:contain;
+   background-repeat:no-repeat;
+}
+.ui-mobile label.image-uploader {
+   margin:0;
+}
+
+
+.image-uploader input {
+  color: transparent;
+  background-color: transparent;
+  outline: none;
+}
+.image-uploader input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+#user-upload-input::before,
+#cat-upload-input::before{
+    content: 'Edit Photo';
+    color: var(--color-neutral-dark);
+    display: inline-block;
+    background: var(--color-neutral-medium);
+    padding: 0.5em 1em;
+    white-space: nowrap;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 10pt;
+    border-radius: 5px;
+}
+
+#cat-upload-input::before{
+      position: absolute;
+    top: 100%;
+    left: 15%;
+    margin: auto;
+
+    margin: 1em 0;
+
+}
+
+.image-uploader.thumbnail {
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    position:relative;
+}
+
+
+.image-uploader.add-location{
+    width: 90vw;
+    height: 50vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
