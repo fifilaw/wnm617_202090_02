@@ -71,7 +71,6 @@ const makeUserProfileInfo =templater(o=>`
 	<p><span>Gender: </span> ${o.gender}</p>
 	<p><span>Email: </span>${o.email}</p>
 	<p><span>Location: </span>${o.location}</p>
-	<p><span>Date Joined: </span>Jan 2020</p>
 
 
 `);
@@ -91,7 +90,7 @@ const makeAnimalNote= templater(o=>`
 const makeAnimalProfile= templater(o=>`
 	<div class="cat-icon flex-none"><img src="${o.img}"></div>
 	<div class="display-flex flex-end"> 
-		<div class="add-note-btn flex-none"><a href="#location-add-page">Add Updates</a></div>
+		<div class="add-note-btn flex-none"><a href="#location-add-page">Add Location</a></div>
 	</div>
 		<div class="display-flex flex-justify-center flex-align-center">
 			
@@ -187,9 +186,9 @@ const makeAddNotePage=templater(o=>`
 
 	<div class="form-control">
 		<label for="animal-upload-note-image" class="form-label">Upload a photo of the cat:</label>
-		<input type="hidden" id="animal-edit-image" value="${o.img}">
+		<input type="hidden" id="animal-note-image" value="${o.img}">
 		<label class="image-uploader add-location" style="background-image:url('https://via.placeholder.com/400/fffbf2?text=Click to upload a photo')">
-			<input type="file" data-role="none" id="cat-upload-input">
+			<input type="file" data-role="none" id="cat-upload-note-input">
 		</label>
 	</div>
 	
@@ -231,7 +230,7 @@ const MakeCatMapPage=o=>`
 					<img src="${o.photo}" alt="">
 				</div>
 			<div class="flex-stretch" style="padding:1em">
-				<h4 style="margin:0">Note</h4>
+				
 				<p><span>Status:</span> ${o.status}</p>
 				<span>Description:</span>
 				<p>${o.description}</p>
@@ -262,6 +261,20 @@ const animalgenders = [
 	['Girl','Girl'],
 	['Boy','Boy']
 ];
+
+const animalsize = [
+	['Small','Small'],
+	['Medium','Medium'],
+	['Large','Large']
+];
+
+
+const animalcoat = [
+	['Short','Short'],
+	['Medium','Medium'],
+	['Long','Long']
+];
+
 
 
 const animalneutered = [
@@ -301,12 +314,12 @@ const EditAnimalProfileForm= templater(o=>`
 				<form action="" id="edit-cat-form" data-ajax="false" class="margin-bot-5">
 					<div class="form-control display-flex flex-align-center  flex-column">
 						
-						<div>
+					
 							<input type="hidden" id="animal-edit-image" value="${o.img}">
 							<label class="image-uploader thumbnail" style="background-image:url('${o.img}')">
-								<input type="file" data-role="none" id="cat-upload-input">
+								<input type="file" data-role="none" id="cat-edit-input">
 							</label>
-						</div>
+					
 					</div>
 					<div class="form-control">
 						<label for="edit-cat-name" class="form-label">Cat Name</label>
@@ -314,7 +327,7 @@ const EditAnimalProfileForm= templater(o=>`
 					</div>
 					<div class="form-control">
 						<label for="edit-cat-gender" class="form-label">Gender</label>
-						<select name="edit-neutered" id="edit-cat-gender" class="drop-down" data-role="none">
+						<select name="edit-cat-gender" id="edit-cat-gender" class="drop-down" data-role="none">
 							
 
 							${SelectOptions(animalgenders,o.gender)}
@@ -333,11 +346,17 @@ const EditAnimalProfileForm= templater(o=>`
 					</div>
 					<div class="form-control">
 						<label for="edit-cat-size" class="form-label">Size</label>
-						<input type="text" class="form-input" id="edit-cat-size" data-role="none" value="${o.size}">
+						<select id="edit-cat-size" data-role="none" class="drop-down">
+							${SelectOptions(animalsize,o.size)}
+
+						</select>
 					</div>
 					<div class="form-control">
 						<label for="edit-cat-coat" class="form-label">Coat</label>
-						<input type="text" class="form-input" id="edit-cat-coat" data-role="none" value="${o.coat}">
+						<select id="edit-cat-coat" data-role="none" class="drop-down">
+							${SelectOptions(animalcoat,o.coat)}
+
+						</select>
 					</div>
 					<div class="form-control">
 						<label for="edit-cat-neutered" class="form-label">Neutered?</label>
@@ -362,22 +381,22 @@ const EditAnimalProfileForm= templater(o=>`
 
 const EditUserProfileForm= templater(o=>`
 		<div class="display-flex regular-back-header" style="margin-top: 1em;">
-					<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
-						<h2 class="flex-stretch">Edit Profile</h2>
-					
-				</div>
+			<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+				<h2 class="flex-stretch">Edit Profile</h2>
+			
+		</div>
 			<div class="overscroll ">
 				<form action="" id="edit-user-form" data-ajax="false" class="margin-bot-5">
-					<div class="form-control display-flex flex-align-center  flex-column">
-						<div class="form-upload-photo cat">
-							<img src="${o.img}">
-
-						</div>
-						<div >
-							<a href="#user-upload-page" class="edit-photo-btn">Edit Photo</a>
-							
-						</div>
+					<div class="form-control display-flex flex-align-center  flex-column" style="margin-bottom:3em;">
+						
+					
+							<input type="hidden" id="user-edit-image" value="${o.img}">
+							<label class="image-uploader thumbnail" style="background-image:url('${o.img}')">
+								<input type="file" data-role="none" id="user-upload-input">
+							</label>
+					
 					</div>
+					
 						<div class="form-control">
 							<label for="edit-user-username" class="form-label">Username</label>
 							<input type="text" class="form-input" id="edit-user-username" data-role="none" value="${o.username}">
@@ -406,12 +425,12 @@ const EditUserProfileForm= templater(o=>`
 				
 					<div class="form-control">
 						<label for="edit-user-bio" class="form-label">Bio</label>
-						<textarea data-role="none" name="edit-user-bio" id="edit-user-bio" class="add-cat-note margin-bot-5">${o.bio}</textarea>
+						<textarea data-role="none" name="edit-user-bio" id="edit-user-bio" class="add-cat-note">${o.bio}</textarea>
 					</div>
 
 				
 					<div class="form-control">
-						<a href="#user-profile-page" class="form-button fixed js-user-edit">Save Changes</a>
+						<a href="#user-profile-page" class="form-button js-user-edit">Save Changes</a>
 					</div>
 
 				</form>
@@ -420,21 +439,14 @@ const EditUserProfileForm= templater(o=>`
 	`);
 
 
-const MakeUserAddInfoPage=o=>`
+const MakeUserAddInfoPage=templater(o=>`
 
 	<div class="welcome-msg">
-		<h2>Welcome!</h2>
+		<h2>Welcome ${o.firstname}!</h2>
 		<p>Tell us about yourself:</p>
 	</div>
 	<form id="signup-success-form" data-ajax="false">
-		<div class="form-control display-flex flex-column">
-			<label for="signup-firstname" class="form-label">First Name</label>
-			<input type="text" class="form-input" id="signup-firstname" data-role="none">
-		</div>
-		<div class="form-control display-flex flex-column">
-			<label for="signup-lastname" class="form-label">Last Name</label>
-			<input type="lastname" class="form-input" id="signup-lastname" data-role="none">
-		</div>
+		
 		<div class="form-control display-flex flex-column">
 			<label for="signup-gender" class="form-label">Gender</label>
 			<input type="gender" class="form-input" id="signup-gender" data-role="none">
@@ -450,17 +462,17 @@ const MakeUserAddInfoPage=o=>`
 		
 		
 			<div class="form-control">
-				<input type="submit" class="form-button signup-info-jump fixed" value="Save" data-role="none">
+				<input type="submit" class="form-button signup-info-jump" value="Save" data-role="none">
 			</div>
 			<div class="form-control">
-				<button class="skip-button fixed"  data-role="none">I'll skip it for now</button>
+				<a href="#" class="skip-button signup-info-jump"  data-role="none">I'll skip it for now</a>
 			</div>
 		
 		
 	</form>
 
 
-`;
+`);
 
 
 
@@ -491,3 +503,12 @@ const makeUploaderImage = (el,name,folder='') => {
    $(el).parent().css({'background-image':`url('${folder+name}')`}).addClass("picked")
       .prev().val(folder+name)
 }
+
+
+
+
+
+
+
+
+

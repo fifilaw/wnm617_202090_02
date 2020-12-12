@@ -77,11 +77,19 @@
 
 	<section data-role="page" id="signup-page">
 		<div data-role="main" class="flex-justify-center flex-align-center overscroll">
-			<div class="display-flex flex-justify-center flex-align-center  padding-top-5" >
+			<div class="display-flex flex-justify-center flex-align-center padding-top-2" >
 				<img src="images/purry-logo.svg">
 			</div>
 			<div class="login-error">Login failed. Please try again.</div>
 			<form id="signup-form" data-ajax="false">
+				<div class="form-control display-flex flex-column">
+					<label for="signup-firstname" class="form-label">First Name</label>
+					<input type="text" class="form-input" id="signup-firstname" data-role="none">
+				</div>
+				<div class="form-control display-flex flex-column">
+					<label for="signup-lastname" class="form-label">Last Name</label>
+					<input type="lastname" class="form-input" id="signup-lastname" data-role="none">
+				</div>
 				<div class="form-control display-flex flex-column">
 					<label for="signup-username" class="form-label">Username</label>
 					<input type="text" class="form-input" id="signup-username" data-role="none">
@@ -130,42 +138,7 @@
 
 	<section data-role="page" id="signup-success-page">
 		<div data-role="main" class="user-signup-add-info display-flex flex-column flex-justify-center overscroll">
-			<div class="welcome-msg">
-				<h2>Welcome!</h2>
-				<p>Tell us about yourself:</p>
-			</div>
-			<form id="signup-success-form" data-ajax="false">
-				<div class="form-control display-flex flex-column">
-					<label for="signup-firstname" class="form-label">First Name</label>
-					<input type="text" class="form-input" id="signup-firstname" data-role="none">
-				</div>
-				<div class="form-control display-flex flex-column">
-					<label for="signup-lastname" class="form-label">Last Name</label>
-					<input type="lastname" class="form-input" id="signup-lastname" data-role="none">
-				</div>
-				<div class="form-control display-flex flex-column">
-					<label for="signup-gender" class="form-label">Gender</label>
-					<input type="gender" class="form-input" id="signup-gender" data-role="none">
-				</div>
-				<div class="form-control display-flex flex-column">
-					<label for="signup-location" class="form-label">Location</label>
-					<input type="location" class="form-input" id="signup-location" data-role="none">
-				</div>
-				<div class="form-control">
-					<label for="signup-bio" class="form-label">Bio</label>
-					<textarea data-role="none" name="signup-bio"id="signup-bio" class="add-cat-note margin-bot-5"></textarea>
-				</div>
-				
-				
-					<div class="form-control">
-						<a class="form-button signup-info-jump signup-fixed" data-role="none">Save</a>
-					</div>
-					<div class="form-control">
-						<button class="skip-button fixed"  data-role="none">I'll skip it for now</button>
-					</div>
-				
-				
-			</form>
+			
 
 			
 		</div>
@@ -307,8 +280,9 @@
 				<h4 class="flex-none" data-activate="#sort-menu">Sort</h4>
 			</div>
       	</div>
-      	<div class="add-icon">
-      	<a href="#add-animal-page">+<!-- <img src="images/add.svg" > --></a></div>
+      	<div class="add-icon floater right bottom">
+      		<a href="#cat-upload-page">+<!-- <img src="images/add.svg" > --></a>
+      	</div>
      	<div class="overscroll">
      		<ul class="animal-list grid gap">
      			
@@ -330,14 +304,14 @@
 	      	<div class="modal-popup">
 	      		<div class="modal-head">Filter by:</div>
 	      		
-	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="all" data-field="type">All</a></div>
+	      		<div class="modal-body filter" data-deactivate="#filter-menu" data-value="all" data-field="type">All</div>
 
 	      		<div class="modal-head">Neutered?</div>
-	      		<div class="modal-body"><a href="#" class="filter" data-deactivate="#filter-menu" data-value="yes" data-field="neutered">Yes</a></div>
-	      		<div class="modal-body"><a href="#" class="filter" data-deactivate="#filter-menu" data-value="no" data-field="neutered">No</a></div>
+	      		<div class="modal-body filter" data-deactivate="#filter-menu" data-value="yes" data-field="neutered">Yes</div>
+	      		<div class="modal-body filter" data-deactivate="#filter-menu" data-value="no" data-field="neutered">No</div>
 	      		<div class="modal-head">Gender</div>
-	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="Girl" data-field="gender">Girl</a></div>
-	      		<div class="modal-body"><a href="#list-page" class="filter" data-deactivate="#filter-menu" data-value="Boy" data-field="gender">Boy</a></div>
+	      		<div class="modal-body filter" data-deactivate="#filter-menu" data-value="Girl" data-field="gender">Girl</div>
+	      		<div class="modal-body filter" data-deactivate="#filter-menu" data-value="Boy" data-field="gender">Boy</div>
 	      		
 	      	</div>
 	      </div>
@@ -347,10 +321,10 @@
 	      	<div class="modal-back" data-deactivate="#sort-menu"></div>
 	      	<div class="modal-popup">
 	      		<div class="modal-head">Sort by:</div>
-	      		<div class="modal-body"><a href="#list-page" class="sort" data-value="ASC" data-field="name" data-deactivate="#sort-menu">Name (A-Z)</a></div>
-	      		<div class="modal-body"><a href="#list-page" class="sort" data-value="DESC" data-field="name" data-deactivate="#sort-menu">Name (Z-A)</a></div>
-	      		<div class="modal-body"><a href="#list-page" class="sort" data-value="ASC" data-field="date_create" data-deactivate="#sort-menu">Date Added (Old to New)</a></div>
-	      		<div class="modal-body"><a href="#list-page" class="sort" data-value="DESC" data-field="date_create" data-deactivate="#sort-menu">Date Added (New to Old)</a></div>
+	      		<div class="modal-body sort" data-value="ASC" data-field="name" data-deactivate="#sort-menu">Name (A-Z)</div>
+	      		<div class="modal-body sort" data-value="DESC" data-field="name" data-deactivate="#sort-menu">Name (Z-A)</div>
+	      		<div class="modal-body sort" data-value="ASC" data-field="date_create" data-deactivate="#sort-menu">Date Added (Old to New)</div>
+	      		<div class="modal-body sort" data-value="DESC" data-field="date_create" data-deactivate="#sort-menu">Date Added (New to Old)</div>
 	      	</div>
 	      </div>
 	</section>
@@ -374,12 +348,13 @@
 
 	<section data-role="page" id="map-page">
 		<div data-role="main">
+			<!-- <div class="btn-circle floater top left" data-activate="#map-filter-menu">Filter</div> -->
 			<div class="map"></div>
-			<!-- <a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-1"></a>
-			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-2"></a>
-			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-3"></a>
-			<a href="#animal-profile-page"><img src="images/map.svg" class="animal-list-img location-4"></a> -->
+		
 		</div>
+		<div class="add-icon floater right " style="bottom: 3em;">
+      		<a href="#cat-upload-page">+<!-- <img src="images/add.svg" > --></a>
+      	</div>
 		<footer data-role="footer">
          <ul>
             <li><a href="#list-page"><img src="images/list.svg" class="footer-icon list-icon"></a></li>
@@ -387,6 +362,23 @@
             <li><a href="#user-profile-page"> <img src="images/profile.svg" class="footer-icon profile-icon"></a></li>
          </ul>
       </footer>
+
+  <!--     <div class="modal" id="map-filter-menu">
+      	<div class="modal-back" data-deactivate="#map-filter-menu"></div>
+      	<div class="modal-drawer left">
+      		<div class="modal-head"><strong>Filter</strong></div>
+      		
+      		<div class="modal-body filter" data-deactivate="#filter-menu" data-value="all" data-field="type">All</div>
+
+      		<div class="modal-head">Neutered?</div>
+      		<div class="modal-body filter" data-deactivate="#filter-menu" data-value="yes" data-field="neutered">Yes</div>
+      		<div class="modal-body filter" data-deactivate="#filter-menu" data-value="no" data-field="neutered">No</div>
+      		<div class="modal-head">Gender</div>
+      		<div class="modal-body filter" data-deactivate="#filter-menu" data-value="Girl" data-field="gender">Girl</div>
+      		<div class="modal-body filter" data-deactivate="#filter-menu" data-value="Boy" data-field="gender">Boy</div>
+      		
+      	</div>
+      </div> -->
 	</section>
 
 
@@ -474,30 +466,6 @@
 
 
 
-   <section data-role="page" id="user-upload-page">
-      
-      <div data-role="main">
-
-      	<div class="display-flex regular-back-header" style="margin-top: 1em;">
-					<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
-					<h2 class="flex-stretch" >Choose Photo</h2>
-					
-			</div>
-         <form id="user-upload-form" data-ajax="false">
-            <input type="hidden" id="user-upload-image">
-            <label class="image-uploader full">
-
-               <input type="file" data-role="none" id="user-upload-input">
-            </label>
-
-            <div class="form-control">
-					<a href="#" class="js-user-upload map-next form-button">Save</a>
-				</div>
-         </form>
-      </div>
-   </section>
-
-
 
 
 
@@ -521,9 +489,9 @@
 	<section data-role="page" id="animal-profile-page">
 		<div class="overscroll">
 		<div class="display-flex back-header space-around">
-				<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+				<a href="#" class="back-icon" data-rel="back"><img src="images/back-light.png"></a>
 					<h2 class="flex-stretch" style="padding-right:1em">Cat Profile</h2>
-				<a href="#" class="flex-none more-icon" data-activate="#cat-menu"><img src="images/more.png" ></a>
+				<a href="#" class="flex-none more-icon" data-activate="#cat-menu"><img src="images/more-light.png" ></a>
 			</div>
 
 		<div data-role="main" class="animal-profile">
@@ -603,6 +571,31 @@
 
 
 
+   <section data-role="page" id="cat-upload-page">
+      
+      <div data-role="main">
+
+      	<div class="new-cat-upload display-flex regular-back-header flex-align-center" >
+					<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+					<h2 class="flex-stretch" >Add New Cat</h2>
+					<a href="#add-animal-page" class="back-icon"><img src="images/next.png"></a>
+					
+			</div>
+         <form id="cat-upload-form" data-ajax="false">
+            <input type="hidden" id="cat-upload-image">
+            <label class="image-uploader full">
+
+               <input type="file" data-role="none" id="cat-upload-input">
+            </label>
+
+            <!-- <div class="form-control">
+					<a href="#add-animal-page" class="map-next form-button">Save</a>
+				</div> -->
+         </form>
+      </div>
+   </section>
+
+
 
 
 
@@ -622,55 +615,71 @@
 
 	<section data-role="page" id="add-animal-page">
 
-		<div data-role="main" class="overscroll">
+		<div data-role="main" >
 			<div class="display-flex regular-back-header" style="margin-top: 1em;">
-					<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
-					<h2 class="flex-stretch" >Add Cat</h2>
+			<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
+				<h2 class="flex-stretch">Add Cat</h2>
 					
-			</div>
-			<div>
-				<form action="" id="add-cat-form" data-ajax="false">
-					<input type="hidden" id="animal-add-destination" value="#list-page">
-					<div class="form-control display-flex">
-						<div class="form-upload-photo">
-							<img src="images/add.svg" class="flex-none ">
-						</div>
-						<div class="flex-stretch">
-							<label for="add-cat-name" class="form-label">Cat Name</label>
-							<input type="text" class="form-input" id="add-cat-name" data-role="none">
-						</div>
+		</div>
+			<div class="overscroll">
+				<form action="" id="add-cat-form" data-ajax="false" class="margin-bot-5">
+					
+					<div class="form-control">
+						<label for="add-cat-name" class="form-label">Cat Name</label>
+						<input type="text" class="form-input" id="add-cat-name" data-role="none" value="">
+					</div>
+					<div class="form-control">
+						<label for="add-cat-gender" class="form-label">Gender</label>
+						<select name="add-cat-gender" id="add-cat-gender" class="drop-down" data-role="none">
+							
+
+							<option class="options" value="Girl">Girl</option>
+							<option class="options" value="Boy">Boy</option>
+
+						</select>
+						
 					</div>
 
 					<div class="form-control">
-						<label for="add-cat-gender" class="form-label">Gender</label>
-						<input type="text" class="form-input" id="add-cat-gender" data-role="none">
-					</div>
-					<div class="form-control">
 						<label for="add-cat-breed" class="form-label">Breed</label>
-						<input type="text" class="form-input" id="add-cat-breed" data-role="none">
+						<input type="text" class="form-input" id="add-cat-breed" data-role="none" value="">
 					</div>
 					<div class="form-control">
 						<label for="add-cat-color" class="form-label">Color</label>
-						<input type="text" class="form-input" id="add-cat-color" data-role="none">
-					</div>
-					<div class="form-control">
-						<label for="add-cat-coat" class="form-label">Coat</label>
-						<input type="text" class="form-input" id="add-cat-coat" data-role="none">
+						<input type="text" class="form-input" id="add-cat-color" data-role="none" value="">
 					</div>
 					<div class="form-control">
 						<label for="add-cat-size" class="form-label">Size</label>
-						<input type="text" class="form-input" id="add-cat-size" data-role="none">
+						<select class="drop-down" id="add-cat-size" data-role="none" value="">
+							<option class="options" value="Small">Small</option>
+							<option class="options" value="Medium">Medium</option>
+							<option class="options" value="Large">Large</option>
+						</select>
+					</div>
+					<div class="form-control">
+						<label for="add-cat-coat" class="form-label">Coat</label>
+						<select class="drop-down" id="add-cat-coat" data-role="none" value="">
+							<option class="options" value="Short">Short</option>
+							<option class="options" value="Medium">Medium</option>
+							<option class="options" value="Long">Long</option>
+						</select>
 					</div>
 					<div class="form-control">
 						<label for="add-cat-neutered" class="form-label">Neutered?</label>
-						<input type="text" class="form-input" id="add-cat-neutered" data-role="none">
+						<select name="add-neutered" id="add-cat-neutered" class="drop-down" data-role="none">
+							<option class="options" value="Yes">Yes</option>
+							<option class="options" value="No">No</option>
+
+							
+						</select>
 					</div>
 					<div class="form-control">
 						<label for="add-cat-description" class="form-label">Cat Description</label>
-						<textarea data-role="none" name="add-cat-description" class="add-cat-note margin-bot-5" id="add-cat-description"></textarea>
+						<textarea data-role="none" name="add-cat-description" class="add-cat-note " id="add-cat-description"></textarea>
 					</div>
+				
 					<div class="form-control">
-						<a href="#" class="form-button js-cat-add" data-role="none">Add Cat</a>
+						<a href="#" class="form-button js-cat-add">Save</a>
 					</div>
 
 				</form>
@@ -735,67 +744,6 @@
 	</section>
 
 
-
-
-
-
-<!--    <section data-role="page" id="cat-upload-page">
-      
-      <div data-role="main">
-
-      	<div class="display-flex regular-back-header" style="margin-top: 1em;">
-					<a href="#" class="back-icon" data-rel="back"><img src="images/back-icon.svg"></a>
-					<h2 class="flex-stretch" >Upload Image</h2>
-					
-			</div>
-         <form id="cat-upload-form" data-ajax="false">
-            <input type="hidden" id="cat-upload-image">
-            <label class="image-uploader full">
-
-               <input type="file" data-role="none" id="cat-upload-input">
-            </label>
-
-            <div class="form-control">
-					<a href="#add-note-page" class="js-cat-upload map-next form-button">Next</a>
-				</div>
-         </form>
-      </div>
-   </section>
- -->
-
-
-
-
-
-
-
-<!-- 
-
-
-
-	<section data-role="page" id="new-cat-location-add-page">
-	
-		<div data-role="main">
-			<div class="display-flex space-around map-header">
-				<a href="#" class="back-icon flex-none" data-rel="back"><img src="images/back-icon.svg"></a>
-				
-				<h2 class="flex-stretch" style="padding: 0 2em 0 0;">Choose Location</h2>
-				
-			</div>
-
-			 <div>
-		         <input type="hidden" id="location-add-lat">
-		         <input type="hidden" id="location-add-lng">
-		         <div class="map"></div>
-		      </div>
-
-		      <div class="form-control">
-					<a href="#add-animal-page" class="map-next form-button">Next</a>
-				</div>
-		</div>
-
-	</section>
- -->
 
 
 

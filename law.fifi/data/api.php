@@ -213,9 +213,9 @@ function makeStatement($data){
 
          $r = makeQuery($c,"INSERT INTO
             `track_users`
-            (`username`,`email`,`password`,`img`,`date_create`,`firstname`,`lastname`,`gender`,`location`,`bio`,`initial`)
+            (`firstname`,`lastname`,`username`,`email`,`password`,`img`,`date_create`,`gender`,`location`,`bio`,`initial`)
             VALUES
-            (?, ?, md5(?), 'https://via.placeholder.com/400/?text=USER', NOW(),'','','','','','')
+            (?,?,?,?, md5(?), 'https://via.placeholder.com/400/?text=USER', NOW(),'','','','')
             ",$p,false);
          if(isset($r['error'])) return $r;
          return ["id"=>$c->lastInsertId()];
@@ -227,7 +227,7 @@ function makeStatement($data){
             `track_animals`
             (`user_id`,`name`,`gender`,`breed`,`color`,`coat`,`size`,`neutered`,`description`,`img`,`date_create`)
             VALUES
-            (?,?, ?,?,?,?,?,?,?, 'https://via.placeholder.com/400/?text=CAT', NOW())
+            (?,?, ?,?,?,?,?,?,?, ?, NOW())
             ",$p,false);
          if(isset($r['error'])) return $r;
          return ["id"=>$c->lastInsertId()];
@@ -295,7 +295,8 @@ function makeStatement($data){
 			`email`=?,
 			`gender`=?,
 			`location`=?,
-			`bio`=?
+			`bio`=?,
+            `img`=?
 
 			WHERE `id` =?
 			",$p,false);
@@ -333,8 +334,7 @@ function makeStatement($data){
 		$r= makeQuery($c, "UPDATE `track_users` 
 			SET 
 			
-			`firstname`=?,
-			`lastname`=?,
+
 			`gender`=?,
 			`location`=?,
 			`bio`=?

@@ -40,10 +40,9 @@ $(()=>{
 			UserUploadPage();
 			break;
 
-			case 'add-animal-page':
-			AddAnimalPage();
+			case 'signup-success-page':
+			SignupSucessPage();
 			break;
-
 
 			case 'animal-map-page':
 			AnimalMapPage();
@@ -134,8 +133,8 @@ $(()=>{
 	})
 
 
-	.on("click",".js-user-upload", function(e){
-		checkUserUpload();
+	.on("click",".js-cat-upload", function(e){
+		checkCatUpload();
 	})
 
 

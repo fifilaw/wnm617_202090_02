@@ -1,4 +1,6 @@
 const checkSignUpForm = async () => {
+   let firstname = $("#signup-firstname").val();
+   let lastname = $("#signup-lastname").val();
    let username = $("#signup-username").val();
    let email = $("#signup-email").val();
    let password = $("#signup-password").val();
@@ -36,7 +38,7 @@ const checkSignUpForm = async () => {
 
       throw "Passwords don't match";
    } else {
-      query({type:'insert_user',params:[username,email,password]})
+      query({type:'insert_user',params:[firstname,lastname,username,email,password]})
       .then(d=>{
          if(d.error) {
             throw d.error;
@@ -59,9 +61,10 @@ const CheckCatAddForm=()=>{
    let coat = $("#add-cat-coat").val();	
    let size = $("#add-cat-size").val();	
    let neutered = $("#add-cat-neutered").val();	
-   let description = $("#add-cat-description").val();	
+   let description = $("#add-cat-description").val(); 
+   let image = $("#cat-upload-image").val();	
 
-   query({type:'insert_animal',params:[sessionStorage.userId,name,gender,breed,color,coat,size,neutered,description]})
+   query({type:'insert_animal',params:[sessionStorage.userId,name,gender,breed,color,coat,size,neutered,description,image]})
       .then(d=>{
          if(d.error) {
             throw d.error;
@@ -71,7 +74,12 @@ const CheckCatAddForm=()=>{
          $("#add-cat-form")[0].reset();
 
          sessionStorage.animalId =d.id;
-         $.mobile.navigate($("#animal-add-destination").val());
+         
+         window.history.go(-2);
+         // window.location.reload();
+
+
+         // $.mobile.navigate("#list-page");
 
       })
 }
@@ -108,9 +116,10 @@ const checkUserEditForm=()=>{
 	let email =$("#edit-user-email").val();
 	let gender =$("#edit-user-gender").val();
 	let location =$("#edit-user-location").val();
-	let bio =$("#edit-user-bio").val();
+   let bio =$("#edit-user-bio").val();
+	let img =$("#user-edit-image").val();
 
-	query({type:'update_user',params:[firstname,lastname,username,email,gender,location,bio,sessionStorage.userId]})
+	query({type:'update_user',params:[firstname,lastname,username,email,gender,location,bio,img,sessionStorage.userId]})
 	.then(d=>{
 		if(d.error){
 			throw d.error;
@@ -125,14 +134,13 @@ const checkUserEditForm=()=>{
 
 const SignupAddUserInfoForm= ()=>{
 
-	let firstname =$("#signup-firstname").val();
-	let lastname =$("#signup-lastname").val();
+
 	let gender =$("#signup-gender").val();
 	let location =$("#signup-location").val();
 	let bio =$("#signup-bio").val();
 	
 
-	query({type:'signup_add_user_info',params:[firstname,lastname,gender,location,bio,sessionStorage.userId]})
+	query({type:'signup_add_user_info',params:[gender,location,bio,sessionStorage.userId]})
 	.then(d=>{
 		if(d.error){
 			throw d.error;
@@ -184,7 +192,7 @@ const checkFilterList= async(d)=>{
       params:[d.field,d.value,sessionStorage.userId]});
 
 	console.log(r);
-   drawAnimalList(r.result,"No Result Found");
+   drawAnimalList(r.result,`<div class="col-sm-12 no-result-search"><img src="images/cat-sad.png" alt=""></div>`);
 	
 }
 
@@ -201,7 +209,7 @@ const checkSortList= async(d) =>{
 
 
 	// console.log(r);
-   drawAnimalList(r.result,"No Result Found");
+   drawAnimalList(r.result,`<div class="col-sm-12 no-result-search"><img src="images/cat-sad.png" alt=""></div>`);
 	
 }
 
@@ -216,7 +224,7 @@ const checkLocationAddForm=()=>{
 	let lat =$("#location-add-lat").val();
 	let lng =$("#location-add-lng").val();
 	let status =$("#add-cat-status").val();
-   let photo = $("#animal-edit-image").val();
+   let photo = $("#animal-note-image").val();
 	let description =$("#update-cat-description").val();
 
 
@@ -262,8 +270,8 @@ const checkUpload=file=>{
 
 
 
-const checkUserUpload=()=>{
-   let upload = $("#user-upload-image").val();
+const checkCatUpload=()=>{
+   let upload = $("#cat-upload-image").val();
 
    if(upload=="")return;
 

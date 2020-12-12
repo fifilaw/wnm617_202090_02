@@ -34,6 +34,8 @@ const MapPage= async()=>{
    
 			})
 		})
+
+	
 	
 	}
 	
@@ -54,7 +56,7 @@ const UserProfilePage= async()=>{
 
 	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
 
-		// console.log(d)
+		console.log(d)
 		$('#user-profile-page .user-profile').html(makeUserProfileIcon(d.result));
 	})
 
@@ -272,11 +274,23 @@ const AddNotePage = async()=>{
 
 
 
-const AddAnimalPage=async()=>{
-
-		query({type:'animal_by_id',params:[sessionStorage.animalId]}).then(d=>{
 
 
-		$('#add-note-page #add-note-form').html(makeAddNotePage(d.result));
+const SignupSucessPage=async()=>{
+
+
+
+	let d = query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
+
+	console.log(d)
+	$('#signup-success-page .user-signup-add-info').html(MakeUserAddInfoPage(d.result));
 	})
+
 }
+
+
+
+
+
+
+
