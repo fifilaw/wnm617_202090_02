@@ -116,6 +116,9 @@ function makeStatement($data){
 		case "check_signin":
         	return makeQuery($c,"SELECT * FROM track_users WHERE username =? AND password =md5(?)",$p);
 
+        case "check_password":
+            return makeQuery($c,"SELECT * FROM track_users WHERE username =? AND password =md5(?)",$p);
+
     	case "check_signup":
     		return makeQuery($c,"SELECT * FROM track_users WHERE username =? ",$p);
 
@@ -313,6 +316,20 @@ function makeStatement($data){
             WHERE `id` =?
             ",$p,false);
       
+            return ["result"=>"success"];
+
+
+
+         case "update_user_password":
+
+
+            $r= makeQuery($c, "UPDATE `track_users` 
+                SET 
+                
+                `password`= md5(?)
+
+                WHERE `id` =?
+                ",$p,false);
             return ["result"=>"success"];
 
 

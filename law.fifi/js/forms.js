@@ -72,11 +72,13 @@ const CheckCatAddForm=()=>{
          console.log(d.id)
 
          $("#add-cat-form")[0].reset();
+         $("#cat-upload-form")[0].reset();
+        
 
          sessionStorage.animalId =d.id;
          
+
          window.history.go(-2);
-         // window.location.reload();
 
 
          // $.mobile.navigate("#list-page");
@@ -163,6 +165,7 @@ const checkCatDelete= id => {
 		}
 		console.log(id);
 		window.history.back();
+      UserProfilePage();
 
 	});
 }
@@ -236,8 +239,9 @@ const checkLocationAddForm=()=>{
 	
          $("#add-note-form")[0].reset();
 
-         window.history.go(-2);
-    
+         $.mobile.navigate("#list-page");
+  
+
 	})
 
 
@@ -286,4 +290,52 @@ const checkCatUpload=()=>{
 
 
    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const checkChangePasswordForm = async () => {
+
+   let oldpassword = $("#old-password").val();
+   let newpassword = $("#new-password").val();
+   let newpasswordconfirm = $("#confirm-new-password").val();
+
+
+   let found_password = await query({
+      type:'check_password',
+      params:[sessionStorage.userId,oldpassword]
+   });
+
+
+   if(!found_password.result.length){
+         console.log(found_password)
+         makeWarning(".login-error","Incorrect old password");
+
+   }else if(newpassword!=newpasswordconfirm) {
+      makeWarning(".login-error","New Passwords don't match");
+   }else {
+      query({type:'insert_user',params:[password]})
+      .then(d=>{
+         if(d.error) {
+            throw d.error;
+         }
+         console.log(d.id)
+         $("#edit-password-form")[0].reset();
+
+
+      })
+   }
+
 }

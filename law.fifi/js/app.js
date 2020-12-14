@@ -137,6 +137,12 @@ $(()=>{
 		checkCatUpload();
 	})
 
+	.on("click",".js-change-password", function(e){
+		e.preventDefault();
+		
+		checkChangePasswordForm();
+	})
+
 
 
 
@@ -173,6 +179,14 @@ $(()=>{
 
       window.location.reload();
    })
+
+       .on("click",".reload",function(e){
+      
+
+      window.location.reload();
+   })
+
+
 
 
 

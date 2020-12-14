@@ -64,13 +64,65 @@ const UserProfilePage= async()=>{
 
 		// console.log(d)
 		$('.cat-found').html(d.result.length);
+
+
 	})
+
+
+
+	query({type:'animals_by_user_id',params:[sessionStorage.userId]}).then(d=>{
+
+
+		let total_cat_added=d.result.length;
+
+		if(total_cat_added==0){
+			$('.congrats-message').html(`<p>Add 5 cats to earn a bronze badge!</p>`);
+
+		}else if(5>total_cat_added>0){
+			$('.congrats-message').html(`<p>Add <strong>${5-total_cat_added}</strong> more cats to earn a bronze badge!</p>`);
+
+		}else if(total_cat_added==5 && total_cat_added<10){
+			$('.congrats-message').html(`
+				<p>Congrats! You have earned the bronze badge. Add <strong>${10-total_cat_added}</strong> more cats to earn a Sliver badge! </p>
+				<div class="cat-badge display-flex ">
+					<img class="flex-none" src="images/badge-2.svg">
+				</div>`);
+		}else if(total_cat_added==10 && total_cat_added<15){
+			$('.congrats-message').html(`<p>Congrats! You have earned the sliver badge. Add <strong>${15-total_cat_added}</strong> more cats to earn a gold badge!</p>
+				<div class="cat-badge display-flex ">
+					<img class="flex-none" src="images/badge-2.svg"><img src="images/badge.svg">
+					
+				</div>`);
+
+		}else if(total_cat_added>=15){
+			$('.congrats-message').html(`<p>Congrats! You have earned the gold badge. Meow!</p>
+				<div class="cat-badge display-flex ">
+					<img class="flex-none" src="images/badge-3.svg"><img class="flex-none" src="images/badge-2.svg"><img src="images/badge.svg">
+					
+				</div>`);
+
+		}
+
+	})
+
+
+
 
 	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
 
 		// console.log(d)
 		$('.user-profile-detail').html(makeUserProfileInfo(d.result));
 	})
+
+
+	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
+
+		// console.log(d)
+		$('.user-profile-detail').html(makeUserProfileInfo(d.result));
+	})
+
+
+
 
 }
 
@@ -94,15 +146,6 @@ const AnimalProfilePage= async()=>{
 
 	
 
-
-
-
-	// query({type:'locations_by_animal_id',params:[sessionStorage.animalId]}).then(d2=>{
-
-	// 	console.log(d2)
-	// 	$('#animal-profile-page .animal-profile .cat-note ').html(makeAnimalNote(d2.result));
-	// })
-
 	
 }
 
@@ -113,7 +156,11 @@ const AnimalMapPage= async()=>{
       makeMap(".cat-profile-map").then(map_el=>{
 
          makeMarkers(map_el,d.result);
-		// console.log(d)
+		// console.log(d.result.length)
+
+		if(d.result.length==0){
+			 $("#animal-map-page .cat-note").html(MakeNoResultPage)}
+		
 
          map_el.data("markers").forEach((o,i)=>{
 			o.addListener("click", function(){
@@ -127,11 +174,14 @@ const AnimalMapPage= async()=>{
    })
 
 
-	query({type:'location_by_id',params:[sessionStorage.animalId]}).then(d=>{
+	// query({type:'location_by_id',params:[sessionStorage.animalId]}).then(d=>{
 
-		// console.log(d)
-		$('#animal-map-page .map-details').html(MakeCatMapPage(d.result));
-	})
+	// 	// console.log(d)
+	// 	$('#animal-map-page .map-details').html(d.result.length?MakeCatMapPage(d.result): `<div class="display-flex flex-column" style="padding:1em">
+	// 				<p class="">Looks like this cat doesn't have a location yet...</p>
+	// 				<div class="cat-journal-img"><img src="images/cat-sad.png"></div>
+	// 			</div>`);
+	// })
 
 
 	

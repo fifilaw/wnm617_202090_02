@@ -281,7 +281,7 @@
 			</div>
       	</div>
       	<div class="add-icon floater right bottom">
-      		<a href="#cat-upload-page">+<!-- <img src="images/add.svg" > --></a>
+      		<a  href="#cat-upload-page">+<!-- <img src="images/add.svg" > --></a>
       	</div>
      	<div class="overscroll">
      		<ul class="animal-list grid gap">
@@ -418,14 +418,19 @@
 					<div class="overscroll">
 					<div class="contents">
 						<div class="content active user-achievements display-flex">
-							<div class="user-achievement ">
+							<div class="user-achievement margin-bot-5">
 
-								<h4>Cats Found</h4>
-								<div class="display-flex flex-align-center ">
-									<p class="flex-stretch cat-found"></p>
-									<div class="cat-badge"><img class="flex-none" src="images/badge.svg"></div>
-									<div class="cat-badge"><img class="flex-none" src="images/badge-2.svg"></div>
+								<div class="display-flex flex-align-center">
+								<h4 class="flex-stretch" >Cats Found</h4>
+									<p class="cat-found flex-stretch"></p>
+									
+									<!-- <div class="cat-badge"><img class="flex-none" src="images/badge-2.svg"></div> -->
 								</div>
+							</div>
+							<div class=" congrats-message">
+								
+								
+
 							</div>
 							
 						</div>
@@ -544,8 +549,10 @@
 
 
 			<div class="cat-note overscroll">
-				<div class="display-flex flex-column" style="padding:1em">
-					<p class="">Click on the icons to see cat's previous location history!</p>
+				<div class="display-flex flex-column no-location" style="padding:1em">
+					<p class="">Click the markers to see cat's location history!</p>
+					<a href="#location-add-page">Add Location</a>
+
 					<div class="cat-journal-img"><img src="images/cat-journal.png"></div>
 				</div>
 			
@@ -678,14 +685,26 @@
 						<textarea data-role="none" name="add-cat-description" class="add-cat-note " id="add-cat-description"></textarea>
 					</div>
 				
-					<div class="form-control">
-						<a href="#" class="form-button js-cat-add">Save</a>
+					<div class="form-control" data-activate="#add-cat-success">
+						<a href="#" class="form-button js-cat-add" >Save</a>
 					</div>
 
 				</form>
 			</div>
 
 		</div>
+
+	<!-- 	<div class="modal" id="add-cat-success" style="top: 0; z-index: 6; left: 0;">
+	      	<div class="modal-back" data-deactivate="#add-cat-success"></div>
+	      	<div class="modal-popup">
+	      		<div class="modal-head" style="text-align: center;">Yayy!!</div>
+	      		<div class="modal-question"><div>You just added a cat! Do you want to add a location as well?</div></div>
+	      		<div class="display-flex space-around" style="background: var(--color-main-medium);">
+	      			<div class="modal-select flex-none" data-deactivate="#add-cat-success"><a href="#list-page">Not Now</a></div>
+	      			<div class="modal-select flex-none yes" data-deactivate="#add-cat-success"><a href="#location-add-page" class="">Sure!</a></div>
+	      		</div>
+	      	</div>
+	    </div> -->
 		
 	</section>
 
@@ -845,7 +864,9 @@
 						<h2 class="flex-stretch">Change Password</h2>
 					
 			</div>
-			<div>
+			<div class="login-error">Login failed. Please try again.</div>
+		
+
 				<form action="" id="edit-password-form" data-ajax="false" style="margin: 3em auto;">
 					<div class="form-control ">
 						
@@ -866,11 +887,11 @@
 
 				
 					<div class="form-control">
-						<a href="#user-profile-page" class="form-button fixed">Change Password</a>
+						<a href="#user-profile-page" class="form-button js-change-password">Change password</a>
 					</div>
 
 				</form>
-			</div>
+		
 
 		</div>
 	</section>

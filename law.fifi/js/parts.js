@@ -181,7 +181,7 @@ const makeAddNotePage=templater(o=>`
 
 	<div class="form-control">
 		<label for="add-cat-status" class="form-label">Cat Status</label>
-		<input type="text" class="form-input" id="add-cat-status" data-role="none">
+		<input type="text" class="form-input" id="add-cat-status" data-role="none" placeholder="Example: Playing,Eating,Sleeping">
 	</div>
 
 	<div class="form-control">
@@ -223,6 +223,7 @@ const makeAddNotePage=templater(o=>`
 
 
 const MakeCatMapPage=o=>`
+
 
 		
 		<div class="display-flex flex-column">
@@ -473,6 +474,29 @@ const MakeUserAddInfoPage=templater(o=>`
 
 
 `);
+
+
+
+
+
+
+
+
+const MakeNoResultPage=o=>`
+	<div class="display-flex flex-column no-location" style="padding:1em">
+		<div class="cat-journal-img" style="width:100px"><img src="images/cat-sad.png"></div>
+		<p class="">Looks like this cat doesn't have a location yet...Want to add a location?</p>
+		<a href="#location-add-page">Add Location</a>
+
+	</div>
+
+`;
+
+
+
+
+
+
 
 
 
