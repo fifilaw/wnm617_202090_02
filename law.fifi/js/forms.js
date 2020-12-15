@@ -78,7 +78,7 @@ const CheckCatAddForm=()=>{
          sessionStorage.animalId =d.id;
          
 
-         window.history.go(-2);
+         // window.history.go(-2);
 
 
          // $.mobile.navigate("#list-page");
@@ -171,6 +171,30 @@ const checkCatDelete= id => {
 }
 
 
+
+
+
+
+
+const checkCatNoteDelete= id => {
+   query({type:"delete_location",params:[id]}).then(d=>{
+
+      if(d.error){
+         throw d.error;
+      }
+      console.log(id);
+      window.history.back();
+      AnimalMapPage();
+
+   });
+}
+
+
+
+
+
+
+
 const checkListSearchForm= async()=>{
    let s = $("#list-search-input").val();
    console.log(s)
@@ -181,6 +205,56 @@ const checkListSearchForm= async()=>{
 
    console.log(r);
 }
+
+
+
+
+const checkMapSearchForm= async()=>{
+   let s = $("#map-search-input").val();
+   console.log(s)
+
+   let d = await query({type:"search_animals_map",params:[s,sessionStorage.userId]});
+
+
+
+      let valid_animals = d.result.reduce((r,o)=>{
+      o.icon = o.img;
+
+      if(o.lat && o.lng) r.push(o);
+      return r;
+
+
+
+   },[])
+
+   // console.log(valid_animals);
+
+   let map_el= await makeMap("#map-page .map");
+
+   makeMarkers(map_el, valid_animals);
+
+
+   map_el.data("markers").forEach((o,i)=>{
+      o.addListener("click", function(){
+         // console.log("click")
+
+         sessionStorage.animalId= valid_animals[i].animal_id;
+         $.mobile.navigate("#animal-profile-page");
+         
+   
+         })
+      })
+
+
+   console.log(d);
+}
+
+
+
+
+
+
+
 
 
 

@@ -79,6 +79,13 @@ $(()=>{
 		checkListSearchForm();
 	})
 
+	.on("submit","#map-search-form", function(e){
+		e.preventDefault();
+
+		checkMapSearchForm();
+	})
+
+
 
 	
 
@@ -107,6 +114,12 @@ $(()=>{
 	.on("click",".js-cat-delete", function(e){
 		
 		checkCatDelete($(this).data("id"));
+		
+	})
+
+	.on("click",".js-cat-note-delete", function(e){
+		
+		checkCatNoteDelete($(this).data("id"));
 		
 	})
 

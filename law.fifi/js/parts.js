@@ -231,8 +231,12 @@ const MakeCatMapPage=o=>`
 					<img src="${o.photo}" alt="">
 				</div>
 			<div class="flex-stretch" style="padding:1em">
+
+				<div class="display-flex space-around flex-align-center">
 				
-				<p><span>Status:</span> ${o.status}</p>
+					<p class="flex-stretch" style="margin:0"><span>Status:</span> ${o.status}</p>
+					<div class="cat-note-more" data-activate="#delete-cat-note"><img src="images/delete.png" alt=""></div>	
+				</div>
 				<span>Description:</span>
 				<p>${o.description}</p>
 				<p>Created at: ${o.date_create}</p>
@@ -240,6 +244,18 @@ const MakeCatMapPage=o=>`
 				
 			
 		</div>
+
+		<div class="modal" id="delete-cat-note" style="top: 0; z-index: 6; left: 0;">
+	      	<div class="modal-back" data-deactivate="#delete-cat-note"></div>
+	      	<div class="modal-popup">
+	      		
+	      		<div class="modal-question"><div>Are you sure?</div></div>
+	      		<div class="display-flex space-around" style="background: var(--color-main-medium);">
+	      			<div class="modal-select flex-none" data-deactivate="#delete-cat-note"><a href="#">No</a></div>
+	      			<div class="modal-select flex-none yes" data-deactivate="#delete-cat-note"><a href="#" class="js-cat-note-delete" data-id="${o.id}">Yes</a></div>
+	      		</div>
+	      	</div>
+	      </div>
 
 	
 

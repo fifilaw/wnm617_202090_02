@@ -218,7 +218,7 @@ function makeStatement($data){
             `track_users`
             (`firstname`,`lastname`,`username`,`email`,`password`,`img`,`date_create`,`gender`,`location`,`bio`,`initial`)
             VALUES
-            (?,?,?,?, md5(?), 'https://via.placeholder.com/400/?text=USER', NOW(),'','','','')
+            (?,?,?,?, md5(?), 'images/user-icon.svg', NOW(),'','','','')
             ",$p,false);
          if(isset($r['error'])) return $r;
          return ["id"=>$c->lastInsertId()];

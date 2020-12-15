@@ -1357,3 +1357,36 @@ border: 2px solid var(--color-neutral-medium);
     border-radius: 5px;
     font-size: 0.8em;
 }
+
+
+
+
+
+
+.cat-note-more{
+  width:35px;
+}
+
+.cat-note-more img{
+  max-width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+form#map-search-form {
+    width: 90%;
+    border: solid 3px var(--color-neutral-medium);
+    padding: 0 5px;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 3;
+    position: absolute;
+    margin: 1em auto;
+}

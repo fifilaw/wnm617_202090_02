@@ -349,6 +349,11 @@
 	<section data-role="page" id="map-page">
 		<div data-role="main">
 			<!-- <div class="btn-circle floater top left" data-activate="#map-filter-menu">Filter</div> -->
+
+			<form id="map-search-form" data-ajax="false" class="display-flex search-bar">
+				<input type="text" class="flex-stretch" id="map-search-input" data-role="none" placeholder="Search for a cat...">
+				<img src="images/search.svg" class="flex-none">
+			</form>
 			<div class="map"></div>
 		
 		</div>
@@ -427,11 +432,7 @@
 									<!-- <div class="cat-badge"><img class="flex-none" src="images/badge-2.svg"></div> -->
 								</div>
 							</div>
-							<div class=" congrats-message">
-								
-								
-
-							</div>
+							<div class="congrats-message"></div>
 							
 						</div>
 						<div class="content">
@@ -694,7 +695,7 @@
 
 		</div>
 
-	<!-- 	<div class="modal" id="add-cat-success" style="top: 0; z-index: 6; left: 0;">
+		<div class="modal" id="add-cat-success" style="top: 0; z-index: 6; left: 0;">
 	      	<div class="modal-back" data-deactivate="#add-cat-success"></div>
 	      	<div class="modal-popup">
 	      		<div class="modal-head" style="text-align: center;">Yayy!!</div>
@@ -704,7 +705,7 @@
 	      			<div class="modal-select flex-none yes" data-deactivate="#add-cat-success"><a href="#location-add-page" class="">Sure!</a></div>
 	      		</div>
 	      	</div>
-	    </div> -->
+	    </div>
 		
 	</section>
 

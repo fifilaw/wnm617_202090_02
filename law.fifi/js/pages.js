@@ -54,13 +54,13 @@ const ListPage= async()=>{
 const UserProfilePage= async()=>{
 
 
-	query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
+	await query({type:'user_by_id',params:[sessionStorage.userId]}).then(d=>{
 
 		console.log(d)
 		$('#user-profile-page .user-profile').html(makeUserProfileIcon(d.result));
 	})
 
-	query({type:'animals_by_user_id',params:[sessionStorage.userId]}).then(d=>{
+	await query({type:'animals_by_user_id',params:[sessionStorage.userId]}).then(d=>{
 
 		// console.log(d)
 		$('.cat-found').html(d.result.length);
@@ -70,10 +70,11 @@ const UserProfilePage= async()=>{
 
 
 
-	query({type:'animals_by_user_id',params:[sessionStorage.userId]}).then(d=>{
+	await query({type:'animals_by_user_id',params:[sessionStorage.userId]}).then(d=>{
 
 
 		let total_cat_added=d.result.length;
+		console.log(total_cat_added);
 
 		if(total_cat_added==0){
 			$('.congrats-message').html(`<p>Add 5 cats to earn a bronze badge!</p>`);
@@ -81,13 +82,13 @@ const UserProfilePage= async()=>{
 		}else if(5>total_cat_added>0){
 			$('.congrats-message').html(`<p>Add <strong>${5-total_cat_added}</strong> more cats to earn a bronze badge!</p>`);
 
-		}else if(total_cat_added==5 && total_cat_added<10){
+		}else if(total_cat_added>=5 && total_cat_added<10){
 			$('.congrats-message').html(`
 				<p>Congrats! You have earned the bronze badge. Add <strong>${10-total_cat_added}</strong> more cats to earn a Sliver badge! </p>
 				<div class="cat-badge display-flex ">
 					<img class="flex-none" src="images/badge-2.svg">
 				</div>`);
-		}else if(total_cat_added==10 && total_cat_added<15){
+		}else if(total_cat_added>=10 && total_cat_added<15){
 			$('.congrats-message').html(`<p>Congrats! You have earned the sliver badge. Add <strong>${15-total_cat_added}</strong> more cats to earn a gold badge!</p>
 				<div class="cat-badge display-flex ">
 					<img class="flex-none" src="images/badge-2.svg"><img src="images/badge.svg">
