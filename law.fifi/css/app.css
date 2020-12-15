@@ -1151,7 +1151,30 @@ border: 2px solid var(--color-neutral-medium);
    --gap-size:1em;
 
    }
+
+
+
+
+
+
 }
+
+@media (max-width:320px) {
+
+     .contents {
+    height: 100px;
+    }
+
+    .tab{
+      font-size: 0.8em;
+    }
+
+
+    .add-note-btn{
+          top: 20%;
+    }
+
+  }
 
 
 
@@ -1390,3 +1413,13 @@ form#map-search-form {
     position: absolute;
     margin: 1em auto;
 }
+
+
+
+
+
+
+
+
+
+
